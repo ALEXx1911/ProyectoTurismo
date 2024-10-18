@@ -2,13 +2,12 @@
      background-image:url(./grass.jpg) ;
 
 }
-
 #ribbon::after{
      content: '';
      background-color: transparent;
      display: block;
      height: 20px;
-     widows: 50%;
+     width: 50%;
      margin: 0 auto;
      position: relative;
      left: auto;
@@ -73,5 +72,6 @@
 }
 
 .webo{
-     height: 20px;
+     width:20%;
+     height:20%;
 }
