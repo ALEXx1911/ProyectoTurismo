@@ -1,0 +1,24 @@
+.header{
+    background-color:grey;
+    height:30vh;
+    display: flex;
+    width:100%;
+    &__logo-container{
+        
+    }
+
+    &__logo{
+        width:200px;
+        height: 200px;
+    }
+
+    &__text-box{
+
+    }
+    &__navegation-bar{
+
+        &__option{
+
+        }
+    }
+}
