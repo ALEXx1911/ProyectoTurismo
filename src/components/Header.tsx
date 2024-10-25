@@ -1,9 +1,11 @@
-import Profile_Box from "./Profile_Box";
+import { ReactNode } from "react";
+import ProfileBox from "./ProfileBox";
 
 type headerProps={
     logo:string;
+   imageProfile?:string;
 }
-
+//Le tenemos que pasar un componente que en este caso va a ser ProfileBox
 export default function header({logo}:headerProps){
     return(
         <div className="header">
@@ -11,9 +13,7 @@ export default function header({logo}:headerProps){
                <img src={logo} alt="" sizes=""/>
             </div>
             <div className="header__search-bar">
-                <Profile_Box>
-                    
-                </Profile_Box>
+                <ProfileBox image="../../img/imagen-perfil-default.jpg" username="No login"/>
             </div>
         </div>
     );
