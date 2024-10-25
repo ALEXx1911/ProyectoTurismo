@@ -1,5 +1,6 @@
 import '../css/style.css'
-import Header from './components/header'
+import Header from './components/Header'
+
 
 function App() {
 

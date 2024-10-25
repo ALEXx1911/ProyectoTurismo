@@ -1,4 +1,4 @@
-import Profile_Box from "./profile_box";
+import Profile_Box from "./Profile_Box";
 
 type headerProps={
     logo:string;
@@ -11,7 +11,9 @@ export default function header({logo}:headerProps){
                <img src={logo} alt="" sizes=""/>
             </div>
             <div className="header__search-bar">
-                <Profile_Box></Profile_Box>
+                <Profile_Box>
+                    
+                </Profile_Box>
             </div>
         </div>
     );
