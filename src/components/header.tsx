@@ -1,17 +1,17 @@
-import { ReactNode } from "react";
+import Profile_Box from "./profile_box";
 
 type headerProps={
-    logo:ReactNode;
+    logo:string;
 }
 
 export default function header({logo}:headerProps){
     return(
         <div className="header">
             <div className="header__logo-container">
-                {logo}
+               <img src={logo} alt="" sizes=""/>
             </div>
             <div className="header__search-bar">
-                
+                <Profile_Box></Profile_Box>
             </div>
         </div>
     );

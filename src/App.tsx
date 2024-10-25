@@ -1,11 +1,11 @@
-import './App.css'
+import '../css/style.css'
 import Header from './components/header'
 
 function App() {
 
   return (
     <>
-    <Header logo='<img src="../../img/logo.png" />'/>
+    <Header logo='"../../img/logo.png"'/>
      {/*Aquí tiene que ir los componentes del proyecto*/}
     </>
   )
