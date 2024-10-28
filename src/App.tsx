@@ -11,7 +11,7 @@ function App() {
       <title>turismoMadrid</title>
     </head>
     <Header/>
-     {/*Aquí tiene que ir los componentes del proyecto*/}
+    {/*Aquí tiene que ir los componentes del proyecto*/}
     </>
   )
 }

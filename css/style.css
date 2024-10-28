@@ -77,6 +77,32 @@
   opacity: 0.8;
 }
 
+.login-container {
+  position: absolute;
+  display: block;
+  text-align: center;
+  background-color: white;
+  opacity: 0.3;
+  width: 100vh;
+  height: 100vh;
+}
+.login-container__login-form {
+  background-color: rgb(240, 69, 69);
+  border: 2px black solid;
+}
+
+.login-error {
+  color: red;
+}
+
+.menu {
+  position: relative;
+  left: 85%;
+}
+.menu__list {
+  list-style: none;
+}
+
 html {
   background-color: white;
 }

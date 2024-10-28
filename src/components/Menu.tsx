@@ -1,20 +1,15 @@
-import { useState } from "react";
-
 type MenuProps={
     active:boolean;
+    handleClickLogin:()=>void;
 }
-export default function Menu({active}:MenuProps){
+export default function Menu({active,handleClickLogin}:MenuProps){
     if(active){
-        const [visible,setVisible]=useState(true);
-        function handleClick(){
-
-        }
-
         return(
-            <div className="options">
-                <li className="options__list">
-                    <button>Login</button>
-                    <button>Settings</button>
+            <div className="menu">
+                <li className="menu__list">
+                    <ul onClick={handleClickLogin}>Iniciar sesión</ul>
+                    {/*La función "handleClickLogin" solo se aplica cuando pulsas en "Iniciar sesión".*/}
+                    <ul>Ajustes</ul>
                 </li>
             </div>
         );
