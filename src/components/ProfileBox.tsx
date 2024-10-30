@@ -9,7 +9,7 @@ export default function ProfileBox({image,username,handleClickProfileBox}:Profil
         <div className="header__profile-box" onClick={handleClickProfileBox}>
             {/*Ejecutamos la función "handleClickProfileBox" cuando hacemos "click" en en "div".*/}
             <img  className="header__profile-box__image" src={image} alt="Foto de perfil para cuando no hay una sesión iniciada"/>
-            <h4>
+            <h4 className="header__profile-box__username">
                 {username}
             </h4>
         </div>

@@ -1,0 +1,28 @@
+.menu{
+    margin-top: -10vh;
+    position: absolute;
+    padding:3rem;
+    left: 75.65%;
+    width:20%;
+    
+    &__list{
+        list-style: none;
+    }
+
+    &__option{
+        background-color: $color-yellow;
+        padding: 2rem;
+        text-align: center;
+        border-bottom: 1px black solid;
+        transition: all 0.3s ease-in-out;
+        &:hover{
+            background-color: $color-yellow-light;
+            color:black;
+            transform:translateY(-2px);
+        }
+    }
+
+
+  }
+
+ 

@@ -17,6 +17,9 @@ export default function Login({active,handleLoginSuccess}:LoginProps){
         const [visible,setVisible]=useState(true);
         const [validate,setValidate]=useState(false);
 
+        const [showError,setShowError]=useState(false);
+        //Variable para controlar el estado de visibilidad del mensaje de error.
+
         function handleClick(event:React.MouseEvent){
             event.preventDefault();
             isValidUser();
@@ -28,11 +31,16 @@ export default function Login({active,handleLoginSuccess}:LoginProps){
                 //en el "Header".
             }else{
                 setVisible(true);
-                <h3 className="login-error">Usuarios y/o contraseña no válidos.</h3>
+               setShowError(true);
+               //Le damos un valor "true" a "showError" para que se muestre el mensaje de error.
             }
-            
-
         }
+
+        function handleClickExit(event:React.MouseEvent){
+            event.preventDefault();
+            setVisible(false);
+        }
+        //Función para salir del formulario del "Login".
 
         function isValidUser(){
             const user=String(userRef.current!.value);
@@ -47,16 +55,19 @@ export default function Login({active,handleLoginSuccess}:LoginProps){
 
         }
         //Esta función sirve para determinar si el usuario introducido es o no válido.
-
+        
         return (
             <div className="login-container" style={{display:visible?"block":"none"}}>
                 <form className="login-container__login-form">
+                <button className="login__container__login-form__button-exit" onClick={handleClickExit}>Atrás</button>
+                    <h1 className="login-container__login-form__title">Iniciar sesión</h1>
                     <label>Introduzca su nombre de usuario: </label>
                     <input type="text" ref={userRef}/><br/><br/>
                     <label>Introduzca su contraseña: </label>
                     <input type="password" ref={passwordRef}/><br/><br/>
                     <button onClick={handleClick}>Iniciar sesión</button>
                 </form>
+                <h3 className="login-error" style={{display:showError?"block":"none"}}>Usuarios y/o contraseña no válidos.</h3>
             </div>
         );
    }

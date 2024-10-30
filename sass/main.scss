@@ -1,11 +1,8 @@
 @import "abstracts/animations";
 @import "abstracts/variables";
 
-@import "base/typography";
-
-@import "layout/header";
-
-@import "components/login.scss";
-@import "components/menu.scss";
+@import "components/header";
+@import "components/login";
+@import "components/menu";
 
 @import "pages/home";

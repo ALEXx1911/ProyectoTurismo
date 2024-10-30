@@ -1,5 +1,7 @@
 .header{
-    background-color:rgb(185, 185, 185);
+    animation: moveInLeft 1.5s ease-in 0.2s;
+    animation-fill-mode: both;
+    background-color: $color-yellow;
     display: flex;
     justify-content:space-around;
     align-items:center;
@@ -27,6 +29,8 @@
     }
 
     &__search-bar{
+        animation: moveToBottom 2s ease-in 0.5s;
+        animation-fill-mode: both;
         flex-grow:0.5;
         display:flex;
         align-items: center;
@@ -66,7 +70,6 @@
         }
 
         &:hover{
-            background-color: rgb(183, 183, 183);
             opacity:0.8;
         }
     }

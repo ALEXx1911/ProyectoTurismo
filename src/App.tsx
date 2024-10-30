@@ -10,7 +10,9 @@ function App() {
       <link rel="stylesheet" href="../css/icon-font.css"/>
       <title>turismoMadrid</title>
     </head>
-    <Header/>
+    <div className="main">
+      <Header/>
+    </div>
     {/*Aquí tiene que ir los componentes del proyecto*/}
     </>
   )

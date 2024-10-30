@@ -8,7 +8,7 @@ export default function Header(){
     const [showMenu,setShowMenu]=useState(false);
     //Variable para controlar el estado de visibilidad de "Menu".
     const [showLogin,setShowLogin]=useState(false);
-     //Variable para controlar el estado de visibilidad de "Login".
+    //Variable para controlar el estado de visibilidad de "Login".
 
 
     function handleClickProfileBox(){
@@ -18,16 +18,19 @@ export default function Header(){
 
 
     function handleClickLogin(){
+        setShowMenu(false);
         showLogin?setShowLogin(false):setShowLogin(true);
     }
     //Función para activar el formulario de login cuando se pulsa en "Iniciar sesión".
+    //Además, también desactiva el componente "Menu".
 
 
     function handleLoginSuccess(user:string){
         setUsername(user);
         setShowLogin(false);
     }
-    //Esta función sirve para actualizar el valor del "username".
+    //Esta función sirve para actualizar el valor del "username" y ocultar el formulario del login
+    //cuando ya lo has enviado.
 
     return(
         <>

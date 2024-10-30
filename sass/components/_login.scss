@@ -1,0 +1,26 @@
+
+.login-container{
+    position: relative;
+    text-align: center;
+    background-color: $color-white;
+    width:100%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    &__login-form{
+        animation: moveToBottom-2 2s ease-in;
+        animation-fill-mode: both;
+        background-color: $color-red-dark;
+        border:2px black solid;
+        padding:1.5rem;
+        &__button-exit{
+            border-radius:200px;
+            padding:8px;
+            border:none;
+        }
+    }
+}
+
+.login-error{
+    color:$color-red;
+}
