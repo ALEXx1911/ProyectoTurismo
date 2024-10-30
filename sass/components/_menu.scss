@@ -13,11 +13,11 @@
         background-color: $color-yellow;
         padding: 2rem;
         text-align: center;
-        border-bottom: 1px black solid;
+        border-bottom: 1px $color-black solid;
         transition: all 0.3s ease-in-out;
         &:hover{
             background-color: $color-yellow-light;
-            color:black;
+            color:$color-black;
             transform:translateY(-2px);
         }
     }

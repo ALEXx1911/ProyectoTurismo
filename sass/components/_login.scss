@@ -11,7 +11,7 @@
         animation: moveToBottom-2 2s ease-in;
         animation-fill-mode: both;
         background-color: $color-red-dark;
-        border:2px black solid;
+        border:2px $color-black solid;
         padding:1.5rem;
         &__button-exit{
             border-radius:200px;

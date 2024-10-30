@@ -36,7 +36,7 @@
         align-items: center;
         transition: all 0.4s ease-out;
         &__input{
-            background-color: white;
+            background-color: $color-white;
             padding: 0.7rem 2rem;
             border-radius: 0.5rem;
             border:none;
@@ -44,7 +44,7 @@
             width: 90%;
         }
         &__search-button{
-            background-color: white;
+            background-color: $color-white;
             border: none;
             &:focus{
                 transform: translateY(0.2rem);
