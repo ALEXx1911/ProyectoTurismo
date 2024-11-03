@@ -193,8 +193,12 @@
 }
 
 .item-list {
+  position: absolute;
   width: 60%;
   height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 .item-list__image {
   width: 100%;
