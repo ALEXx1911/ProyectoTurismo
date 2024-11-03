@@ -153,6 +153,21 @@
   transform: translateY(-2px);
 }
 
+.slider-btn {
+  position: absolute;
+  color: red;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.button-left {
+  left: 0.1rem;
+}
+
+.button-right {
+  right: 0.1rem;
+}
+
 .container-slider {
   margin: 0 auto;
   width: 67rem;
