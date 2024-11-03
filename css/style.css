@@ -202,8 +202,8 @@
 }
 .item-list-1 {
   transform: translateX(-40%) scale(0.8);
-  opacity: 1;
-  z-index: 1;
+  opacity: 0.4;
+  z-index: 0;
 }
 .item-list-2 {
   transform: translateX(0) scale(1);
@@ -212,8 +212,8 @@
 }
 .item-list-3 {
   transform: translateX(40%) scale(0.8);
-  opacity: 1;
-  z-index: 1;
+  opacity: 0.4;
+  z-index: 0;
 }
 .item-list__image {
   width: 100%;
