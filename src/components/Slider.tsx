@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SliderButton from "./Slider-Button";
 
 export default function Slider(){
@@ -15,6 +15,10 @@ export default function Slider(){
         const nextIndex= selectedIndex <= 0 ? imagenes.length-1 : selectedIndex-1;
         setSelectedIndex(nextIndex);
     }
+    useEffect(()=>{
+        const intervalo = setInterval(moveToRight,5000);
+        return () => clearInterval(intervalo);
+    });
 
     return(
         <>
