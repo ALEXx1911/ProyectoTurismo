@@ -12,7 +12,7 @@ export default function Slider(){
     }
 
     function moveToLeft(){
-        const nextIndex= selectedIndex < 0 ? imagenes.length-1 : selectedIndex+1;
+        const nextIndex= selectedIndex <= 0 ? imagenes.length-1 : selectedIndex-1;
         setSelectedIndex(nextIndex);
     }
 
