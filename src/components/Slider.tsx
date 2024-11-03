@@ -23,7 +23,7 @@ export default function Slider(){
             <img src={imagenes[selectedIndex]} alt="xd" className="img-ite"/>
         </section>
         </section>
-        <SliderButton />
+        <SliderButton functionLeft={moveToLeft} functionRight={moveToRight}/>
         </>
     );
 }
