@@ -22,9 +22,9 @@ export default function Slider(){
 
     return(
         <>
-        <section className="slider-carousel">
+        <section className="container-slider__carousel">
         <section className="item-list">
-            <img src={imagenes[selectedIndex]} alt="xd" className="img-ite"/>
+            <img src={imagenes[selectedIndex]} alt="xd" className="item-list__image"/>
         </section>
         </section>
         <SliderButton functionLeft={moveToLeft} functionRight={moveToRight}/>
