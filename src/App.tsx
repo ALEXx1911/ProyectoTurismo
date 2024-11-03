@@ -1,5 +1,6 @@
 
 import Header from './components/Header'
+import Slider from './components/Slider'
 
 function App() {
 
@@ -12,6 +13,9 @@ function App() {
     </head>
     <div className="main">
       <Header/>
+    </div>
+    <div className="container-slider">
+      <Slider/>
     </div>
     {/*Aquí tiene que ir los componentes del proyecto*/}
     </>
