@@ -11,19 +11,6 @@
     transform: translate(0);
   }
 }
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem);
-  }
-  80% {
-    transform: translateX(1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0);
-  }
-}
 @keyframes moveToBottom {
   0% {
     opacity: 0;
@@ -164,6 +151,12 @@
   background-color: #fabd00;
   color: black;
   transform: translateY(-2px);
+}
+
+.conatiner-slider {
+  margin: 0 auto;
+  width: 60rem;
+  height: 30rem;
 }
 
 html {
