@@ -5,8 +5,8 @@ type SliderButtonProps={
 export default function SliderButton({functionLeft, functionRight}: SliderButtonProps){
     return(
         <>
-        <div className="btn-left" onClick={functionLeft}>a</div>
-        <div className="btn-right" onClick={functionRight}>b</div>
+        <div className="slider-btn button-left" onClick={functionLeft}>a</div>
+        <div className="slider-btn button-right" onClick={functionRight}>b</div>
         </>
     );
 }
