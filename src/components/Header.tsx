@@ -37,7 +37,7 @@ export default function Header(){
         <div className="header">
             <div className="header__logo-container">
                <img className=" header__logo"src="../../img/logo.jpeg" alt="Foto del logo de la compañía"/>
-               <h4 className="header__name">turismoMadrid</h4>
+               <h4 className="header__name">turismoEspaña</h4>
             </div>
        
                 <form className="header__search-bar">
