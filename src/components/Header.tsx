@@ -9,8 +9,7 @@ export default function Header(){
     //Variable para controlar el estado de visibilidad de "Menu".
     const [showLogin,setShowLogin]=useState(false);
     //Variable para controlar el estado de visibilidad de "Login".
-
-
+    
     function handleClickProfileBox(){
        showMenu?setShowMenu(false):setShowMenu(true);
     }
