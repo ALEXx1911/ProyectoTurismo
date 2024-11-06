@@ -1,8 +1,13 @@
-import { useRef, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import users from "./users.json";
 type LoginProps={
     active:boolean;
     handleLoginSuccess:(username:string)=>void;
+}
+
+type visibleProps={
+    visible:boolean;
+    setVisible:(x:boolean)=>void;
 }
 
 export default function Login({active,handleLoginSuccess}:LoginProps){
