@@ -179,6 +179,11 @@
   right: 0.1rem;
 }
 
+.arrow {
+  width: 100%;
+  height: 100%;
+}
+
 .container-slider {
   margin-top: 3rem;
   width: 100%;
