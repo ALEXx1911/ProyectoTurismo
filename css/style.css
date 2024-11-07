@@ -161,6 +161,7 @@
   width: 40px;
   height: 40px;
   transform: translateY(-50%);
+  color: #fabd00;
   background-color: white;
   border: none;
   padding: 1rem;
@@ -169,6 +170,7 @@
 }
 .slider-btn:hover {
   background-color: #fabd00;
+  color: white;
 }
 
 .button-left {
@@ -182,10 +184,6 @@
 .arrow {
   width: 100%;
   height: 100%;
-  color: #fabd00;
-}
-.arrow:hover {
-  color: white;
 }
 
 .container-slider {
