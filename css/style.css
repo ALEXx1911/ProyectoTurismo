@@ -166,6 +166,8 @@
   border: none;
   padding: 1rem;
   border-radius: 50px;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
   cursor: pointer;
 }
 .slider-btn:hover {
