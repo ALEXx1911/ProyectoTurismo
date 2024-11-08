@@ -161,15 +161,19 @@
   top: 50%;
   width: 40px;
   height: 40px;
-  text-align: center;
   transform: translateY(-50%);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  color: #fabd00;
+  background-color: white;
   border: none;
-  font-size: 2.4rem;
   padding: 1rem;
   border-radius: 50px;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
   cursor: pointer;
+}
+.slider-btn:hover {
+  background-color: #fabd00;
+  color: white;
 }
 
 .button-left {
@@ -178,6 +182,11 @@
 
 .button-right {
   right: 0.1rem;
+}
+
+.arrow {
+  width: 100%;
+  height: 100%;
 }
 
 .container-slider {
