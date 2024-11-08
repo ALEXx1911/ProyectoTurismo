@@ -50,7 +50,7 @@ export default function Header(){
                 handleClickProfileBox={handleClickProfileBox}/>
             </div>
         </div>
-        <Menu active={showMenu} handleClickLogin={handleClickLogin}/>
+         <Menu active={showMenu} handleClickLogin={handleClickLogin}/>
         {/*El "Menu" solo se muestra cuando "showMenu" sea true. */}
         <Login active={showLogin} handleLoginSuccess={handleLoginSuccess}/>
         {/*El "Login" solo se muestra cuando "showLogin" sea true.

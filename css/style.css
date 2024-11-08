@@ -105,7 +105,7 @@
 }
 
 .login-container {
-  position: relative;
+  position: absolute;
   text-align: center;
   background-color: white;
   height: 100%;
@@ -132,17 +132,18 @@
 }
 
 .menu {
-  margin-top: -10vh;
-  position: absolute;
-  padding: 3rem;
-  left: 75.65%;
-  width: 20%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -3vh;
+  width: 96.5%;
   z-index: 1;
 }
 .menu__list {
   list-style: none;
 }
 .menu__option {
+  width: 100%;
   background-color: #fabd00;
   padding: 2rem;
   text-align: center;
