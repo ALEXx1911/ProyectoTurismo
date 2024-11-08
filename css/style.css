@@ -106,15 +106,14 @@
 
 .login-container {
   position: absolute;
-  text-align: center;
-  background-color: white;
   height: 100%;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 .login-container__login-form {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
   animation: moveToBottom-2 2s ease-in;
   animation-fill-mode: both;
   background-color: #e13236;
@@ -132,18 +131,15 @@
 }
 
 .menu {
-  position: relative;
+  margin-top: -5vh;
   display: flex;
   justify-content: flex-end;
-  margin-top: -3vh;
-  width: 96.5%;
   z-index: 1;
 }
 .menu__list {
   list-style: none;
 }
 .menu__option {
-  width: 100%;
   background-color: #fabd00;
   padding: 2rem;
   text-align: center;

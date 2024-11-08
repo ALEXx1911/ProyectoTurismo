@@ -1,20 +1,17 @@
 .menu{
-    position:relative;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -3vh;
-    width: 96.5%;
-    z-index: 1;
+    margin-top: -5vh;
+    display:flex;
+    justify-content:flex-end;
+    z-index:1;
     &__list{
         list-style: none;
     }
 
     &__option{
-        width: 100%;
-        background-color: #fabd00;
+        background-color: $color-yellow;
         padding: 2rem;
         text-align: center;
-        border-bottom: 1px black solid;
+        border-bottom: 1px $color-black solid;
         transition: all 0.3s ease-in-out;
         &:hover{
             background-color: $color-yellow-light;
@@ -25,5 +22,4 @@
 
 
   }
-
  

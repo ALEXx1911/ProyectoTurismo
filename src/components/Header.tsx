@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ProfileBox from "./ProfileBox";
 import Menu from "./Menu";
-import Login from "./Login";
+import { AppContext } from "../App";
 
 export default function Header(){
-    const [username,setUsername]=useState("No login");
     const [showMenu,setShowMenu]=useState(false);
     //Variable para controlar el estado de visibilidad de "Menu".
-    const [showLogin,setShowLogin]=useState(false);
-    //Variable para controlar el estado de visibilidad de "Login".
+
+    const {username, showLogin,setShowLogin}=useContext(AppContext);
+    //Utilizando un contexto, tomamos los valores de "username","showLogin" y "setShowLogin" de "App" para usarlos en "Header".
     
     function handleClickProfileBox(){
        showMenu?setShowMenu(false):setShowMenu(true);
     }
     //Función para activar el menú cuando pulso en el "ProfileBox".
-
 
     function handleClickLogin(){
         setShowMenu(false);
@@ -22,14 +21,6 @@ export default function Header(){
     }
     //Función para activar el formulario de login cuando se pulsa en "Iniciar sesión".
     //Además, también desactiva el componente "Menu".
-
-
-    function handleLoginSuccess(user:string){
-        setUsername(user);
-        setShowLogin(false);
-    }
-    //Esta función sirve para actualizar el valor del "username" y ocultar el formulario del login
-    //cuando ya lo has enviado.
 
     return(
         <>
@@ -50,9 +41,9 @@ export default function Header(){
                 handleClickProfileBox={handleClickProfileBox}/>
             </div>
         </div>
-         <Menu active={showMenu} handleClickLogin={handleClickLogin}/>
+        <Menu active={showMenu} handleClickLogin={handleClickLogin}/>
         {/*El "Menu" solo se muestra cuando "showMenu" sea true. */}
-        <Login active={showLogin} handleLoginSuccess={handleLoginSuccess}/>
+
         {/*El "Login" solo se muestra cuando "showLogin" sea true.
         Para cambiar el nombre de usuario utilizamos la función "handleLoginSuccess"*/}
         </>

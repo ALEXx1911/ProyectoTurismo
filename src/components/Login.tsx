@@ -1,16 +1,12 @@
-import { createContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import users from "./users.json";
 type LoginProps={
     active:boolean;
+    setActive:(x:boolean)=>void;
     handleLoginSuccess:(username:string)=>void;
 }
 
-type visibleProps={
-    visible:boolean;
-    setVisible:(x:boolean)=>void;
-}
-
-export default function Login({active,handleLoginSuccess}:LoginProps){
+export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
    if(active){
         type UsersType = {
             [key: string]: string; 
@@ -20,18 +16,17 @@ export default function Login({active,handleLoginSuccess}:LoginProps){
         const passwordRef=useRef<HTMLInputElement>(null);
 
         const [visible,setVisible]=useState(true);
-        const [validate,setValidate]=useState(false);
-
+        
         const [showError,setShowError]=useState(false);
         //Variable para controlar el estado de visibilidad del mensaje de error.
 
         function handleClick(event:React.MouseEvent){
             event.preventDefault();
-            isValidUser();
-            if(validate){
+            if(isValidUser()){
                 const user=String(userRef.current!.value);
                 setVisible(false);
                 handleLoginSuccess(user);
+                setActive(false);
                 //Utilizamos "handleLoginSuccess" para que el cambio en el nombre de usuario se cambie
                 //en el "Header".
             }else{
@@ -44,6 +39,7 @@ export default function Login({active,handleLoginSuccess}:LoginProps){
         function handleClickExit(event:React.MouseEvent){
             event.preventDefault();
             setVisible(false);
+            setActive(false);
         }
         //Función para salir del formulario del "Login".
 
@@ -52,11 +48,9 @@ export default function Login({active,handleLoginSuccess}:LoginProps){
             const password=String(passwordRef.current!.value);
             const usersData:UsersType=users;
             //Hacemos una variable "usersData" con los datos del archivo "users.json" para evitar un error de TypeScript.
-            if(usersData[user]===password){
-                setValidate(true);
-            }else{
-                setValidate(false);
-            }
+            const validUser = usersData[user]===password;
+            return validUser;
+            //Según el resultado de "validUser", establecemos el "validate" y hacemos un "return" del valor de "validUser". 
 
         }
         //Esta función sirve para determinar si el usuario introducido es o no válido.
