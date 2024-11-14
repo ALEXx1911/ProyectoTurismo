@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  transform: scale(1.2);
 }
 .header__logo {
   width: 6rem;
@@ -62,6 +63,9 @@
   text-transform: uppercase;
 }
 .header__search-bar {
+  width: 35%;
+}
+.header__search-bar-container {
   animation: moveToBottom 2s ease-in 0.5s;
   animation-fill-mode: both;
   flex-grow: 0.5;
@@ -69,19 +73,19 @@
   align-items: center;
   transition: all 0.4s ease-out;
 }
-.header__search-bar__input {
+.header__search-bar-container__input {
   background-color: white;
   padding: 0.7rem 2rem;
   border-radius: 0.5rem;
   border: none;
   margin-right: -2rem;
-  width: 90%;
+  width: 100%;
 }
-.header__search-bar__search-button {
+.header__search-bar-container__search-button {
   background-color: white;
   border: none;
 }
-.header__search-bar__search-button:focus {
+.header__search-bar-container__search-button:focus {
   transform: translateY(0.2rem);
 }
 .header__profile-box {

@@ -12,7 +12,7 @@
         display:flex;
         flex-direction: row;
         position:relative;
-        
+          transform:scale(1.2);
     }
 
     &__logo{
@@ -25,10 +25,15 @@
     &__name{
         margin-left:1rem;
         margin-top:2.6rem;
+        
         text-transform:uppercase;
     }
 
     &__search-bar{
+        width:35%;
+     
+    }
+    &__search-bar-container{
         animation: moveToBottom 2s ease-in 0.5s;
         animation-fill-mode: both;
         flex-grow:0.5;
@@ -41,7 +46,7 @@
             border-radius: 0.5rem;
             border:none;
             margin-right: -2rem;
-            width: 90%;
+            width: 100%;
         }
         &__search-button{
             background-color: $color-white;
