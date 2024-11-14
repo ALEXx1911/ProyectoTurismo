@@ -1,77 +1,82 @@
-.header{
+.header {
     animation: moveInLeft 1.5s ease-in 0.2s;
     animation-fill-mode: both;
     background-color: $color-yellow;
     display: flex;
-    justify-content:space-around;
-    align-items:center;
+    justify-content: space-around;
+    align-items: center;
     height: 18vh;
-
-    &__logo-container{
-        
-        display:flex;
-        flex-direction: row;
-        position:relative;
-        
+  
+    &__logo-container {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      transform: scale(1.2);
     }
-
-    &__logo{
-        width: 6rem;
-        height: 6rem;
-        border-radius: 100px;
-        margin-top:0.2rem;
-        margin-left:2rem;
+  
+    &__logo {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 100px;
+      margin-top: 0.2rem;
+      margin-left: 2rem;
     }
-    &__name{
-        margin-left:1rem;
-        margin-top:2.6rem;
-        text-transform:uppercase;
+  
+    &__name {
+      margin-left: 1rem;
+      margin-top: 2.6rem;
+      text-transform: uppercase;
     }
-
-    &__search-bar{
-        animation: moveToBottom 2s ease-in 0.5s;
-        animation-fill-mode: both;
-        flex-grow:0.5;
-        display:flex;
-        align-items: center;
-        transition: all 0.4s ease-out;
-        &__input{
-            background-color: $color-white;
-            padding: 0.7rem 2rem;
-            border-radius: 0.5rem;
-            border:none;
-            margin-right: -2rem;
-            width: 90%;
-        }
-        &__search-button{
-            background-color: $color-white;
-            border: none;
-            &:focus{
-                transform: translateY(0.2rem);
-            }
-        }
+  
+    &__search-bar {
+      width: 35%;
+      position: relative; /* Necesario para que el dropdown se posicione debajo de este contenedor */
     }
-    &__profile-box{
-        
-        margin-left:3rem;
-        display: flex;
-        flex-direction: column;
-        align-items:center;
-        opacity:1;
-        transition: all 0.3s ease;
-        &__image{
-            width:2rem;
-            height:2rem;
-            border-radius:0.3rem;
-        }
-
-        &__username{
-                font-weight:300;
-        }
-
-        &:hover{
-            opacity:0.8;
-        }
+  
+    &__search-bar__input {
+      background-color: $color-white;
+      padding: 0.7rem 2rem;
+      border-radius: 0.5rem;
+      border: none;
+      margin-right: -2rem;
+      width: 100%;
     }
-
-}
+  
+    &__search-bar__search-button {
+      background-color: $color-white;
+      border: none;
+  
+      &:focus {
+        transform: translateY(0.2rem);
+      }
+    }
+  
+    // Estilos para el desplegable de provincias
+    .dropdown {
+      position: absolute;
+      top: 100%; /* Lo coloca justo debajo del input */
+      left: 0;
+      width: 100%; /* Asegura que el desplegable ocupe el mismo ancho que el input */
+      background-color: $color-white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-height: 180px; /* Limita la altura a 180px (aproximadamente 6 provincias) */
+      overflow-y: auto; /* Permite el desplazamiento si hay más de 6 provincias */
+      z-index: 10;
+      display: none; /* Inicialmente el desplegable está oculto */
+      
+      &.visible {
+        display: block; /* Se muestra cuando la clase 'visible' es añadida */
+      }
+  
+      .dropdown-item {
+        padding: 10px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
+  
