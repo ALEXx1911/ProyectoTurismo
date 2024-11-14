@@ -6,23 +6,20 @@
     justify-content:space-around;
     align-items:center;
     height: 18vh;
+    border-radius: 0.25rem;
     @media only screen and (max-width: $max-width) {
         height: 30vh;
         font-size: 30%;
         flex-direction:column;
         align-items: center;
-        
-
     }
     &__logo-container{
-        
         display:flex;
         flex-direction: row;
         position:relative;
           transform:scale(1.2);
-          @media only screen and (max-width: 600px) {
+          @media only screen and (max-width: $max-width) {
             display: flex;
-            flex-direction: column;
             align-items: center;
           }
           }
@@ -34,11 +31,12 @@
         margin-top:0.2rem;
         margin-left:2rem;
 
-        @media only screen and (max-width: 600px) {
-            width: 3rem;
-            height: 3rem;
+        @media only screen and (max-width: $max-width) {
+            width: 4rem;
+            height: 4rem;
             margin-top: 0;
             margin-left: 0;
+            margin-right:3rem;
         }
 
     }
@@ -47,19 +45,24 @@
         margin-top:2.6rem;
         
         text-transform:uppercase;
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: $max-width) {
             margin-left:0;
             margin-top:1rem;
-            font-size:0.6rem;
+            font-size: 0.9rem;
         }
      
         }
 
     &__search-bar{
         width:35%;
-        @media only screen and (max-width: 600px) {
-            transform:scale(0.8);
-            width:100%;
+        @media only screen and (max-width: $max-width) {
+            transform: scale(0.9);
+            width: 85%;
+
+            &:hover {
+                width:100%;
+                transition:all 1s ease;
+            }
         }
        
     }
@@ -87,13 +90,28 @@
         }
     }
     &__profile-box{
-        
         margin-left:3rem;
         display: flex;
         flex-direction: column;
         align-items:center;
         opacity:1;
         transition: all 0.3s ease;
+
+        @media only screen and (max-width: $max-width) {
+            margin-left: 1rem;
+            margin-right:1.2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            &:hover{
+                opacity:1;
+            }
+           
+        }
+
+        &:hover{
+            opacity:0.8;
+        }
+
         &__image{
             width:2rem;
             height:2rem;
@@ -102,10 +120,6 @@
 
         &__username{
                 font-weight:300;
-        }
-
-        &:hover{
-            opacity:0.8;
         }
     }
 }

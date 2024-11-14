@@ -3,16 +3,27 @@
     display:flex;
     justify-content:flex-end;
     z-index:1;
-    &__list{
-        list-style: none;
+
+    @media only screen and (max-width: $max-width) {
+        position:absolute;
+        top:33%;
+        left: 16%;
     }
 
+    &__list{
+        list-style: none;
+        @media only screen and (max-width: $max-width) {
+              z-index:10000; 
+          }
+    }
+    
     &__option{
         background-color: $color-yellow;
         padding: 2rem;
         text-align: center;
         border-bottom: 1px $color-black solid;
         transition: all 0.3s ease-in-out;
+        
         &:hover{
             background-color: $color-yellow-light;
             color:$color-black;

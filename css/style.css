@@ -43,8 +43,9 @@
   justify-content: space-around;
   align-items: center;
   height: 18vh;
+  border-radius: 0.25rem;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 412px) {
   .header {
     height: 30vh;
     font-size: 30%;
@@ -58,10 +59,9 @@
   position: relative;
   transform: scale(1.2);
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 412px) {
   .header__logo-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
 }
@@ -72,12 +72,13 @@
   margin-top: 0.2rem;
   margin-left: 2rem;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 412px) {
   .header__logo {
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
     margin-top: 0;
     margin-left: 0;
+    margin-right: 3rem;
   }
 }
 .header__name {
@@ -85,20 +86,24 @@
   margin-top: 2.6rem;
   text-transform: uppercase;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 412px) {
   .header__name {
     margin-left: 0;
     margin-top: 1rem;
-    font-size: 0.6rem;
+    font-size: 0.9rem;
   }
 }
 .header__search-bar {
   width: 35%;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 412px) {
   .header__search-bar {
-    transform: scale(0.8);
+    transform: scale(0.9);
+    width: 85%;
+  }
+  .header__search-bar:hover {
     width: 100%;
+    transition: all 1s ease;
   }
 }
 .header__search-bar-container {
@@ -132,6 +137,20 @@
   opacity: 1;
   transition: all 0.3s ease;
 }
+@media only screen and (max-width: 412px) {
+  .header__profile-box {
+    margin-left: 1rem;
+    margin-right: 1.2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+  .header__profile-box:hover {
+    opacity: 1;
+  }
+}
+.header__profile-box:hover {
+  opacity: 0.8;
+}
 .header__profile-box__image {
   width: 2rem;
   height: 2rem;
@@ -139,9 +158,6 @@
 }
 .header__profile-box__username {
   font-weight: 300;
-}
-.header__profile-box:hover {
-  opacity: 0.8;
 }
 
 .login-container {
@@ -151,6 +167,7 @@
   z-index: 1000;
 }
 .login-container__login-form {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   text-align: center;
   width: 70%;
   margin: 0 auto;
@@ -160,14 +177,24 @@
   border: 2px black solid;
   padding: 1.5rem;
 }
-.login-container__login-form__button-exit {
-  border-radius: 200px;
-  padding: 8px;
-  border: none;
+.login-container__login-form__title {
+  text-transform: uppercase;
 }
-
-.login-error {
-  color: red;
+.login-container__login-form__button-exit, .login-container__login-form__button-submit {
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 10px;
+  border: none;
+  border: 1px black solid;
+  transition: all 0.3s ease-in-out;
+}
+.login-container__login-form__button-exit:hover, .login-container__login-form__button-submit:hover {
+  transform: translateY(-2px);
+}
+.login-container .login-error {
+  color: white;
+  text-align: center;
 }
 
 .menu {
@@ -176,8 +203,20 @@
   justify-content: flex-end;
   z-index: 1;
 }
+@media only screen and (max-width: 412px) {
+  .menu {
+    position: absolute;
+    top: 33%;
+    left: 16%;
+  }
+}
 .menu__list {
   list-style: none;
+}
+@media only screen and (max-width: 412px) {
+  .menu__list {
+    z-index: 10000;
+  }
 }
 .menu__option {
   background-color: #fabd00;
@@ -233,6 +272,11 @@
   overflow: hidden;
   position: relative;
 }
+@media only screen and (max-width: 412px) {
+  .container-slider {
+    z-index: -1;
+  }
+}
 .container-slider__carousel {
   width: 100%;
   height: 100%;
@@ -274,6 +318,8 @@
 
 html {
   background-color: white;
+  font-family: "Courier New", Courier, monospace;
+  background-color: rgb(178, 0, 0);
 }
 
 /*# sourceMappingURL=style.css.map */

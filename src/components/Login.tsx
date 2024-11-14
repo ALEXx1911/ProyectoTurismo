@@ -58,13 +58,13 @@ export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
         return (
             <div className="login-container" style={{display:visible?"block":"none"}}>
                 <form className="login-container__login-form">
-                <button className="login__container__login-form__button-exit" onClick={handleClickExit}>Atrás</button>
+                <button className="login-container__login-form__button-exit" onClick={handleClickExit}>Atrás</button>
                     <h1 className="login-container__login-form__title">Iniciar sesión</h1>
                     <label>Introduzca su nombre de usuario: </label>
                     <input type="text" ref={userRef}/><br/><br/>
                     <label>Introduzca su contraseña: </label>
                     <input type="password" ref={passwordRef}/><br/><br/>
-                    <button onClick={handleClick}>Iniciar sesión</button>
+                    <button onClick={handleClick} className="login-container__login-form__button-submit">Iniciar sesión</button>
                 </form>
                 <h3 className="login-error" style={{display:showError?"block":"none"}}>Usuarios y/o contraseña no válidos.</h3>
             </div>

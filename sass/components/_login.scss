@@ -5,6 +5,7 @@
     width:100%;
     z-index:1000;
     &__login-form{
+       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         text-align: center;
         width:70%;
         margin:0 auto;
@@ -13,14 +14,27 @@
         background-color: #e13236;
         border: 2px black solid;
         padding: 1.5rem;
-        &__button-exit{
-            border-radius:200px;
-            padding:8px;
-            border:none;
+        &__title{
+            text-transform: uppercase;
+        }
+
+        &__button-exit,&__button-submit{
+            border-radius: 2px;
+            text-transform:uppercase;
+            font-size:0.8rem;
+            padding: 10px;
+            border: none;
+            border:1px black solid;
+            transition: all 0.3s ease-in-out;
+        
+            &:hover{
+                transform:translateY(-2px);
+            }
         }
     }
-}
 
 .login-error{
-    color:$color-red;
+    color:$color-white;
+    text-align:center;
+}
 }
