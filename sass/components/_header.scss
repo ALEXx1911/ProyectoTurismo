@@ -6,14 +6,26 @@
     justify-content:space-around;
     align-items:center;
     height: 18vh;
+    @media only screen and (max-width: $max-width) {
+        height: 30vh;
+        font-size: 30%;
+        flex-direction:column;
+        align-items: center;
+        
 
+    }
     &__logo-container{
         
         display:flex;
         flex-direction: row;
         position:relative;
           transform:scale(1.2);
-    }
+          @media only screen and (max-width: 600px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          }
 
     &__logo{
         width: 6rem;
@@ -21,17 +33,35 @@
         border-radius: 100px;
         margin-top:0.2rem;
         margin-left:2rem;
+
+        @media only screen and (max-width: 600px) {
+            width: 3rem;
+            height: 3rem;
+            margin-top: 0;
+            margin-left: 0;
+        }
+
     }
     &__name{
         margin-left:1rem;
         margin-top:2.6rem;
         
         text-transform:uppercase;
-    }
+        @media only screen and (max-width: 600px) {
+            margin-left:0;
+            margin-top:1rem;
+            font-size:0.6rem;
+        }
+     
+        }
 
     &__search-bar{
         width:35%;
-     
+        @media only screen and (max-width: 600px) {
+            transform:scale(0.8);
+            width:100%;
+        }
+       
     }
     &__search-bar-container{
         animation: moveToBottom 2s ease-in 0.5s;
@@ -78,5 +108,5 @@
             opacity:0.8;
         }
     }
-
 }
+
