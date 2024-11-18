@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -44,6 +45,8 @@
   align-items: center;
   height: 18vh;
   border-radius: 0.25rem;
+  position: relative; /* Esto es importante para el dropdown */
+  z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
 }
 @media only screen and (max-width: 412px) {
   .header {
@@ -94,40 +97,30 @@
   }
 }
 .header__search-bar {
-  width: 35%;
+  width: 50%; /* Aumenté el tamaño de la barra de búsqueda */
+  display: flex;
+  align-items: center;
+  position: relative; /* Necesario para posicionar el botón dentro de la barra */
 }
 @media only screen and (max-width: 412px) {
   .header__search-bar {
     transform: scale(0.9);
-    width: 85%;
+    width: 85%; /* Barra de búsqueda más grande en pantallas pequeñas */
   }
   .header__search-bar:hover {
     width: 100%;
     transition: all 1s ease;
   }
 }
-.header__search-bar-container {
-  animation: moveToBottom 2s ease-in 0.5s;
-  animation-fill-mode: both;
-  flex-grow: 0.5;
-  display: flex;
-  align-items: center;
-  transition: all 0.4s ease-out;
-}
-.header__search-bar-container__input {
+.header__search-bar__input {
   background-color: white;
   padding: 0.7rem 2rem;
   border-radius: 0.5rem;
   border: none;
-  margin-right: -2rem;
-  width: 100%;
+  width: 100%; /* Hace que el input ocupe todo el espacio disponible */
 }
-.header__search-bar-container__search-button {
-  background-color: white;
-  border: none;
-}
-.header__search-bar-container__search-button:focus {
-  transform: translateY(0.2rem);
+.header__search-bar__search-button {
+  display: none; /* Hacemos que el botón de búsqueda no se muestre */
 }
 .header__profile-box {
   margin-left: 3rem;
@@ -158,6 +151,33 @@
 }
 .header__profile-box__username {
   font-weight: 300;
+}
+
+/* Desplegable */
+.dropdown {
+  position: absolute; /* Necesario para que esté pegado justo debajo de la barra de búsqueda */
+  top: 100%; /* Se coloca justo debajo de la barra de búsqueda */
+  left: 0;
+  width: 100%; /* Hace que el desplegable tenga el mismo tamaño que la barra de búsqueda */
+  background-color: white;
+  max-height: 300px; /* Limita la altura del desplegable */
+  overflow-y: auto; /* Agrega scroll si el contenido es mayor */
+  z-index: 9999; /* Asegura que el desplegable esté por encima de todo */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+/* Estilo para los elementos del desplegable */
+.dropdown-item {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+.dropdown-item:hover {
+  background-color: #f5f5f5;
 }
 
 .login-container {
@@ -245,6 +265,7 @@
   transition-duration: 0.15s;
   transition-timing-function: linear;
   cursor: pointer;
+  z-index: 999; /* Asegura que se superpongan a otros elementos */
 }
 .slider-btn:hover {
   background-color: #fabd00;
@@ -264,6 +285,51 @@
   height: 100%;
 }
 
+.search-result__content {
+  margin-top: 20px;
+}
+.search-result__content .back-button {
+  margin-top: 20px; /* Separar del Header */
+  margin-bottom: 20px; /* Separar del contenido siguiente */
+}
+.search-result__content > div {
+  overflow: hidden; /* Manejar flotación de la imagen */
+}
+.search-result__content > div img {
+  float: left; /* Imagen flotando a la izquierda */
+  margin-right: 20px; /* Espacio a la derecha de la imagen */
+  margin-bottom: 20px; /* Espacio debajo de la imagen */
+  width: 50%; /* Ocupa el 50% del ancho del contenedor */
+  max-width: 700px; /* Límite máximo */
+  height: auto; /* Mantener proporciones */
+  border-radius: 10px; /* Bordes redondeados */
+}
+.search-result__content > div h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.search-result__content > div p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.search-result__content > div p strong {
+  font-weight: bold;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .search-result__content .back-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .search-result__content > div img {
+    float: none; /* Quitar flotación en pantallas pequeñas */
+    display: block;
+    margin: 0 auto 20px auto; /* Centrar y dar espacio inferior */
+    width: 100%; /* Imagen ocupa todo el ancho */
+    max-width: 100%; /* Forzar que la imagen se ajuste al ancho disponible */
+  }
+}
 .container-slider {
   margin-top: 3rem;
   width: 100%;
@@ -271,10 +337,11 @@
   border-radius: 1.5rem;
   overflow: hidden;
   position: relative;
+  z-index: 0; /* Asegura que el slider no esté por encima del desplegable */
 }
 @media only screen and (max-width: 412px) {
   .container-slider {
-    z-index: -1;
+    z-index: 0; /* Mantiene un z-index bajo para que el slider no se superponga */
   }
 }
 .container-slider__carousel {

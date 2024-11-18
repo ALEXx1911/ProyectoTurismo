@@ -1,0 +1,59 @@
+.search-result {
+    &__content {
+      margin-top: 20px;
+  
+      .back-button {
+        margin-top: 20px; /* Separar del Header */
+        margin-bottom: 20px; /* Separar del contenido siguiente */
+      }
+  
+      > div {
+        overflow: hidden; /* Manejar flotación de la imagen */
+  
+        img {
+          float: left; /* Imagen flotando a la izquierda */
+          margin-right: 20px; /* Espacio a la derecha de la imagen */
+          margin-bottom: 20px; /* Espacio debajo de la imagen */
+          width: 50%; /* Ocupa el 50% del ancho del contenedor */
+          max-width: 700px; /* Límite máximo */
+          height: auto; /* Mantener proporciones */
+          border-radius: 10px; /* Bordes redondeados */
+        }
+  
+        h2 {
+          font-size: 1.8rem;
+          margin-bottom: 10px;
+        }
+  
+        p {
+          margin-bottom: 10px;
+          line-height: 1.5;
+  
+          strong {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .search-result__content {
+      .back-button {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+  
+      > div {
+        img {
+          float: none; /* Quitar flotación en pantallas pequeñas */
+          display: block;
+          margin: 0 auto 20px auto; /* Centrar y dar espacio inferior */
+          width: 100%; /* Imagen ocupa todo el ancho */
+          max-width: 100%; /* Forzar que la imagen se ajuste al ancho disponible */
+        }
+      }
+    }
+  }
+  
