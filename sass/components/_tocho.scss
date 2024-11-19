@@ -1,0 +1,29 @@
+.tocho {
+    padding: 20px;
+    
+    .tocho-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 20px;
+
+        &--reverse {
+            flex-direction: row-reverse;
+        }
+
+        &__text {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        &__image {
+            flex: 1;
+            text-align: center;
+
+            img {
+                background-color: #f0f0f0;
+            }
+        }
+    }
+}

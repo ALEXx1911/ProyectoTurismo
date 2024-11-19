@@ -330,6 +330,31 @@
     max-width: 100%; /* Forzar que la imagen se ajuste al ancho disponible */
   }
 }
+.tocho {
+  padding: 20px;
+}
+.tocho .tocho-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+.tocho .tocho-section--reverse {
+  flex-direction: row-reverse;
+}
+.tocho .tocho-section__text {
+  flex: 1;
+  padding: 0 20px;
+}
+.tocho .tocho-section__image {
+  flex: 1;
+  text-align: center;
+}
+.tocho .tocho-section__image img {
+  background-color: #f0f0f0;
+}
+
 .container-slider {
   margin-top: 3rem;
   width: 100%;

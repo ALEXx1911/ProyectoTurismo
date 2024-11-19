@@ -4,6 +4,7 @@ import Slider from './components/Slider';
 import Login from './components/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SearchResults from './components/SearchResults'; // Ruta para los resultados de búsqueda
+import Tocho from "./components/Tocho";
 
 // Definición del contexto
 type AppContext = {
@@ -49,6 +50,9 @@ function App() {
                 <Header />
                 <div className="container-slider">
                   <Slider />
+                </div>
+                <div className="tocho">
+                  <Tocho />
                 </div>
               </div>
             </>
