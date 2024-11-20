@@ -1,20 +1,25 @@
 .header {
-    animation: moveInLeft 1.5s ease-in 0.2s;
-    animation-fill-mode: both;
+    animation: moveInLeft 1.5s ease-in 0.2s both;
     background-color: $color-yellow;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 18vh;
+    height: 20vh;
     border-radius: 0.25rem;
     position: relative; /* Esto es importante para el dropdown */
     z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
   
     @media only screen and (max-width: $max-width) {
-      height: 30vh;
+      height: 45vh;
       font-size: 30%;
       flex-direction: column;
       align-items: center;
+    }
+
+    .header>*{
+      @media only screen and (max-width: $max-width){
+        margin-top:1rem;
+      }
     }
   
     &__logo-container {
@@ -30,6 +35,8 @@
     }
   
     &__logo {
+      animation: rollToRight 1s ease-out both;
+      animation-delay: 1.5s;
       width: 6rem;
       height: 6rem;
       border-radius: 100px;
@@ -46,6 +53,8 @@
     }
   
     &__name {
+      animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+      animation-delay: 1.5s;
       margin-left: 1rem;
       margin-top: 2.6rem;
       text-transform: uppercase;
@@ -58,6 +67,8 @@
     }
   
     &__search-bar {
+      animation: moveToBottom 1.3s ease both;
+      animation-delay: 1.5s;
       width: 50%; /* Aumenté el tamaño de la barra de búsqueda */
       display: flex;
       align-items: center;
@@ -86,6 +97,8 @@
     }
   
     &__profile-box {
+      animation: rotate-animation 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation-delay: 1.5s;
       margin-left: 3rem;
       display: flex;
       flex-direction: column;

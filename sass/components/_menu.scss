@@ -4,12 +4,6 @@
     justify-content:flex-end;
     z-index:1;
 
-    @media only screen and (max-width: $max-width) {
-        position:absolute;
-        top:33%;
-        left: 16%;
-    }
-
     &__list{
         list-style: none;
         @media only screen and (max-width: $max-width) {
@@ -30,7 +24,5 @@
             transform:translateY(-2px);
         }
     }
-
-
   }
  

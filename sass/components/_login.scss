@@ -1,40 +1,142 @@
+.login-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
 
-.login-container{
-    position: absolute;
-    height:100%;
-    width:100%;
-    z-index:1000;
-    &__login-form{
-       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        text-align: center;
-        width:70%;
-        margin:0 auto;
-        animation: moveToBottom-2 2s ease-in;
-        animation-fill-mode: both;
-        background-color: #e13236;
-        border: 2px black solid;
-        padding: 1.5rem;
-        &__title{
-            text-transform: uppercase;
-        }
+  &__login-form {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    animation: moveToBottom-2 2s ease-in;
+    animation-fill-mode: both;
+    background-color: $color-red-dark;
+    border: 2px black solid;
+    padding: 1.5rem;
 
-        &__button-exit,&__button-submit{
-            border-radius: 2px;
-            text-transform:uppercase;
-            font-size:0.8rem;
-            padding: 10px;
-            border: none;
-            border:1px black solid;
-            transition: all 0.3s ease-in-out;
-        
-            &:hover{
-                transform:translateY(-2px);
-            }
-        }
+    &__title {
+      animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+      animation-delay: 2.1s;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size:2.3rem;
     }
 
-.login-error{
-    color:$color-white;
-    text-align:center;
+    &__button-exit {
+      position: relative;
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $color-white; 
+      background-color: $color-red-dark;  
+      border: 2px solid $color-red-dark;  
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+    
+      &:hover,
+      &:focus {
+        box-shadow: 
+          inset -3.5em 0 0 0 $color-white,   
+          inset 3.5em 0 0 0 $color-white;    
+        color: $color-red-dark;  
+        background-color: $color-white;  
+        border-color: $color-white;
+      }
+      
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    &__button-submit {
+      position: relative;
+      display: inline-block;
+      padding: 12px 27px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: $color-black;
+      background: $color-white;
+      border: 0;
+      font-weight: bold;
+      text-align: center;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      z-index: 1;
+
+      &:hover {
+        color: $color-black;
+      }
+
+      span {
+        position: absolute;
+        width: 25%;
+        height: 100%;
+        background-color: $color-yellow;
+        transform: translateY(150%);
+        border-radius: 50%;
+        transition: 0.5s;
+        z-index: -1;
+      }
+
+      span:nth-child(1) {
+        left: 0;
+        transition-delay: 0.1s;
+      }
+
+      span:nth-child(2) {
+        left: 25%;
+        transition-delay: 0.2s;
+      }
+
+      span:nth-child(3) {
+        left: 50%;
+        transition-delay: 0.3s;
+      }
+
+      span:nth-child(4) {
+        left: 75%;
+        transition-delay: 0.4s;
+      }
+
+      &:hover span {
+        transform: translateY(0) scale(2);
+      }
+    }
+
+    & input {
+      animation: fallWithRebound 1.5s both;
+      animation-delay: 2s;
+      border-radius: 0.5rem;
+      border: none;
+      padding: 1rem;
+      width: 40%;
+      transition: all 0.3s ease;
+
+      &:focus {
+        width: 45%;
+      }
+
+      &::placeholder {
+        text-transform: uppercase;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+    }
+  }
 }
+
+button {
+  cursor: pointer;
+  animation: flip-animation 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-delay: 2s;
+}
+
+.login-error {
+  color: $color-white;
+  text-align: center;
 }

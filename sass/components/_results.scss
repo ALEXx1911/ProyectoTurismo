@@ -38,7 +38,7 @@
   }
   
   /* Responsividad */
-  @media (max-width: 768px) {
+  @media (max-width: $max-width) {
     .search-result__content {
       .back-button {
         margin-top: 20px;

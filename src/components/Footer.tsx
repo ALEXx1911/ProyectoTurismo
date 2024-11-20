@@ -38,7 +38,7 @@ export default function Footer() {
                     alt="Logo de España"
                     className="footer__logo"
                 />
-                <p className="footer__rights">Todos los derechos reservados</p>
+                <p className="footer__rights">©TurismoEspaña Todos los derechos reservados</p>
             </div>
             <div className="footer__links">
                 <a href="" className="footer__link">Contacto</a>
