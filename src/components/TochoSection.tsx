@@ -1,5 +1,4 @@
 // TochoSection.tsx
-import React from "react";
 
 interface TochoSectionProps {
     title: string;

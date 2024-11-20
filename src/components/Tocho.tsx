@@ -1,5 +1,4 @@
 // Tocho.tsx
-import React from "react";
 import TochoSection from "./TochoSection.tsx";
 
 export default function Tocho() {
