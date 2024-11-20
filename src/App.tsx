@@ -5,6 +5,7 @@ import Login from './components/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SearchResults from './components/SearchResults'; // Ruta para los resultados de búsqueda
 import Tocho from "./components/Tocho";
+import Footer from './components/Footer';
 
 // Definición del contexto
 type AppContext = {
@@ -54,6 +55,7 @@ function App() {
                 <div className="tocho">
                   <Tocho />
                 </div>
+                <Footer />
               </div>
             </>
           } />

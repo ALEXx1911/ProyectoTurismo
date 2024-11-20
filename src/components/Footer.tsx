@@ -1,10 +1,10 @@
 export default function Footer() {
     const socialIcons = [
-        { name: 'Facebook', url: 'https://facebook.com', imgSrc: '../../img/facebook-icon.png' },
-        { name: 'X (Twitter)', url: 'https://x.com', imgSrc: '../../img/x-icon.png' },
-        { name: 'YouTube', url: 'https://youtube.com', imgSrc: '../../img/youtube-icon.png' },
-        { name: 'Instagram', url: 'https://instagram.com', imgSrc: '../../img/instagram-icon.png' },
-        { name: 'TikTok', url: 'https://tiktok.com', imgSrc: '../../img/tiktok-icon.png' },
+        { name: 'Facebook', url: 'https://facebook.com', imgSrc: '../../img/facebook.png' },
+        { name: 'X (Twitter)', url: 'https://x.com', imgSrc: '../../img/x.png' },
+        { name: 'YouTube', url: 'https://youtube.com', imgSrc: '../../img/ig.png' },
+        { name: 'Instagram', url: 'https://instagram.com', imgSrc: '../../img/yt.png' },
+        { name: 'TikTok', url: 'https://tiktok.com', imgSrc: '../../img/tik.png' },
     ];
 
     return (
@@ -28,20 +28,24 @@ export default function Footer() {
                 ))}
             </div>
             <div className="footer__branding">
-                <h1 className="footer__title">Turismo<span>España</span></h1>
+            <img
+                    src="../../img/TurismoEspaña.png" // Cambia la ruta según el archivo real
+                    alt="Turismo España"
+                    className="footer__title-image"
+                />
                 <img
-                    src="../../img/España-logo.png"
+                    src="../../img/logo.jpeg"
                     alt="Logo de España"
                     className="footer__logo"
                 />
                 <p className="footer__rights">Todos los derechos reservados</p>
             </div>
             <div className="footer__links">
-                <a href="/contacto" className="footer__link">Contacto</a>
-                <a href="/conocenos" className="footer__link">Conócenos</a>
-                <a href="/aviso-legal" className="footer__link">Aviso Legal</a>
-                <a href="/uso-informacion" className="footer__link">Uso de la Información</a>
-                <a href="/politica-cookies" className="footer__link">Política de Cookies</a>
+                <a href="" className="footer__link">Contacto</a>
+                <a href="" className="footer__link">Conócenos</a>
+                <a href="" className="footer__link">Aviso Legal</a>
+                <a href="" className="footer__link">Uso de la Información</a>
+                <a href="" className="footer__link">Política de Cookies</a>
             </div>
         </footer>
     );

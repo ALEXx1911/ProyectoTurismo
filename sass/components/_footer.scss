@@ -1,0 +1,77 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #000;
+    color: #fff;
+
+    &__social-icons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start; /* Alinear a la izquierda */
+        width: 30%;
+        padding-left: 4rem; /* Más espacio a la izquierda */
+
+        .footer__icon {
+            display: inline-block;
+            margin: 3px 0; /* Separación vertical */
+            
+            .footer__icon-img {
+                width: 55px; /* Iconos más grandes */
+                height: 55px;
+            }
+            &:hover .footer__icon-img {
+                transform: scale(1.2); /* Aumenta ligeramente el tamaño */
+                filter: brightness(1.2); /* Hace el icono un poco más claro */
+            }
+        }
+    }
+
+    &__branding {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Centrar contenido */
+        text-align: center;
+        width: 40%;
+        
+        .footer__title-image {
+            max-width: 400px; /* Ajustar tamaño */
+            margin-bottom: 10px; /* Separar de los elementos inferiores */
+        }
+        
+        .footer__logo {
+            max-width: 200px; /* Ajustar tamaño */
+            margin: 10px 0; /* Separación vertical */
+        }
+        
+        .footer__rights {
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end; /* Alinear a la derecha */
+        width: 30%;
+        padding-right: 4rem; /* Más espacio a la derecha */
+
+        .footer__link {
+            margin: 8px 0; /* Espacio uniforme entre los enlaces */
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem; /* Texto más grande */
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #fabd00;
+            }
+        }
+    }
+}

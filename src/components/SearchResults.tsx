@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { provincias } from "./provincias"; // Importamos las provincias para mostrar la información relevante
 import Header from "./Header"; // Importamos el Header
+import Footer from "./Footer";
 
 const SearchResults = () => {
   const { provincia } = useParams(); // Obtener el parámetro de la provincia de la URL
@@ -39,6 +40,7 @@ const SearchResults = () => {
           <p>No se ha encontrado la provincia.</p>
         )}
       </div>
+      <Footer />
     </div>
   );
   
