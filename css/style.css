@@ -758,7 +758,7 @@ button {
 .puntos-container {
   position: absolute;
   left: 50%;
-  top: 80%;
+  top: 90%;
   transform: translateX(-50%);
   width: 400px;
   display: flex;
