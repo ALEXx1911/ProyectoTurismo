@@ -3,7 +3,7 @@ import SliderButton from "./Slider-Button";
 
 export default function Slider(){
     const urlImg='../../img/';
-    const imagenes: string []=[urlImg+'Palacio-Real-de-Madrid.jpeg',urlImg+'Real-Alcaraz-de-Sevilla.jpeg'];
+    const imagenes: string []=[urlImg+'imgSlider1.jpg',urlImg+'imgSlider2.avif',urlImg+'imgSlider3.avif',urlImg+'imgSlider4.avif',urlImg+'imgSlider5.jpg'];
     const [selectedIndex, setSelectedIndex]= useState(0);
 
     function moveToRight(){
