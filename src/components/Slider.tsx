@@ -15,6 +15,11 @@ export default function Slider(){
         const nextIndex= selectedIndex <= 0 ? imagenes.length-1 : selectedIndex-1;
         setSelectedIndex(nextIndex);
     }
+    
+    function handleClick(indice:number){
+        setSelectedIndex(indice);
+    }
+
     useEffect(()=>{
         const intervalo = setInterval(moveToRight,5000);
         return () => clearInterval(intervalo);
@@ -26,11 +31,18 @@ export default function Slider(){
             <section className="item-slider item-slider-1">
                 <img src={imagenes[selectedIndex]} alt="xd" className="item-slider__image"/>
                 <div className="infoItem">
-                <span className="subtitle">Lo mejor de lo mejor</span>
-                <span className="mainTitle">Descubre España con Nosotros</span>
-                <button className="botonItem hvr-sweep-to-top"><a href="#" className="linkItem">Conocerlo ahora</a></button>
+                    <span className="subtitle">Lo mejor de lo mejor</span>
+                    <span className="mainTitle">Descubre España con Nosotros</span>
+                    <button className="botonItem hvr-sweep-to-top"><a href="#" className="linkItem">Conocerlo ahora</a></button>
                 </div>
             </section>
+            <div className="puntos-container">
+                {imagenes.map((_,index)=>
+                    <div key={index} className={`punto-item punto-item-${index}-${index===selectedIndex ? 'active':''}`} onClick={() => handleClick(index)}>
+                        .
+                    </div>
+                )}
+            </div>
         </div>
         <SliderButton functionLeft={moveToLeft} functionRight={moveToRight}/>
         </>
