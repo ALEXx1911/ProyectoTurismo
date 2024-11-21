@@ -694,6 +694,7 @@ button {
   transform: translateX(-50%);
   align-items: center;
   transition: all 2s;
+  text-align: center;
 }
 
 .subtitle {
