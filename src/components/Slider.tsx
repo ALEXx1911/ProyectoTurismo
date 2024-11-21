@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import SliderButton from "./Slider-Button";
 
 export default function Slider(){
     const urlImg='../../img/';
@@ -31,9 +30,9 @@ export default function Slider(){
             <section className="item-slider item-slider-1">
                 <img src={imagenes[selectedIndex]} alt="xd" className="item-slider__image"/>
                 <div className="infoItem">
-                    <span className="subtitle">Lo mejor de lo mejor</span>
+                    <span className="subtitle">Innumerables paisajes</span>
                     <span className="mainTitle">Descubre España con Nosotros</span>
-                    <button className="botonItem hvr-sweep-to-top"><a href="#" className="linkItem">Conocerlo ahora</a></button>
+                    <button className="botonItem hvr-sweep-to-top"><a href="#" className="linkItem">Conócelos ahora</a></button>
                 </div>
             </section>
             <div className="puntos-container">
@@ -44,7 +43,7 @@ export default function Slider(){
                 )}
             </div>
         </div>
-        <SliderButton functionLeft={moveToLeft} functionRight={moveToRight}/>
+        
         </>
     );
 }
