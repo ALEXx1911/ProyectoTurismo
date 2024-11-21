@@ -221,6 +221,7 @@
   align-items: center;
   opacity: 1;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 @media only screen and (max-width: 1100px) {
   .header__profile-box {
@@ -416,6 +417,7 @@ button {
   text-align: center;
   border-bottom: 1px black solid;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 .menu__option:hover {
   background-color: #fabd00;
@@ -463,6 +465,27 @@ button {
 .search-result__content .back-button {
   margin-top: 20px;
   margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: #e13236;
+  border: 2px solid #e13236;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+.search-result__content .back-button:hover, .search-result__content .back-button:focus {
+  box-shadow: inset -3.5em 0 0 0 whitesmoke, inset 3.5em 0 0 0 whitesmoke;
+  color: #e13236;
+  background-color: whitesmoke;
+  border-color: #e13236;
+}
+.search-result__content .back-button:active {
+  transform: scale(0.95);
 }
 .search-result__content > div {
   overflow: hidden; /* Manejar flotación de la imagen */
@@ -651,7 +674,7 @@ button {
 html {
   background-color: white;
   font-family: "Courier New", Courier, monospace;
-  background-color: white;
+  background-color: whitesmoke;
 }
 
 /*# sourceMappingURL=style.css.map */

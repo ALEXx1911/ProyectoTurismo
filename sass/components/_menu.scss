@@ -17,6 +17,7 @@
         text-align: center;
         border-bottom: 1px $color-black solid;
         transition: all 0.3s ease-in-out;
+        cursor:pointer;
         
         &:hover{
             background-color: $color-yellow-light;

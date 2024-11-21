@@ -5,6 +5,32 @@
       .back-button {
         margin-top: 20px; 
         margin-bottom: 20px; 
+        position: relative;
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $color-white; 
+        background-color: $color-red-dark;  
+        border: 2px solid $color-red-dark;  
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+      
+        &:hover,
+        &:focus {
+          box-shadow: 
+            inset -3.5em 0 0 0 $color-white-smoke,   
+            inset 3.5em 0 0 0 $color-white-smoke;    
+          color: $color-red-dark;  
+          background-color: $color-white-smoke;  
+          border-color: $color-red-dark;
+        }
+        
+        &:active {
+          transform: scale(0.95);
+        }
       }
   
       > div {
