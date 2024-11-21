@@ -772,8 +772,12 @@ button {
   cursor: pointer;
   text-align: center;
   margin: 8px 30px;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transform: translateY(0);
 }
 .punto-item-active {
+  transform: translateY(-10px);
   color: #fabd00;
 }
 
