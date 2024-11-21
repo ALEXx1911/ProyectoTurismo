@@ -14,9 +14,6 @@ export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
         };
         const userRef=useRef<HTMLInputElement>(null);
         const passwordRef=useRef<HTMLInputElement>(null);
-
-        const [visible,setVisible]=useState(true);
-        
         const [showError,setShowError]=useState(false);
         //Variable para controlar el estado de visibilidad del mensaje de error.
 
@@ -24,13 +21,11 @@ export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
             event.preventDefault();
             if(isValidUser()){
                 const user=String(userRef.current!.value);
-                setVisible(false);
                 handleLoginSuccess(user);
                 setActive(false);
                 //Utilizamos "handleLoginSuccess" para que el cambio en el nombre de usuario se cambie
                 //en el "Header".
             }else{
-                setVisible(true);
                setShowError(true);
                //Le damos un valor "true" a "showError" para que se muestre el mensaje de error.
             }
@@ -38,7 +33,6 @@ export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
 
         function handleClickExit(event:React.MouseEvent){
             event.preventDefault();
-            setVisible(false);
             setActive(false);
         }
         //Función para salir del formulario del "Login".
@@ -56,7 +50,7 @@ export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
         //Esta función sirve para determinar si el usuario introducido es o no válido.
         
         return (
-            <div className="login-container" style={{display:visible?"block":"none"}}>
+            <div className="login-container">
                 <form className="login-container__login-form">
                 <button className="login-container__login-form__button-exit" onClick={handleClickExit}>Atrás</button>
                     <h1 className="login-container__login-form__title">Iniciar sesión</h1>
