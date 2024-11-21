@@ -3,21 +3,21 @@
       margin-top: 20px;
   
       .back-button {
-        margin-top: 20px; /* Separar del Header */
-        margin-bottom: 20px; /* Separar del contenido siguiente */
+        margin-top: 20px; 
+        margin-bottom: 20px; 
       }
   
       > div {
         overflow: hidden; /* Manejar flotación de la imagen */
   
         img {
-          float: left; /* Imagen flotando a la izquierda */
-          margin-right: 20px; /* Espacio a la derecha de la imagen */
-          margin-bottom: 20px; /* Espacio debajo de la imagen */
-          width: 50%; /* Ocupa el 50% del ancho del contenedor */
-          max-width: 700px; /* Límite máximo */
-          height: auto; /* Mantener proporciones */
-          border-radius: 10px; /* Bordes redondeados */
+          float: left; 
+          margin-right: 20px; 
+          margin-bottom: 20px; 
+          width: 50%; 
+          max-width: 700px; 
+          height: auto; 
+          border-radius: 10px; 
         }
   
         h2 {
@@ -50,7 +50,7 @@
           float: none; /* Quitar flotación en pantallas pequeñas */
           display: block;
           margin: 0 auto 20px auto; /* Centrar y dar espacio inferior */
-          width: 100%; /* Imagen ocupa todo el ancho */
+          width: 100%; 
           max-width: 100%; /* Forzar que la imagen se ajuste al ancho disponible */
         }
       }

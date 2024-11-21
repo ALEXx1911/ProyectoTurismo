@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { provincias } from "./provincias"; // Importamos las provincias para mostrar la información relevante
-import Header from "./Header"; // Importamos el Header
+import { provincias } from "./provincias"; 
+import Header from "./Header"; 
 import Footer from "./Footer";
 
 const SearchResults = () => {
@@ -27,7 +27,6 @@ const SearchResults = () => {
   
         {provinciaData ? (
           <div>
-            {/* Mover la imagen antes del texto */}
             <img src={provinciaData.imagen} alt={provinciaData.nombre} />
             <h2>{provinciaData.nombre}</h2>
             <p>{provinciaData.descripcion}</p>

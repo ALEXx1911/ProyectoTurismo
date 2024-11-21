@@ -6,7 +6,7 @@
     align-items: center;
     height: 20vh;
     border-radius: 0.25rem;
-    position: relative; /* Esto es importante para el dropdown */
+    position: relative; 
     z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
   
     @media only screen and (max-width: $max-width) {
@@ -69,13 +69,13 @@
     &__search-bar {
       animation: moveToBottom 1.3s ease both;
       animation-delay: 1.5s;
-      width: 50%; /* Aumenté el tamaño de la barra de búsqueda */
+      width: 50%; 
       display: flex;
       align-items: center;
-      position: relative; /* Necesario para posicionar el botón dentro de la barra */
+      position: relative; 
       @media only screen and (max-width: $max-width) {
         transform: scale(0.9);
-        width: 85%; /* Barra de búsqueda más grande en pantallas pequeñas */
+        width: 85%; 
   
         &:hover {
           width: 100%;
@@ -89,11 +89,11 @@
       padding: 0.7rem 2rem;
       border-radius: 0.5rem;
       border: none;
-      width: 100%; /* Hace que el input ocupe todo el espacio disponible */
+      width: 100%; 
     }
   
     &__search-bar__search-button {
-      display: none; /* Hacemos que el botón de búsqueda no se muestre */
+      display: none; 
     }
   
     &__profile-box {
@@ -135,12 +135,12 @@
   
   /* Desplegable */
   .dropdown {
-    position: absolute; /* Necesario para que esté pegado justo debajo de la barra de búsqueda */
-    top: 100%;           /* Se coloca justo debajo de la barra de búsqueda */
+    position: absolute; 
+    top: 100%;        
     left: 0;
-    width: 100%;         /* Hace que el desplegable tenga el mismo tamaño que la barra de búsqueda */
+    width: 100%;         
     background-color: white;
-    max-height: 300px;   /* Limita la altura del desplegable */
+    max-height: 300px;  
     overflow-y: auto;    /* Agrega scroll si el contenido es mayor */
     z-index: 9999;       /* Asegura que el desplegable esté por encima de todo */
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
