@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import users from "./users.json";
-import { clear } from "console";
 type LoginProps={
     active:boolean;
     setActive:(x:boolean)=>void;
