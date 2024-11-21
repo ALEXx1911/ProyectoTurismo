@@ -708,6 +708,10 @@ button {
   transform: translateY(0);
 }
 
+.linkItem {
+  color: white;
+}
+
 html {
   background-color: white;
   font-family: "Courier New", Courier, monospace;
