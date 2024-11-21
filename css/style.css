@@ -760,10 +760,18 @@ button {
   left: 50%;
   top: 80%;
   transform: translateX(-50%);
-  width: 200px;
+  width: 400px;
   display: flex;
   flex-direction: row;
   z-index: 2;
+}
+
+.punto-item {
+  font-size: 25px;
+  color: gray;
+  cursor: pointer;
+  text-align: center;
+  margin: 8px 30px;
 }
 
 html {
