@@ -650,7 +650,7 @@ button {
   margin-top: 3rem;
   width: 100%;
   height: 39rem;
-  border-radius: 1.5rem;
+  border-radius: 0.25rem;
   overflow: hidden;
   position: relative;
   z-index: 0; /* Asegura que el slider no esté por encima del desplegable */
@@ -679,7 +679,6 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1.5rem;
 }
 
 .infoItem {
