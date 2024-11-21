@@ -28,7 +28,7 @@ export default function Slider(){
                 <div className="infoItem">
                 <span className="subtitle">Lo mejor de lo mejor</span>
                 <span className="mainTitle">Descubre España con Nosotros</span>
-
+                <button className="botonItem"><a href="#" className="linkItem">Conocerlo ahora</a></button>
                 </div>
             </section>
         </div>
