@@ -28,7 +28,7 @@ export default function Slider(){
         <>
         <div className="container-slider__carousel">
             <section className="item-slider item-slider-1">
-                <img src={imagenes[selectedIndex]} alt="xd" className="item-slider__image"/>
+                <img src={imagenes[selectedIndex]} alt={imagenes[selectedIndex]} className="item-slider__image"/>
                 <div className="infoItem">
                     <span className="subtitle">Innumerables paisajes</span>
                     <span className="mainTitle">Descubre España con Nosotros</span>
