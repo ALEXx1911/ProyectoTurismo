@@ -112,8 +112,11 @@
 }
 .punto-item{
   font-size: 25px;
-  color: gray;
+  color: red;
   cursor: pointer;
   text-align: center;
   margin: 8px 30px;
+  &-active{
+    color: $color-yellow;
+  }
 }

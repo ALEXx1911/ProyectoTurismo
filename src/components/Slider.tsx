@@ -38,7 +38,7 @@ export default function Slider(){
             </section>
             <div className="puntos-container">
                 {imagenes.map((_,index)=>
-                    <div key={index} className={`punto-item punto-item-${index}-${index===selectedIndex ? 'active':''}`} onClick={() => handleClick(index)}>
+                    <div key={index} className={`punto-item punto-item-${index}${index===selectedIndex ? '-active':''}`} onClick={() => handleClick(index)}>
                         <svg fill="currentColor" width="15px" height="15px" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="127" cy="129" r="81" fill-rule="evenodd"></circle> </g></svg>
                     </div>
                 )}
