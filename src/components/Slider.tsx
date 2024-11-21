@@ -25,6 +25,9 @@ export default function Slider(){
         <div className="container-slider__carousel">
             <section className="item-slider item-slider-1">
                 <img src={imagenes[selectedIndex]} alt="xd" className="item-slider__image"/>
+                <div className="infoItem">
+                    
+                </div>
             </section>
         </div>
         <SliderButton functionLeft={moveToLeft} functionRight={moveToRight}/>
