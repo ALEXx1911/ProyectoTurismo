@@ -116,6 +116,28 @@
     opacity: 1;
   }
 }
+@keyframes shake-animation {
+  0%, 100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70% {
+    -webkit-transform: translateX(-10px);
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+    transform: translateX(-8px);
+  }
+}
 .header {
   animation: moveInLeft 1.5s ease-in 0.2s both;
   background-color: #fabd00;
@@ -393,8 +415,14 @@ button {
 }
 
 .login-error {
-  color: white;
+  animation: shake-animation 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  opacity: 1;
+  transition-delay: 1s;
+  color: black;
   text-align: center;
+}
+.login-error::after {
+  opacity: 0;
 }
 
 .menu {

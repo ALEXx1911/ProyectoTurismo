@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import users from "./users.json";
+import { clear } from "console";
 type LoginProps={
     active:boolean;
     setActive:(x:boolean)=>void;
@@ -16,6 +17,19 @@ export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
         const passwordRef=useRef<HTMLInputElement>(null);
         const [showError,setShowError]=useState(false);
         //Variable para controlar el estado de visibilidad del mensaje de error.
+        
+        useEffect(()=>{
+            if(showError==true){
+              const interval=setInterval(()=>{
+                setShowError(false);
+              },1500);
+              return ()=>clearInterval(interval);
+            }
+        },[showError]);
+        //Utilizamos un intervalo para que cada vez que cambie el valor de la variable "showError",
+        //se meta en un "useEffect" en el que, si "showError" es "true", entonces se crea una variable
+        //"interval" que hace un "setInterval" en el que depsueés de 1.5s el valor de "showError" 
+        //pasa a ser "false", borrando el mensaje de error.
 
         function handleClick(event:React.MouseEvent){
             event.preventDefault();
@@ -44,7 +58,7 @@ export default function Login({active,setActive,handleLoginSuccess}:LoginProps){
             //Hacemos una variable "usersData" con los datos del archivo "users.json" para evitar un error de TypeScript.
             const validUser = usersData[user]===password;
             return validUser;
-            //Según el resultado de "validUser", establecemos el "validate" y hacemos un "return" del valor de "validUser". 
+            //Según el resultado de "validUser" hacemos un "return" del valor de "validUser". 
 
         }
         //Esta función sirve para determinar si el usuario introducido es o no válido.

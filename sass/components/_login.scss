@@ -137,6 +137,12 @@ button {
 }
 
 .login-error {
-  color: $color-white;
+  animation: shake-animation 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  opacity:1;
+  transition-delay: 1s;
+  color: $color-black;
   text-align: center;
+  &::after{
+    opacity: 0;
+  }
 }
