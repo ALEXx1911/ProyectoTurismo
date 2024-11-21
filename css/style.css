@@ -760,7 +760,10 @@ button {
   left: 50%;
   top: 80%;
   transform: translateX(-50%);
-  background-color: aliceblue;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
 }
 
 html {
