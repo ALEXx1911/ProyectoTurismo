@@ -758,28 +758,9 @@ button {
 .puntos-container {
   position: absolute;
   left: 50%;
-  top: 90%;
+  top: 80%;
   transform: translateX(-50%);
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  z-index: 2;
-  transition: all 5s;
-}
-
-.punto-item {
-  font-size: 25px;
-  color: #e13236;
-  cursor: pointer;
-  text-align: center;
-  margin: 8px 30px;
-  transform: translateY(0);
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-}
-.punto-item_active {
-  transform: translateY(-10px);
-  color: #fabd00;
+  background-color: aliceblue;
 }
 
 html {
