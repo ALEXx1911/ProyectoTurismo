@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SearchResults from './components/SearchResults'; // Ruta para los resultados de búsqueda
 import Tocho from "./components/Tocho";
 import Footer from './components/Footer';
+import Acordeon from './components/Acordeon';
 
 // Definición del contexto
 type AppContext = {
@@ -52,7 +53,10 @@ function App() {
                 <div className="container-slider">
                   <Slider />
                 </div>
-                <div className="tocho">
+                <div className='Acordeon'>
+                  <Acordeon />
+                </div>
+                <div className="tocho" id="tocho-section">
                   <Tocho />
                 </div>
                 <Footer />

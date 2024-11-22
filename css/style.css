@@ -555,12 +555,13 @@ button {
 }
 .tocho {
   padding: 20px;
+  background-color: #f4f4f9;
 }
 .tocho .tocho-section {
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #b0bec5;
   padding-bottom: 20px;
 }
 .tocho .tocho-section--reverse {
@@ -570,42 +571,106 @@ button {
   flex: 1;
   padding: 0 20px;
 }
+.tocho .tocho-section__text h2 {
+  font-size: 1.8rem;
+  color: #2a9d8f;
+  margin-bottom: 10px;
+}
+.tocho .tocho-section__text p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
 .tocho .tocho-section__image {
   flex: 1;
   text-align: center;
+  padding: 10px;
 }
 .tocho .tocho-section__image img {
-  background-color: #f0f0f0;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tocho .tocho-section__image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+  .tocho .tocho-section {
+    flex-direction: column;
+  }
+  .tocho .tocho-section--reverse {
+    flex-direction: column;
+  }
+  .tocho .tocho-section__text {
+    padding: 10px;
+    text-align: center;
+  }
+  .tocho .tocho-section__text h2 {
+    font-size: 1.5rem;
+  }
+  .tocho .tocho-section__text p {
+    font-size: 0.95rem;
+  }
+  .tocho .tocho-section__image {
+    padding: 5px;
+  }
+  .tocho .tocho-section__image img {
+    max-width: 90%;
+  }
 }
 
 .footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
+  align-items: center; /* Centrar los divs verticalmente */
+  padding: 1rem;
   background-color: #000;
   color: #fff;
+  margin: 0; /* Elimina márgenes externos */
+  padding: 0; /* Elimina paddings externos */
+  width: 100%; /* Asegurar que ocupe todo el ancho */
+  box-sizing: border-box; /* Incluye paddings en el tamaño total */
+  position: relative; /* Esto se usa si necesitas posicionarlo explícitamente */
+  bottom: 0;
+  /* Media Queries */
 }
 .footer__social-icons {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; /* Alinear a la izquierda */
-  width: 30%;
-  padding-left: 4rem; /* Más espacio a la izquierda */
+  justify-content: center; /* Alinear verticalmente */
+  align-items: flex-start;
+  width: 30%; /* Mantener el ancho consistente con los enlaces */
+  padding-left: 4rem;
+}
+.footer__social-icons .footer__social-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem; /* Espacio entre el título y los iconos */
+}
+.footer__social-icons .footer__social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas para los iconos */
+  gap: 1rem; /* Espacio entre iconos */
 }
 .footer__social-icons .footer__icon {
-  display: inline-block;
-  margin: 3px 0; /* Separación vertical */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 .footer__social-icons .footer__icon .footer__icon-img {
-  width: 55px; /* Iconos más grandes */
-  height: 55px;
+  width: 100%;
+  height: auto;
 }
-.footer__social-icons .footer__icon:hover .footer__icon-img {
-  transform: scale(1.2); /* Aumenta ligeramente el tamaño */
-  filter: brightness(1.2); /* Hace el icono un poco más claro */
+.footer__social-icons .footer__icon:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 .footer__branding {
   display: flex;
@@ -613,15 +678,15 @@ button {
   justify-content: center;
   align-items: center; /* Centrar contenido */
   text-align: center;
-  width: 40%;
+  width: 40%; /* Más ancho para el branding en el centro */
 }
 .footer__branding .footer__title-image {
-  max-width: 400px; /* Ajustar tamaño */
-  margin-bottom: 10px; /* Separar de los elementos inferiores */
+  max-width: 200px;
+  margin-bottom: 10px;
 }
 .footer__branding .footer__logo {
-  max-width: 200px; /* Ajustar tamaño */
-  margin: 10px 0; /* Separación vertical */
+  max-width: 100px;
+  margin: 10px 0;
 }
 .footer__branding .footer__rights {
   font-size: 0.9rem;
@@ -630,13 +695,14 @@ button {
 .footer__links {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Alinear verticalmente */
   align-items: flex-end; /* Alinear a la derecha */
-  width: 30%;
-  padding-right: 4rem; /* Más espacio a la derecha */
+  width: 30%; /* Mantener el ancho consistente con los iconos */
+  padding-right: 4rem;
+  margin-top: 2px;
 }
 .footer__links .footer__link {
-  margin: 8px 0; /* Espacio uniforme entre los enlaces */
+  margin: 8px 0;
   color: #fff;
   text-decoration: none;
   font-size: 1.5rem; /* Texto más grande */
@@ -644,6 +710,134 @@ button {
 }
 .footer__links .footer__link:hover {
   color: #fabd00;
+}
+@media only screen and (max-width: 1100px) {
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+  .footer__social-icons, .footer__branding, .footer__links {
+    width: 100%; /* Cada div ocupa el 100% */
+    padding: 0;
+    margin: 1rem 0; /* Espaciado entre los bloques */
+  }
+  .footer__social-icons {
+    align-items: center; /* Alinear al centro los iconos */
+  }
+  .footer__social-icons .footer__social-title {
+    font-size: 1.2rem; /* Reducir tamaño del título */
+  }
+  .footer__social-icons .footer__icon {
+    width: 45px;
+    height: 45px; /* Reducir tamaño de los iconos */
+  }
+  .footer__social-icons .footer__icon .footer__icon-img {
+    width: 100%;
+    height: auto;
+  }
+  .footer__branding .footer__title-image {
+    max-width: 150px; /* Reducir tamaño de la imagen */
+  }
+  .footer__branding .footer__logo {
+    max-width: 80px; /* Reducir tamaño del logo */
+  }
+  .footer__branding .footer__rights {
+    font-size: 0.8rem; /* Reducir tamaño del texto */
+  }
+  .footer__links {
+    align-items: center; /* Centrar los enlaces */
+  }
+  .footer__links .footer__link {
+    font-size: 1.2rem; /* Reducir tamaño de los enlaces */
+  }
+}
+
+.acordeon .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.acordeon__headline {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.acordeon__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.acordeon__item {
+  flex: 1;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  cursor: pointer;
+  transition: flex 0.3s ease-in-out;
+  /* Asegúrate de que estos estilos coincidan con el JSX */
+}
+.acordeon__item--active {
+  flex: 3; /* Aumenta el tamaño del elemento activo */
+}
+.acordeon__item:not(.acordeon__item--active) {
+  flex: 1; /* Reduce el tamaño de los no activos */
+}
+.acordeon__item:hover {
+  flex: 3;
+}
+.acordeon__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Oscurecer el fondo */
+  transition: opacity 0.3s ease;
+}
+.acordeon__item--active::before {
+  opacity: 0; /* Quita el oscurecimiento del fondo en el elemento activo */
+}
+.acordeon__item__content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+  z-index: 2;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+.acordeon__item__title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.acordeon__item__description {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.acordeon__item__button {
+  background-color: #d6001c;
+  color: #fff;
+  border: 2px solid #d6001c;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.acordeon__item__button:hover {
+  background-color: transparent;
+  border-color: yellow;
+  color: yellow;
 }
 
 .container-slider {
@@ -787,5 +981,3 @@ html {
   font-family: "Roboto", sans-serif, "Courier New", Courier, monospace;
   background-color: whitesmoke;
 }
-
-/*# sourceMappingURL=style.css.map */

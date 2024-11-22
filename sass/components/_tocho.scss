@@ -1,11 +1,20 @@
+// Variables de estilo
+$primary-color: #2a9d8f;
+$secondary-color: #264653;
+$secondary-light-color: #b0bec5; // Color más claro para el borde (ajustado manualmente)
+$text-color: #333;
+$background-color: #f4f4f9;
+$image-border-radius: 8px;
+
 .tocho {
     padding: 20px;
-    
+    background-color: $background-color;
+
     .tocho-section {
         display: flex;
         align-items: center;
         margin-bottom: 40px;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $secondary-light-color; // Uso del color claro definido
         padding-bottom: 20px;
 
         &--reverse {
@@ -15,14 +24,68 @@
         &__text {
             flex: 1;
             padding: 0 20px;
+
+            h2 {
+                font-size: 1.8rem;
+                color: $primary-color;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 1rem;
+                color: $text-color;
+                line-height: 1.6;
+            }
         }
 
         &__image {
             flex: 1;
             text-align: center;
+            padding: 10px;
 
             img {
-                background-color: #f0f0f0;
+                max-width: 100%;
+                height: auto;
+                border-radius: $image-border-radius;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+    }
+
+    // Diseño responsivo para pantallas más pequeñas
+    @media (max-width: 768px) {
+        .tocho-section {
+            flex-direction: column;
+
+            &--reverse {
+                flex-direction: column;
+            }
+
+            &__text {
+                padding: 10px;
+                text-align: center;
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+
+                p {
+                    font-size: 0.95rem;
+                }
+            }
+
+            &__image {
+                padding: 5px;
+
+                img {
+                    max-width: 90%;
+                }
             }
         }
     }

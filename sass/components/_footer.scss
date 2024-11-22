@@ -2,30 +2,55 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
+    align-items: center; /* Centrar los divs verticalmente */
+    padding: 1rem;
     background-color: #000;
     color: #fff;
+
+    margin: 0; /* Elimina márgenes externos */
+    padding: 0; /* Elimina paddings externos */
+    width: 100%; /* Asegurar que ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye paddings en el tamaño total */
+
+    position: relative; /* Esto se usa si necesitas posicionarlo explícitamente */
+    bottom: 0;
 
     &__social-icons {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: flex-start; /* Alinear a la izquierda */
-        width: 30%;
-        padding-left: 4rem; /* Más espacio a la izquierda */
+        justify-content: center; /* Alinear verticalmente */
+        align-items: flex-start;
+        width: 30%; /* Mantener el ancho consistente con los enlaces */
+        padding-left: 4rem;
+
+        .footer__social-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem; /* Espacio entre el título y los iconos */
+        }
+
+        .footer__social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Dos columnas para los iconos */
+            gap: 1rem; /* Espacio entre iconos */
+        }
 
         .footer__icon {
-            display: inline-block;
-            margin: 3px 0; /* Separación vertical */
-            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 55px;
+            height: 55px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+
             .footer__icon-img {
-                width: 55px; /* Iconos más grandes */
-                height: 55px;
+                width: 100%;
+                height: auto;
             }
-            &:hover .footer__icon-img {
-                transform: scale(1.2); /* Aumenta ligeramente el tamaño */
-                filter: brightness(1.2); /* Hace el icono un poco más claro */
+
+            &:hover {
+                transform: scale(1.1);
+                filter: brightness(1.2);
             }
         }
     }
@@ -36,16 +61,16 @@
         justify-content: center;
         align-items: center; /* Centrar contenido */
         text-align: center;
-        width: 40%;
+        width: 40%; /* Más ancho para el branding en el centro */
         
         .footer__title-image {
-            max-width: 400px; /* Ajustar tamaño */
-            margin-bottom: 10px; /* Separar de los elementos inferiores */
+            max-width: 200px;
+            margin-bottom: 10px;
         }
         
         .footer__logo {
-            max-width: 200px; /* Ajustar tamaño */
-            margin: 10px 0; /* Separación vertical */
+            max-width: 100px;
+            margin: 10px 0;
         }
         
         .footer__rights {
@@ -57,13 +82,14 @@
     &__links {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: center; /* Alinear verticalmente */
         align-items: flex-end; /* Alinear a la derecha */
-        width: 30%;
-        padding-right: 4rem; /* Más espacio a la derecha */
+        width: 30%; /* Mantener el ancho consistente con los iconos */
+        padding-right: 4rem;
+        margin-top: 2px;
 
         .footer__link {
-            margin: 8px 0; /* Espacio uniforme entre los enlaces */
+            margin: 8px 0; 
             color: #fff;
             text-decoration: none;
             font-size: 1.5rem; /* Texto más grande */
@@ -74,4 +100,61 @@
             }
         }
     }
+
+    /* Media Queries */
+    @media only screen and (max-width: $max-width) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+
+        &__social-icons,
+        &__branding,
+        &__links {
+            width: 100%; /* Cada div ocupa el 100% */
+            padding: 0;
+            margin: 1rem 0; /* Espaciado entre los bloques */
+        }
+
+        &__social-icons {
+            align-items: center; /* Alinear al centro los iconos */
+            
+            .footer__social-title {
+                font-size: 1.2rem; /* Reducir tamaño del título */
+            }
+
+            .footer__icon {
+                width: 45px;
+                height: 45px; /* Reducir tamaño de los iconos */
+
+                .footer__icon-img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        &__branding {
+            .footer__title-image {
+                max-width: 150px; /* Reducir tamaño de la imagen */
+            }
+            .footer__logo {
+                max-width: 80px; /* Reducir tamaño del logo */
+            }
+            .footer__rights {
+                font-size: 0.8rem; /* Reducir tamaño del texto */
+            }
+        }
+
+        &__links {
+            align-items: center; /* Centrar los enlaces */
+            
+            .footer__link {
+                font-size: 1.2rem; /* Reducir tamaño de los enlaces */
+            }
+        }
+    }
 }
+
+  
