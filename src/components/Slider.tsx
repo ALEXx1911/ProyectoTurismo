@@ -10,10 +10,11 @@ export default function Slider(){
         setSelectedIndex(nextIndex);
     }
 
-    function moveToLeft(){
+    /*function moveToLeft(){
         const nextIndex= selectedIndex <= 0 ? imagenes.length-1 : selectedIndex-1;
         setSelectedIndex(nextIndex);
-    }
+    }*/
+   //Comento la función porque no se está usando. No se borra el código por si fuera útil después.
 
     function handleClick(indice:number){
         setSelectedIndex(indice);

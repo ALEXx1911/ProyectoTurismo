@@ -43,9 +43,10 @@ const Acordeon: React.FC = () => {
     setActiveIndex(null);
   };
 
-  const handleButtonClick = () => {
+  //const handleButtonClick = () => {
     // Navegar a la ruta principal con el ancla '#tocho-section'
-  };
+  //};
+  //Comento la función porque no se está usando. No se borra el código por si fuera útil después.
 
   return (
     <section className="acordeon">
