@@ -23,7 +23,7 @@ export default function Slider(){
     useEffect(()=>{
         const intervalo = setInterval(moveToRight,5000);
         return () => clearInterval(intervalo);
-    });
+    },[]);
 
     return(
         <>
