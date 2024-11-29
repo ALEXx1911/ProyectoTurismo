@@ -1,0 +1,34 @@
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translateY(-50%);
+    color: $color-yellow;
+    background-color: $color-white;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    transition-duration: .15s;
+    transition-timing-function: linear;
+    cursor: pointer;
+    z-index: 999; /* Asegura que se superpongan a otros elementos */
+    
+    &:hover {
+        background-color: $color-yellow;
+        color: $color-white;
+    }
+}
+
+.button-left {
+    left: .1rem;
+}
+
+.button-right {
+    right: .1rem;
+}
+
+.arrow {
+    width: 100%;
+    height: 100%;
+}
