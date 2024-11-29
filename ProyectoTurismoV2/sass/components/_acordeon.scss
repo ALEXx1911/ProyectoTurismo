@@ -1,0 +1,100 @@
+.acordeon {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+  
+    &__headline {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  
+    &__list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+  
+    &__item {
+      flex: 1;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      cursor: pointer;
+      transition: flex 0.3s ease-in-out;
+  
+      &--active {
+        flex: 3; /* Aumenta el tamaño del elemento activo */
+      }
+  
+      &:not(&--active) {
+        flex: 1; /* Reduce el tamaño de los no activos */
+      }
+  
+      &:hover {
+        flex: 3;
+      }
+  
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* Oscurecer el fondo */
+        transition: opacity 0.3s ease;
+      }
+  
+      &--active::before {
+        opacity: 0; /* Quita el oscurecimiento del fondo en el elemento activo */
+      }
+  
+      /* Asegúrate de que estos estilos coincidan con el JSX */
+      &__content {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff; // Asegura que todo el texto sea blanco
+        z-index: 2;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); // Sombra para mejor contraste
+      }
+  
+      &__title {
+        font-size: 1.8rem;   // Título más grande
+        font-weight: 800;    // Más fuerte
+        color: #fff;         // Blanco
+        margin-bottom: 1rem;
+      }
+  
+      &__description {
+        font-size: 1rem;
+        font-weight: 600;   // Descripción más fuerte
+        color: #fff;        // Blanco
+        margin-bottom: 1rem;
+      }
+  
+      &__button {
+        background-color: #d6001c;
+        color: #fff;
+        border: 2px solid #d6001c; // Borde rojo
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+  
+        &:hover {
+          background-color: transparent;
+          border-color: yellow; // Contorno amarillo al hacer hover
+          color: yellow;
+        }
+      }
+    }
+  }
+  

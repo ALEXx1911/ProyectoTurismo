@@ -1,0 +1,85 @@
+.search-result {
+    &__content {
+      margin-top: 20px;
+  
+      .back-button {
+        margin-top: 20px; 
+        margin-bottom: 20px; 
+        position: relative;
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $color-white; 
+        background-color: $color-red-dark;  
+        border: 2px solid $color-red-dark;  
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+      
+        &:hover,
+        &:focus {
+          box-shadow: 
+            inset -3.5em 0 0 0 $color-white-smoke,   
+            inset 3.5em 0 0 0 $color-white-smoke;    
+          color: $color-red-dark;  
+          background-color: $color-white-smoke;  
+          border-color: $color-red-dark;
+        }
+        
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+  
+      > div {
+        overflow: hidden; /* Manejar flotación de la imagen */
+  
+        img {
+          float: left; 
+          margin-right: 20px; 
+          margin-bottom: 20px; 
+          width: 50%; 
+          max-width: 700px; 
+          height: auto; 
+          border-radius: 10px; 
+        }
+  
+        h2 {
+          font-size: 1.8rem;
+          margin-bottom: 10px;
+        }
+  
+        p {
+          margin-bottom: 10px;
+          line-height: 1.5;
+  
+          strong {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Responsividad */
+  @media (max-width: $max-width) {
+    .search-result__content {
+      .back-button {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+  
+      > div {
+        img {
+          float: none; /* Quitar flotación en pantallas pequeñas */
+          display: block;
+          margin: 0 auto 20px auto; /* Centrar y dar espacio inferior */
+          width: 100%; 
+          max-width: 100%; /* Forzar que la imagen se ajuste al ancho disponible */
+        }
+      }
+    }
+  }
+  

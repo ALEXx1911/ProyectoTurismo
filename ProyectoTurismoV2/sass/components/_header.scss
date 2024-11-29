@@ -1,0 +1,164 @@
+.header {
+    animation: moveInLeft 1.5s ease-in 0.2s both;
+    background-color: $color-yellow;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 20vh;
+    border-radius: 0.25rem;
+    position: relative; 
+    z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
+  
+    @media only screen and (max-width: $max-width) {
+      height: 45vh;
+      font-size: 30%;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header>*{
+      @media only screen and (max-width: $max-width){
+        margin-top:1rem;
+      }
+    }
+  
+    &__logo-container {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      transform: scale(1.2);
+  
+      @media only screen and (max-width: $max-width) {
+        display: flex;
+        align-items: center;
+      }
+    }
+  
+    &__logo {
+      animation: rollToRight 1s ease-out both;
+      animation-delay: 1.5s;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 100px;
+      margin-top: 0.2rem;
+      margin-left: 2rem;
+  
+      @media only screen and (max-width: $max-width) {
+        width: 4rem;
+        height: 4rem;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 3rem;
+      }
+    }
+  
+    &__name {
+      animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+      animation-delay: 1.5s;
+      margin-left: 1rem;
+      margin-top: 2.6rem;
+      text-transform: uppercase;
+  
+      @media only screen and (max-width: $max-width) {
+        margin-left: 0;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  
+    &__search-bar {
+      animation: moveToBottom 1.3s ease both;
+      animation-delay: 1.5s;
+      width: 35%; 
+      display: flex;
+      align-items: center;
+      position: relative; 
+      @media only screen and (max-width: $max-width) {
+        transform: scale(0.9);
+        width: 85%; 
+  
+        &:hover {
+          width: 100%;
+          transition: all 1s ease;
+        }
+      }
+    }
+  
+    &__search-bar__input {
+      background-color: $color-white;
+      padding: 0.7rem 2rem;
+      border-radius: 0.5rem;
+      border: none;
+      width: 100%; 
+    }
+  
+    &__search-bar__search-button {
+      display: none; 
+    }
+  
+    &__profile-box {
+      animation: rotate-animation 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation-delay: 1.5s;
+      margin-left: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 1;
+      transition: all 0.3s ease;
+      cursor:pointer;
+  
+      @media only screen and (max-width: $max-width) {
+        margin-left: 1rem;
+        margin-right: 1.2rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+  
+        &:hover {
+          opacity: 1;
+        }
+      }
+  
+      &:hover {
+        opacity: 0.8;
+      }
+  
+      &__image {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 0.3rem;
+      }
+  
+      &__username {
+        font-weight: 300;
+      }
+    }
+  }
+  
+  /* Desplegable */
+  .dropdown {
+    position: absolute; 
+    top: 100%;        
+    left: 0;
+    width: 100%;         
+    background-color: white;
+    max-height: 300px;  
+    overflow-y: auto;    /* Agrega scroll si el contenido es mayor */
+    z-index: 9999;       /* Asegura que el desplegable esté por encima de todo */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+  }
+  
+  /* Estilo para los elementos del desplegable */
+  .dropdown-item {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #333;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+  
