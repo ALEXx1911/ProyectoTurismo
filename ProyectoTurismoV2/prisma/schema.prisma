@@ -12,3 +12,8 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+//1. primero hay que crear el modelo 
+//para hacer la migracion de prisma 
+//2.cuando crees un modelo debes ejecutar el sigueinte comando de la consola 
+//npx prisma migrate dev --name init
+//npm install @prisma/client
