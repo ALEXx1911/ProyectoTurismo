@@ -1,4 +1,4 @@
-import { Link, useNavigation } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { ReactNode, useState } from "react";
 
 type MenuProps={
@@ -36,6 +36,7 @@ export default function Menu({active}:MenuProps){
         );
     }
 }
+//Función para mostrar un menú.
 
 type menuOptionProps={
     to:string;
