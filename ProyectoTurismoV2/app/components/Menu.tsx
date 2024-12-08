@@ -10,6 +10,7 @@ export default function Menu({active}:MenuProps){
                     <li className="menu__option">Iniciar sesión</li>
                     <li className="menu__option">Ajustes</li>
                     <li className="menu__option">Tus viajes</li>
+                    <li className="menu__option">Provincias favoritas</li>
                     <li className="menu__option">Ayuda</li>
                 </ul>
             </div>

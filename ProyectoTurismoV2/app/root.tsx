@@ -1,6 +1,7 @@
 import {
   Links,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -10,6 +11,13 @@ import type { LinksFunction } from "@remix-run/node";
 //import "./tailwind.css";
 import "../css/style.css";
 import Header from "./components/Header";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "TurismoEspaña" },
+    { name: "description", content: "" },
+  ];
+};
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
