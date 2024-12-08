@@ -144,7 +144,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 20vh;
+  height: 25vh;
   border-radius: 0.25rem;
   position: relative;
   z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
@@ -981,3 +981,5 @@ html {
   font-family: "Roboto", sans-serif, "Courier New", Courier, monospace;
   background-color: whitesmoke;
 }
+
+/*# sourceMappingURL=style.css.map */
