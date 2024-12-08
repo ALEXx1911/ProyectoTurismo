@@ -1,4 +1,5 @@
 import Slider from "~/components/Slider";
+import Tocho from "~/components/Tocho";
 
 export default function Index() {
   return (
@@ -6,8 +7,9 @@ export default function Index() {
        <div className="container-slider">
           <Slider/>
        </div>
-       
-        <p>Aquí va a ir el contenido de la página principal.</p>
+       <div className="tocho" id="tocho-section">
+          <Tocho/>
+        </div>
     </div>
   );
 
