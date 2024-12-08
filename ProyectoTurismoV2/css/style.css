@@ -144,7 +144,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 25vh;
+  height: 22vh;
   border-radius: 0.25rem;
   position: relative;
   z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
@@ -425,6 +425,18 @@ button {
   opacity: 0;
 }
 
+.bull-gif-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+.bull-gif-container__bull-gif {
+  width: 100%;
+}
+
 .menu {
   margin-top: -5vh;
   display: flex;
@@ -439,17 +451,21 @@ button {
     z-index: 10000;
   }
 }
+.menu__list a {
+  text-decoration: none;
+  color: black;
+}
 .menu__option {
   background-color: #fabd00;
   padding: 2rem;
   text-align: center;
   border-bottom: 1px black solid;
   transition: all 0.3s ease-in-out;
+  text-decoration-line: none;
   cursor: pointer;
 }
 .menu__option:hover {
   background-color: #fabd00;
-  color: black;
   transform: translateY(-2px);
 }
 

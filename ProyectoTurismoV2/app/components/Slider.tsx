@@ -24,6 +24,7 @@ export default function Slider(){
         const intervalo = setInterval(moveToRight,5000);
         return () => clearInterval(intervalo);
     });
+    //Se ha quitado el "[]" para que las fotos cambien cada 5 segundos permanentemente.
 
     return(
         <>
