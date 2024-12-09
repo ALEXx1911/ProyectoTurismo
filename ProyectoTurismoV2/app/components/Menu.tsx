@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useNavigation } from "@remix-run/react";
 import { ReactNode, useState } from "react";
 
 type MenuProps={
@@ -6,15 +6,9 @@ type MenuProps={
     //handleClickLogin:()=>void;
 }
 export default function Menu({active}:MenuProps){
-    const [isLoading,setIsLoading]=useState(false);
-    //const navigation=useNavigation();
-    //const isLoading=navigation.state=="loading";
-    function handleClick(){
-        setIsLoading(true);
-        setTimeout(()=>{
-            setIsLoading(false);
-        },1000);
-    }
+    const navigation=useNavigation();
+    const isLoading=navigation.state=="loading";
+
     if(active){
         return(
            <>
@@ -25,11 +19,11 @@ export default function Menu({active}:MenuProps){
                 </div>:""}
                 <div className="menu">
                     <ul className="menu__list">
-                        <MenuOption to="login" handleClick={handleClick}>Iniciar sesión</MenuOption>
-                        <MenuOption to="/" handleClick={handleClick}>Ajustes</MenuOption>
-                        <MenuOption to="/" handleClick={handleClick}>Tus viajes</MenuOption>
-                        <MenuOption to="provinciasFavoritas" handleClick={handleClick}>Provincias Favoritas</MenuOption>
-                        <MenuOption to="/" handleClick={handleClick}>Ayuda</MenuOption>
+                        <MenuOption to="login">Iniciar sesión</MenuOption>
+                        <MenuOption to="/">Ajustes</MenuOption>
+                        <MenuOption to="/">Tus viajes</MenuOption>
+                        <MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>
+                        <MenuOption to="/">Ayuda</MenuOption>
                     </ul>
                 </div>
            </>
@@ -41,11 +35,11 @@ export default function Menu({active}:MenuProps){
 type menuOptionProps={
     to:string;
     children:ReactNode;
-    handleClick:()=>void;
+   // handleClick:()=>void;
 }
-function MenuOption({to,children,handleClick}:menuOptionProps){
+function MenuOption({to,children}:menuOptionProps){
     return (
-        <Link to={to} onClick={handleClick}>
+        <Link to={to}>
             <li className="menu__option">
                 {children}
             </li>
