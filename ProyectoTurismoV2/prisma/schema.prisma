@@ -17,3 +17,7 @@ datasource db {
 //2.cuando crees un modelo debes ejecutar el sigueinte comando de la consola 
 //npx prisma migrate dev --name init
 //npm install @prisma/client
+
+model PantryItem{
+  id String @id @default(cuid())
+}
