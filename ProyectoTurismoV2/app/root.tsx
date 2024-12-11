@@ -77,6 +77,7 @@ export default function App() {
           <img className="app-container__profile-box__bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
           alt="" />
         </div>:""}
+        {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo. */}
       <ProfileBox
           image="../../img/imagen-perfil-default.jpg"
           username="No Login"
@@ -84,7 +85,7 @@ export default function App() {
     </div>
   );
 }
-//El "Header" y el "Footer" siempre se van a mostrar.
+//El "Header" y el "Footer" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.
 
 
 

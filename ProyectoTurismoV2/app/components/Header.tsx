@@ -1,8 +1,3 @@
-import { useState } from "react";
-import ProfileBox from "./ProfileBox";
-import Menu from "./Menu";
-
-
 export default function Header() {
 
  /* function handleClickLogin() {
