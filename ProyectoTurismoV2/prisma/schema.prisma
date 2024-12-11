@@ -20,14 +20,40 @@ datasource db {
 
 
 //Modelo de tarjeta de las provincias
-model provinces{
+model Provinces{
   id                String    @id @default(cuid())
+  provincesId       String
   name              String    
   description       String
   imageUrl          String
   climate           String
+  beaches           String?
   recommendedPlaces String
   typicalFood       String
   festivities       String
 
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  categoty          Category[]
+}
+
+
+//Modelo de tarjeta de usuario 
+model User{
+  id         String    @id @default(cuid())
+  email      String    @unique
+  name       String
+ 
+}
+
+
+//Modelo de la tarjeta de categoria 
+model Category{
+  id            String          @id @default(cuid())
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  provinces   Provinces[]
 }
