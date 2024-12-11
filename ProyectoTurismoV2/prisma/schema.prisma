@@ -20,10 +20,10 @@ datasource db {
 
 
 //Modelo de tarjeta de las provincias
-model Provinces{
-  id                String    @id @default(cuid())
+model Provinces {
+  id                String      @id @default(cuid())
   userId            String
-  name              String    
+  name              String
   description       String
   imageUrl          String
   climate           String
@@ -35,13 +35,13 @@ model Provinces{
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 
-  user              User        @relation(fields: [userId], references: [id])
-  categoty          Category[]
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categories        Category[]  @relation("ProvincesToCategories")
 }
 
 
 //Modelo de tarjeta de usuario 
-model User{
+model User {
   id                String      @id @default(cuid())
   email             String      @unique
   name              String
@@ -51,16 +51,16 @@ model User{
   updatedAt         DateTime    @updatedAt
 
   provinces         Provinces[]
-
 }
 
 
 //Modelo de la tarjeta de categoria 
-model Category{
+model Category {
   id            String        @id @default(cuid())
+  name          String        @unique
 
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 
-  provinces   Provinces[]
+  provinces     Provinces[]   @relation("ProvincesToCategories")
 }
