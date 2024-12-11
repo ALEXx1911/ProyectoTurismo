@@ -58,13 +58,15 @@
     opacity: 1;
   }
 }
-@keyframes rotate-animation {
+@keyframes slideInRight {
   0% {
-    transform: rotate(-360deg);
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
     opacity: 0;
   }
   100% {
-    transform: rotate(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -138,6 +140,90 @@
     transform: translateX(-8px);
   }
 }
+.app-container {
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+.app-container__app {
+  grid-column: 1/2;
+}
+.app-container__profile-box {
+  grid-column: 2/2;
+  animation: slideInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 1.5s;
+  margin-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1100px) {
+  .app-container__profile-box {
+    margin-left: 1rem;
+    margin-right: 1.2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+  .app-container__profile-box:hover {
+    opacity: 1;
+  }
+}
+.app-container__profile-box:hover {
+  opacity: 0.8;
+}
+.app-container__profile-box__image {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.3rem;
+}
+.app-container__profile-box__username {
+  font-weight: 300;
+}
+.app-container__profile-box__bull-gif-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+.app-container__profile-box__bull-gif-container__bull-gif {
+  width: 100%;
+}
+.app-container__profile-box__menu {
+  margin-top: -5vh;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1;
+}
+.app-container__profile-box__menu__list {
+  list-style: none;
+}
+@media only screen and (max-width: 1100px) {
+  .app-container__profile-box__menu__list {
+    z-index: 10000;
+  }
+}
+.app-container__profile-box__menu__list a {
+  text-decoration: none;
+  color: black;
+}
+.app-container__profile-box__menu__option {
+  background-color: #fabd00;
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px black solid;
+  transition: all 0.3s ease-in-out;
+  text-decoration-line: none;
+  cursor: pointer;
+}
+.app-container__profile-box__menu__option:hover {
+  background-color: #fabd00;
+  transform: translateY(-2px);
+}
+
 .header {
   animation: moveInLeft 1.5s ease-in 0.2s both;
   background-color: #fabd00;

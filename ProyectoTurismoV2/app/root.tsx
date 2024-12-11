@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigation,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -12,6 +13,7 @@ import type { LinksFunction } from "@remix-run/node";
 //import "../css/style.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ProfileBox from "./components/ProfileBox";
 
 export const meta: MetaFunction = () => {
   return [
@@ -55,14 +57,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  
+  //const [showMenu, setShowMenu] = useState(false);
+  const navigation=useNavigation();
+  const isLoading=navigation.state=="loading";
+  console.log(navigation.state);
+//const [showLogin,setShowLogin]=useState(false);
+/*function handleClickProfileBox() {
+  showMenu ? setShowMenu(false) : setShowMenu(true);
+}*/
   return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer/>
-    </>
+    <div className="app-container">
+      <div className="app-container__app">
+        <Header />
+        <Outlet />
+        <Footer/>
+      </div>
+      {isLoading ?
+        <div className="app-container__profile-box__bull-gif-container">
+          <img className="app-container__profile-box__bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
+          alt="" />
+        </div>:""}
+      <ProfileBox
+          image="../../img/imagen-perfil-default.jpg"
+          username="No Login"
+      />
+    </div>
   );
 }
 //El "Header" y el "Footer" siempre se van a mostrar.
+
+
 

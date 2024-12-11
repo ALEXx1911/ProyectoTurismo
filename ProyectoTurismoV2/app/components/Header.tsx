@@ -4,11 +4,6 @@ import Menu from "./Menu";
 
 
 export default function Header() {
-  const [showMenu, setShowMenu] = useState(false);
-  //const [showLogin,setShowLogin]=useState(false);
-  function handleClickProfileBox() {
-    showMenu ? setShowMenu(false) : setShowMenu(true);
-  }
 
  /* function handleClickLogin() {
     setShowMenu(false);
@@ -34,16 +29,7 @@ export default function Header() {
             <i className="header__icon icon-basic-magnifier"></i>
           </button>
         </form>
-
-        <div className="header__profile-box">
-          <ProfileBox
-            image="../../img/imagen-perfil-default.jpg"
-            username="No Login"
-            handleClickProfileBox={handleClickProfileBox}
-          />
-        </div>
       </div>
-      <Menu active={showMenu}/>
     </>
   );
 }
