@@ -18,6 +18,16 @@ datasource db {
 //npx prisma migrate dev --name init
 //npm install @prisma/client
 
-model PantryItem{
-  id String @id @default(cuid())
+
+//Modelo de tarjeta de las provincias
+model provinces{
+  id                String    @id @default(cuid())
+  name              String    
+  description       String
+  imageUrl          String
+  climate           String
+  recommendedPlaces String
+  typicalFood       String
+  festivities       String
+
 }
