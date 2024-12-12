@@ -60,24 +60,23 @@ export default function App() {
   //const [showMenu, setShowMenu] = useState(false);
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
-  console.log(navigation.state);
 //const [showLogin,setShowLogin]=useState(false);
 /*function handleClickProfileBox() {
   showMenu ? setShowMenu(false) : setShowMenu(true);
 }*/
   return (
     <div className="app-container">
+       {isLoading ?
+        <div className="app-container__bull-gif-container">
+          <img className="app-container__bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
+          alt="" />
+        </div>:""}
+        {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo. */}
       <div className="app-container__app">
         <Header />
         <Outlet />
         <Footer/>
       </div>
-      {isLoading ?
-        <div className="app-container__profile-box__bull-gif-container">
-          <img className="app-container__profile-box__bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
-          alt="" />
-        </div>:""}
-        {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo. */}
       <ProfileBox
           image="../../img/imagen-perfil-default.jpg"
           username="No Login"
@@ -85,7 +84,7 @@ export default function App() {
     </div>
   );
 }
-//El "Header" y el "Footer" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.
+//El "Header", el "Footer" y el "ProfileBox" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.
 
 
 

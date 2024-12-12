@@ -1,4 +1,5 @@
-import { Link } from "@remix-run/react";
+import { NavLink } from "@remix-run/react";
+import classNames from "classnames";
 import { ReactNode } from "react";
 
 type ProfileBoxProps={
@@ -9,18 +10,19 @@ type ProfileBoxProps={
 export default function ProfileBox({image,username}:ProfileBoxProps){
     return (
         <div className="app-container__profile-box">
-            <img  className="app-container__profile-box__image" src={image} 
-            alt="Foto de perfil para cuando no hay una sesión iniciada"/>
-            <h4 className="app-container__profile-box__username">
-                {username}
-            </h4>
+            <div className="app-container__profile-box__user">
+                <img  className="app-container__profile-box__user__image" src={image} 
+                alt="Foto de perfil para cuando no hay una sesión iniciada"/>
+                <h4 className="app-container__profile-box__user__username">
+                    {username}
+                </h4>
+            </div>
             <div className="app-container__profile-box__menu">
                 <ul className="app-container__profile-box__menu__list">
                     <MenuOption to="login">Iniciar sesión</MenuOption>
-                    <MenuOption to="/">Ajustes</MenuOption>
-                    <MenuOption to="/">Tus viajes</MenuOption>
+                    <MenuOption to="/nada">Tus viajes</MenuOption>
                     <MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>
-                    <MenuOption to="/">Ayuda</MenuOption>
+                    <MenuOption to="/">Página principal</MenuOption>
                 </ul>
             </div>
         </div>
@@ -39,11 +41,16 @@ type menuOptionProps={
 }
 function MenuOption({to,children}:menuOptionProps){
     return (
-        <Link to={to}>
-            <li className="app-container__profile-box__menu__option">
-                {children}
-            </li>
-        </Link>
+        <NavLink to={to}>
+            {({isActive})=>(
+                <li className={classNames(
+                "app-container__profile-box__menu__option",
+                isActive?"app-container__profile-box__menu__option__selected":""
+                )}>
+                    {children}
+                </li>
+            )}
+        </NavLink>
     );
 }
 //Es un componente para cada opción del menú.
