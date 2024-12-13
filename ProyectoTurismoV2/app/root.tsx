@@ -14,6 +14,7 @@ import type { LinksFunction } from "@remix-run/node";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProfileBox from "./components/ProfileBox";
+import Menu from "./components/Menu";
 
 export const meta: MetaFunction = () => {
   return [
@@ -74,6 +75,7 @@ export default function App() {
         {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo. */}
       <div className="app-container__app">
         <Header />
+        <Menu/>
         <Outlet />
         <Footer/>
       </div>

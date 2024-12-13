@@ -142,7 +142,6 @@
 }
 .app-container {
   display: grid;
-  grid-template-columns: 90% 10%;
 }
 .app-container__app {
   grid-column: 1/2;
@@ -159,7 +158,6 @@
   width: 100%;
 }
 .app-container__profile-box {
-  grid-column: 2/2;
   animation: slideInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: 1.5s;
 }

@@ -17,14 +17,6 @@ export default function ProfileBox({image,username}:ProfileBoxProps){
                     {username}
                 </h4>
             </div>
-            <div className="app-container__profile-box__menu">
-                <ul className="app-container__profile-box__menu__list">
-                    <MenuOption to="login">Iniciar sesión</MenuOption>
-                    <MenuOption to="/nada">Tus viajes</MenuOption>
-                    <MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>
-                    <MenuOption to="/">Página principal</MenuOption>
-                </ul>
-            </div>
         </div>
         
     );
@@ -35,25 +27,6 @@ export default function ProfileBox({image,username}:ProfileBoxProps){
     //handleClickLogin:()=>void;
 }*/
 
-type menuOptionProps={
-    to:string;
-    children:ReactNode;
-}
-function MenuOption({to,children}:menuOptionProps){
-    return (
-        <NavLink to={to}>
-            {({isActive})=>(
-                <li className={classNames(
-                "app-container__profile-box__menu__option",
-                isActive?"app-container__profile-box__menu__option__selected":""
-                )}>
-                    {children}
-                </li>
-            )}
-        </NavLink>
-    );
-}
-//Es un componente para cada opción del menú.
 
 
 //Por ahora no vamos a mostrar el Login.
