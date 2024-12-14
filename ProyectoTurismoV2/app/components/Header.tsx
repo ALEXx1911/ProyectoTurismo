@@ -32,7 +32,7 @@ export default function Header() {
           handleClickProfileBox={handleClickProfileBox}
         />
       </div>
-      {!showMenu && <Menu active={showMenu}/>}
+      <Menu active={showMenu}/>
     </>
   );
 }

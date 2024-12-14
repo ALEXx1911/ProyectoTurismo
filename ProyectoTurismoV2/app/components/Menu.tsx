@@ -9,15 +9,18 @@ export default function Menu({active}:MenuProps){
     return( 
     <div className="menu">
         <ul className="menu__list">
-            <MenuOption to="login">Iniciar sesión</MenuOption>
+            <MenuOption to="/">Página principal</MenuOption>
+            <MenuOption to="provincias">Todas las provincias</MenuOption>
             <MenuOption to="provincias">Tus viajes</MenuOption>
             <MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>
-            <MenuOption to="/">Página principal</MenuOption>
+            <MenuOption to="login">Iniciar sesión</MenuOption>
         </ul>
     </div>);
   }
 }
 //Este componente devuelve un menú de opciones siempre y cuando "active" sea "true".
+//Se añadirá una opción que cuando la sesión esté iniciada, cambie el botón de "iniciar sesión" a
+//"cerrar sesión". 
 type menuOptionProps={
     to:string;
     children:ReactNode;
@@ -27,8 +30,7 @@ function MenuOption({to,children}:menuOptionProps){
         <NavLink to={to}>
             {({isActive})=>(
                 <li className={classNames(
-                "menu__option",
-                isActive?"menu__option__selected":""
+                isActive?"menu__option__selected":"menu__option"
                 )}>
                     {children}
                 </li>

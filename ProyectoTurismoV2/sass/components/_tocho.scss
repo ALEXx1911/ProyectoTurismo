@@ -1,20 +1,14 @@
-// Variables de estilo
-$primary-color: #2a9d8f;
-$secondary-color: #264653;
-$secondary-light-color: #b0bec5; // Color más claro para el borde (ajustado manualmente)
-$text-color: #333;
-$background-color: #f4f4f9;
 $image-border-radius: 8px;
-
+//Variable de estilo.
 .tocho {
     padding: 20px;
-    background-color: $background-color;
+    background-color: $color-white-dark;
 
     .tocho-section {
         display: flex;
         align-items: center;
         margin-bottom: 40px;
-        border-bottom: 1px solid $secondary-light-color; // Uso del color claro definido
+        border-bottom: 1px solid $color-gray-light; // Uso del color claro definido
         padding-bottom: 20px;
 
         &--reverse {
@@ -27,13 +21,13 @@ $image-border-radius: 8px;
 
             h2 {
                 font-size: 1.8rem;
-                color: $primary-color;
+                color: $green-color;
                 margin-bottom: 10px;
             }
 
             p {
                 font-size: 1rem;
-                color: $text-color;
+                color: $color-gray-dark;
                 line-height: 1.6;
             }
         }
