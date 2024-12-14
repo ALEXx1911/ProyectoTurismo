@@ -1,11 +1,12 @@
 type ProfileBoxProps={
     image:string;
     username: string;
+    handleClickProfileBox:()=>void;
     //La función "handleClickProfileBox" es simplemente para utilizar "handleClickProfileBox" de "Header.tsx".
 }
-export default function ProfileBox({image,username}:ProfileBoxProps){
+export default function ProfileBox({image,username,handleClickProfileBox}:ProfileBoxProps){
     return (
-        <div className="header__profile-box">
+        <div className="header__profile-box" onClick={handleClickProfileBox}>
             <div className="header__profile-box__user">
                 <img  className="header__profile-box__user__image" src={image} 
                 alt="Foto de perfil para cuando no hay una sesión iniciada"/>

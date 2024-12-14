@@ -75,9 +75,7 @@ return (
           alt="" />
         </div>:""}
         {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo. */}
-
         <Header />
-        {!showMenu && <Menu/>}
         <Outlet />
         <Footer/>
     </>

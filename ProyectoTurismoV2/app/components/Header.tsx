@@ -1,12 +1,12 @@
+import { useState } from "react";
 import ProfileBox from "./ProfileBox";
+import Menu from "./Menu";
 
 export default function Header() {
-
- /* function handleClickLogin() {
-    setShowMenu(false);
-    showLogin ? setShowLogin(false) : setShowLogin(true);
-  } */
-
+  const [showMenu,setShowMenu]=useState(false);
+  function handleClickProfileBox(){
+    showMenu?setShowMenu(false):setShowMenu(true);
+  }
   return (
     <>
       <div className="header">
@@ -29,8 +29,10 @@ export default function Header() {
         <ProfileBox
           image="../../img/imagen-perfil-default.jpg"
           username="No Login"
+          handleClickProfileBox={handleClickProfileBox}
         />
       </div>
+      {!showMenu && <Menu active={showMenu}/>}
     </>
   );
 }
