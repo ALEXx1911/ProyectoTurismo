@@ -73,7 +73,7 @@ return (
     </>
   );
 }
-//El "Header", el "Footer" y el "ProfileBox" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.
+//El "Header" y el "Footer" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.
 
 
 
