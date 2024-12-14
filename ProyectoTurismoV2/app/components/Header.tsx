@@ -4,9 +4,11 @@ import Menu from "./Menu";
 
 export default function Header() {
   const [showMenu,setShowMenu]=useState(false);
+  //Variable que controla la visibilidad del menú.
   function handleClickProfileBox(){
     showMenu?setShowMenu(false):setShowMenu(true);
   }
+  
   return (
     <>
       <div className="header">

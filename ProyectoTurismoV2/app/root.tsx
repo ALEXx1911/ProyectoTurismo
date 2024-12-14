@@ -13,8 +13,6 @@ import type { LinksFunction } from "@remix-run/node";
 //import "../css/style.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ProfileBox from "./components/ProfileBox";
-import Menu from "./components/Menu";
 import { useState } from "react";
 
 export const meta: MetaFunction = () => {
@@ -59,14 +57,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const [showMenu, setShowMenu] = useState(false);
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
-//const [showLogin,setShowLogin]=useState(false);
-/*function handleClickProfileBox() {
-  showMenu ? setShowMenu(false) : setShowMenu(true);
-}*/
-
 return (
     <>
        {isLoading ?

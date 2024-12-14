@@ -15,12 +15,7 @@ export default function ProfileBox({image,username,handleClickProfileBox}:Profil
         </div>
     );
 }
-
-/*type MenuProps={
-    active:boolean;
-    //handleClickLogin:()=>void;
-}*/
-
+//Componente que muestra la foto de perfil y el nombre del usuario.
 
 
 //Por ahora no vamos a mostrar el Login.
