@@ -15,6 +15,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProfileBox from "./components/ProfileBox";
 import Menu from "./components/Menu";
+import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -58,32 +59,28 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  //const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
 //const [showLogin,setShowLogin]=useState(false);
 /*function handleClickProfileBox() {
   showMenu ? setShowMenu(false) : setShowMenu(true);
 }*/
-  return (
-    <div className="app-container">
+
+return (
+    <>
        {isLoading ?
-        <div className="app-container__bull-gif-container">
-          <img className="app-container__bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
+        <div className="bull-gif-container">
+          <img className="bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
           alt="" />
         </div>:""}
         {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo. */}
-      <div className="app-container__app">
+
         <Header />
-        <Menu/>
+        {!showMenu && <Menu/>}
         <Outlet />
         <Footer/>
-      </div>
-      <ProfileBox
-          image="../../img/imagen-perfil-default.jpg"
-          username="No Login"
-      />
-    </div>
+    </>
   );
 }
 //El "Header", el "Footer" y el "ProfileBox" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.

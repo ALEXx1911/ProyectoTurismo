@@ -71,18 +71,17 @@
     }
   }
 
-  @keyframes slideInRight {
+  @keyframes rotate-animation {
     0% {
-      -webkit-transform: translateX(1000px);
-              transform: translateX(1000px);
-      opacity: 0;
+        transform: rotate(-360deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: rotate(0);
+        opacity: 1;
+      }
     }
-    100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
-    }
-  }
 
   @keyframes fallWithRebound {
     0% {
@@ -145,8 +144,7 @@
   }
 
   @keyframes shake-animation {
-    0%,
-    100% {
+    0%,100% {
       -webkit-transform: translateX(0);
               transform: translateX(0);
     }
@@ -172,7 +170,3 @@
               transform: translateX(-8px);
     }
   }
-  
-  
-  
-  

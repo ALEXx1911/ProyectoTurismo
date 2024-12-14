@@ -1,7 +1,3 @@
-import { NavLink } from "@remix-run/react";
-import classNames from "classnames";
-import { ReactNode } from "react";
-
 type ProfileBoxProps={
     image:string;
     username: string;
@@ -9,11 +5,11 @@ type ProfileBoxProps={
 }
 export default function ProfileBox({image,username}:ProfileBoxProps){
     return (
-        <div className="app-container__profile-box">
-            <div className="app-container__profile-box__user">
-                <img  className="app-container__profile-box__user__image" src={image} 
+        <div className="header__profile-box">
+            <div className="header__profile-box__user">
+                <img  className="header__profile-box__user__image" src={image} 
                 alt="Foto de perfil para cuando no hay una sesión iniciada"/>
-                <h4 className="app-container__profile-box__user__username">
+                <h4 className="header__profile-box__user__username">
                     {username}
                 </h4>
             </div>

@@ -1,66 +1,36 @@
 .menu{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  &__list{
     display: flex;
-    animation: slideInRight 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation-delay: 1.5s;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
     @media only screen and (max-width: $max-width) {
-      margin-left: 1rem;
-      margin-right: 1.2rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-    }
-
-  &__user{
-    height:22vh;
-    display:flex;
-    flex-direction: column;
-    //grid-template-rows: 50% 50%;
-    //grid-auto-flow: column;
-    align-items: center;
-    background-color: $color-black;
-    &__image {
-      margin-top:2rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 0.3rem;
-    }
-
-    &__username {
-      font-weight: 300;
-      color: $color-white;
-    }
-   }
-  &__menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &__list{
-        margin-top: auto;
-        text-align: center;
-        list-style: none;
-        @media only screen and (max-width: $max-width) {
-              z-index:10000; 
-          }
-          a{
-              text-decoration: none;
-              color:$color-black;
-          }
-    }
-        
-    &__option{
-      width: 100%;
-      background-color: $color-yellow;
-      text-align: center;
-      border-bottom: 1px $color-black solid;
-      transition: all 0.3s ease-in-out;
-      text-decoration-line: none;
-      cursor:pointer;
-      &__selected{
-        background-color: $color-white;
+          z-index:10000; 
       }
-      &:hover{
-        opacity:0.8;
+      a{
+          text-decoration: none;
+          color:$color-black;
       }
+  }
+      
+  &__option{
+    width: 100%;
+    background-color: $color-yellow;
+    text-align: center;
+    border-bottom: 1px $color-black solid;
+    transition: all 0.3s ease-in-out;
+    text-decoration-line: none;
+    cursor:pointer;
+    &__selected{
+      background-color: $color-white;
+    }
+    &:hover{
+      opacity:0.8;
     }
   }
-     
 }
+  

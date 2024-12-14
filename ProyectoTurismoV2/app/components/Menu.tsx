@@ -6,7 +6,7 @@ export default function Menu(){
    return( <div className="menu">
         <ul className="menu__list">
             <MenuOption to="login">Iniciar sesión</MenuOption>
-            <MenuOption to="/nada">Tus viajes</MenuOption>
+            <MenuOption to="provincias">Tus viajes</MenuOption>
             <MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>
             <MenuOption to="/">Página principal</MenuOption>
         </ul>

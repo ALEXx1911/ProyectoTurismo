@@ -1,3 +1,5 @@
+import ProfileBox from "./ProfileBox";
+
 export default function Header() {
 
  /* function handleClickLogin() {
@@ -24,6 +26,10 @@ export default function Header() {
             <i className="header__icon icon-basic-magnifier"></i>
           </button>
         </form>
+        <ProfileBox
+          image="../../img/imagen-perfil-default.jpg"
+          username="No Login"
+        />
       </div>
     </>
   );
