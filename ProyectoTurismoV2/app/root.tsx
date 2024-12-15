@@ -66,7 +66,7 @@ return (
           <img className="bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
           alt="" />
         </div>:""}
-        {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo. */}
+        {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo.*/}
         <Header />
         <Outlet />
         <Footer/>

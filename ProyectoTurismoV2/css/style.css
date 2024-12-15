@@ -151,7 +151,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 22vh;
+  height: 18vh;
   border-radius: 0.25rem;
   position: relative;
   z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
@@ -184,8 +184,8 @@
 .header__logo {
   animation: rollToRight 1s ease-out both;
   animation-delay: 1.5s;
-  width: 6rem;
-  height: 6rem;
+  width: 5.8rem;
+  height: 5.8rem;
   border-radius: 100px;
   margin-top: 0.2rem;
   margin-left: 2rem;
