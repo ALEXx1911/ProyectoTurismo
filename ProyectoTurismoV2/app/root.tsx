@@ -9,7 +9,7 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
-//import "./tailwind.css";
+import "./tailwind.css";
 //import "../css/style.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";

@@ -343,21 +343,14 @@
   background-color: #f4f4f9;
 }
 
-.login-container {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
-}
 .login-container__login-form {
   text-align: center;
-  width: 80%;
-  margin: 0 auto;
   animation: moveToBottom-2 2s ease-in;
   animation-fill-mode: both;
   background-color: #e13236;
   border: 2px black solid;
   padding: 1.5rem;
+  margin: 2rem;
 }
 .login-container__login-form__title {
   animation: letters-animation 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
@@ -447,9 +440,11 @@
   padding: 1rem;
   width: 40%;
   transition: all 0.3s ease;
+  outline: 0;
 }
 .login-container__login-form input:focus {
-  width: 45%;
+  outline: auto;
+  outline-color: rgb(0, 132, 255);
 }
 .login-container__login-form input::placeholder {
   text-transform: uppercase;

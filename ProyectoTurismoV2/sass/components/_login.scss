@@ -1,18 +1,13 @@
 .login-container {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
 
   &__login-form {
     text-align: center;
-    width: 80%;
-    margin: 0 auto;
     animation: moveToBottom-2 2s ease-in;
     animation-fill-mode: both;
     background-color: $color-red-dark;
     border: 2px black solid;
     padding: 1.5rem;
+    margin:2rem;
 
     &__title {
       animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -117,9 +112,10 @@
       padding: 1rem;
       width: 40%;
       transition: all 0.3s ease;
-
+      outline: 0;
       &:focus {
-        width: 45%;
+        outline:auto;
+        outline-color: $color-blue-light;
       }
 
       &::placeholder {
