@@ -1,7 +1,11 @@
 .login-container {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.3rem;
   &__login-form {
     text-align: center;
+    width: 90%;
     animation: moveToBottom-2 2s ease-in;
     animation-fill-mode: both;
     background-color: $color-red-dark;

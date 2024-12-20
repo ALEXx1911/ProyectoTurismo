@@ -343,8 +343,15 @@
   background-color: #f4f4f9;
 }
 
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
 .login-container__login-form {
   text-align: center;
+  width: 90%;
   animation: moveToBottom-2 2s ease-in;
   animation-fill-mode: both;
   background-color: #e13236;

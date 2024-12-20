@@ -1,4 +1,5 @@
 import {
+  Link,
   Links,
   Meta,
   MetaFunction,
@@ -6,14 +7,14 @@ import {
   Scripts,
   ScrollRestoration,
   useNavigation,
+  useRouteError,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
-//import "../css/style.css";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -75,5 +76,28 @@ return (
 }
 //El "Header" y el "Footer" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.
 
-
-
+export function ErrorBoundary(){
+  const error=useRouteError();
+  return(
+    <html lang="en">
+    <head>
+      <meta charSet="UTF-8" />
+      <Meta/>
+      <Links/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Vaya...</title>
+    </head>
+    <body className="h-4/5">
+      <div className="p-4">
+        <h1 className="text-2xl font-mono my-4">Vaya...</h1>
+        <p className="font-light">Si estás viendo esta página es porque se ha producido un error inesperado.</p>
+        {error instanceof Error?(
+          <p className="my-4 font-bold">{error.message}</p>
+        ):null}
+        <Link to="/">Volver a la página principal</Link>
+      </div>
+    </body> 
+    </html>
+  );
+}
+//Función para el control de los errores.
