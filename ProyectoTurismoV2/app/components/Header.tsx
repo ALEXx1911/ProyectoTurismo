@@ -17,16 +17,12 @@ export default function Header() {
           <h4 className="header__name">turismoEspaña</h4>
         </div>
 
-        <form className="header__search-bar">
+        <form className="header__search-bar" method="POST">
           <input
             type="text"
             className="header__search-bar__input"
             placeholder="Buscar provincia"
-            style={{ textTransform: "uppercase" }} // Para convertir todo el texto a mayúsculas
           />
-          <button className="header__search-bar__search-button" type="submit">
-            <i className="header__icon icon-basic-magnifier"></i>
-          </button>
         </form>
         <ProfileBox
           image="../../img/imagen-perfil-default.jpg"

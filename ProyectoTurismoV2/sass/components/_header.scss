@@ -23,11 +23,13 @@
   }
 
   &__logo-container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-flow: row;
+    align-items: center;
     position: relative;
+    gap:0.5vw;
     transform: scale(1.2);
-
     @media only screen and (max-width: $max-width) {
       display: flex;
       align-items: center;
@@ -37,10 +39,9 @@
   &__logo {
     animation: rollToRight 1s ease-out both;
     animation-delay: 1.5s;
-    width: 5.8rem;
-    height: 5.8rem;
+    width: 14vh;
+    height: 14vh;
     border-radius: 100px;
-    margin-top: 0.2rem;
     margin-left: 2rem;
 
     @media only screen and (max-width: $max-width) {
@@ -55,10 +56,7 @@
   &__name {
     animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     animation-delay: 1.5s;
-    margin-left: 1rem;
-    margin-top: 2.6rem;
     text-transform: uppercase;
-
     @media only screen and (max-width: $max-width) {
       margin-left: 0;
       margin-top: 1rem;
@@ -70,9 +68,6 @@
     animation: moveToBottom 1.3s ease both;
     animation-delay: 1.5s;
     width: 35%; 
-    display: flex;
-    align-items: center;
-    position: relative; 
 
     @media only screen and (max-width: $max-width) {
       transform: scale(0.9);
@@ -90,6 +85,13 @@
     border-radius: 0.5rem;
     border: none;
     width: 100%; 
+    transition: all 0.3s ease;
+    &:hover,&:focus{
+      background-color: $color-white-smoke;
+    }
+    &::placeholder{
+      text-transform: uppercase;
+    }
   }
 
   &__search-bar__search-button {
@@ -100,9 +102,12 @@
     animation: rotate-animation 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation-delay: 1.5s;
     height:16vh;
-    display:flex;
-    flex-direction: column;
+    display:grid;
+    grid-template-rows: 80% 20%;
+    grid-auto-flow: column;
+    justify-items: center;
     align-items: center;
+   
     translate: all 0.3s ease;
     cursor:pointer;
 
@@ -114,13 +119,14 @@
     }
 
     &__image {
-      margin-top:2rem;
-      width: 2.5rem;
-      height: 2.5rem;
+      margin-top:-3vh;
+      width: 3vw;
+      height: 3vw;
       border-radius: 0.3rem;
     }
 
     &__username {
+      margin-top:-8vh;
       font-weight: 300;
     }
 
