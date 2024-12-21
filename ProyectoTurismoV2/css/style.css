@@ -156,7 +156,7 @@
   position: relative;
   z-index: 1; /* Para asegurar que el header no quede detrás de otros elementos */
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .header {
     height: 45vh;
     font-size: 30%;
@@ -164,7 +164,7 @@
     align-items: center;
   }
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .header > * {
     margin-top: 1rem;
   }
@@ -178,7 +178,7 @@
   gap: 0.5vw;
   transform: scale(1.2);
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .header__logo-container {
     display: flex;
     align-items: center;
@@ -192,7 +192,7 @@
   border-radius: 100px;
   margin-left: 2rem;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .header__logo {
     width: 4rem;
     height: 4rem;
@@ -206,7 +206,7 @@
   animation-delay: 1.5s;
   text-transform: uppercase;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .header__name {
     margin-left: 0;
     margin-top: 1rem;
@@ -218,7 +218,7 @@
   animation-delay: 1.5s;
   width: 35%;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .header__search-bar {
     transform: scale(0.9);
     width: 85%;
@@ -257,7 +257,7 @@
   translate: all 0.3s ease;
   cursor: pointer;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .header__profile-box {
     margin-left: 1rem;
     margin-right: 1.2rem;
@@ -267,8 +267,8 @@
 }
 .header__profile-box__image {
   margin-top: -3vh;
-  width: 3vw;
-  height: 3vw;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 0.3rem;
 }
 .header__profile-box__username {
@@ -311,7 +311,7 @@
   justify-content: space-around;
   list-style: none;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .menu__list {
     z-index: 10000;
   }
@@ -321,7 +321,7 @@
   text-transform: uppercase;
   color: black;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .menu__list a {
     font-size: 50%;
   }
@@ -334,7 +334,7 @@
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .menu__option, .menu__option__selected {
     font-size: 150%;
   }
@@ -569,7 +569,7 @@ button {
 }
 
 /* Responsividad */
-@media (max-width: 100px) {
+@media (max-width: 1100px) {
   .search-result__content .back-button {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -741,7 +741,7 @@ button {
 .footer__links .footer__link:hover {
   color: #fabd00;
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .footer {
     flex-direction: column;
     justify-content: center;
@@ -870,6 +870,18 @@ button {
   color: yellow;
 }
 
+.bull-gif-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+.bull-gif-container__bull-gif {
+  width: 100%;
+}
+
 .container-slider {
   width: 100%;
   height: 39rem;
@@ -878,7 +890,7 @@ button {
   position: relative;
   z-index: 0; /* Asegura que el slider no esté por encima del desplegable */
 }
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1100px) {
   .container-slider {
     z-index: 0; /* Mantiene un z-index bajo para que el slider no se superponga */
   }

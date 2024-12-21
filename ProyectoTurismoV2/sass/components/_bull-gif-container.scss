@@ -1,0 +1,11 @@
+.bull-gif-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:30%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    &__bull-gif{
+        width:100%;
+    }
+}

@@ -26,7 +26,7 @@ export default function Header() {
         </form>
         <ProfileBox
           image="../../img/imagen-perfil-default.jpg"
-          username="No Login"
+          username="No login"
           handleClickProfileBox={handleClickProfileBox}
         />
       </div>
