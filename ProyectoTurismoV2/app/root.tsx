@@ -1,4 +1,5 @@
 import {
+  json,
   Link,
   Links,
   Meta,
@@ -6,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useNavigation,
   useRouteError,
 } from "@remix-run/react";
@@ -15,6 +17,8 @@ import "./tailwind.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { LoaderFunction } from "react-router-dom";
+import { getSession } from "./sessions";
 
 export const meta: MetaFunction = () => {
   return [
@@ -56,10 +60,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
     </html>
   );
 }
+export const loader:LoaderFunction=async({request})=>{
+  const cookieHeader=request.headers.get("cookie");
+  const session=await getSession(cookieHeader);
+  return json(session.data);
 
+}
+//Sacamos los datos de la cookie de sesión en el "loader".
 export default function App() {
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
+  const loaderData=useLoaderData();
+  const username=loaderData?.username;
+  //Sacamos el "username" del "loader".
 return (
     <>
        {isLoading ?
@@ -68,7 +81,7 @@ return (
           alt=""/>
         </div>:null}
         {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo.*/}
-        <Header />
+        <Header username={username} />
         <Outlet />
         <Footer/>
     </>

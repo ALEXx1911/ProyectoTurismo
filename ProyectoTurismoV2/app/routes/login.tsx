@@ -4,6 +4,7 @@ import { json } from "@remix-run/react";
 import { z } from "zod";
 import { ErrorMessage } from "~/components/forms";
 import { getUser } from "~/models/user.server";
+import { commitSession, getSession } from "~/sessions";
 import { validateForm } from "~/utils/validation";
 
 const loginSchema=z.object({
@@ -19,7 +20,16 @@ export const action:ActionFunction=async({request})=>{
             if(user==null){
                 return json({errors:"El usuario introducido no existe."})
             }
-            return redirect("/");
+            const cookieHeader=request.headers.get("cookie");
+            const session=await getSession(cookieHeader);
+            session.set("username",user.name);
+            //Insertamos el nombre de usuario a la sesión. 
+            return redirect("/",{
+                headers:{
+                    "Set-Cookie":await commitSession(session)
+                }
+            });
+            {/*Guardamos la sesión en los headers y redirigimos a la página principal.*/}
         },
 
         (errors)=>(json({errors,email:formData.get("email")},{status:403}))

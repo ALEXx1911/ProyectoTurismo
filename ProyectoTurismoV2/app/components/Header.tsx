@@ -2,7 +2,11 @@ import { useState } from "react";
 import ProfileBox from "./ProfileBox";
 import Menu from "./Menu";
 
-export default function Header() {
+type HeaderProps={
+  username:string | undefined;
+}
+
+export default function Header({username}:HeaderProps) {
   const [showMenu,setShowMenu]=useState(false);
   //Variable que controla la visibilidad del menú.
   function handleClickProfileBox(){
@@ -26,7 +30,8 @@ export default function Header() {
         </form>
         <ProfileBox
           image="../../img/imagen-perfil-default.jpg"
-          username="No login"
+          username={typeof username=="string"?username:"No login"}
+          //Si el "username" es de tipo "string" es porque hay un usuario con la sesión iniciada.
           handleClickProfileBox={handleClickProfileBox}
         />
       </div>
