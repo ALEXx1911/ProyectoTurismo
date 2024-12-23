@@ -18,7 +18,7 @@ export const action:ActionFunction=async({request})=>{
         async({email})=>{
             const user=await getUser(email);
             if(user==null){
-                return json({errors:"El usuario introducido no existe."})
+                return json({errors:{email:"El usuario introducido no existe."}})
             }
             const cookieHeader=request.headers.get("cookie");
             const session=await getSession(cookieHeader);
@@ -49,6 +49,7 @@ export default function Login(){
                 <input type="password" name="password" placeholder="Contraseña"/><br/><br/>
                 {/*<input type="password" placeholder="Contraseña"/><br/><br/>*/}
                 <button className="login-container__login-form__button-submit">Iniciar sesión<span></span><span></span><span></span><span></span></button>
+                <ErrorMessage>{actionData?.errors?.email}</ErrorMessage>
             </Form>
            <ErrorMessage>{actionData?.errors?.email}</ErrorMessage>
         </div>

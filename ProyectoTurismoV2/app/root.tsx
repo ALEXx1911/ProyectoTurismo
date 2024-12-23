@@ -70,7 +70,7 @@ export const loader:LoaderFunction=async({request})=>{
 export default function App() {
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
-  const loaderData=useLoaderData();
+  const loaderData=useLoaderData<typeof loader>();
   const username=loaderData?.username;
   //Sacamos el "username" del "loader".
 return (
@@ -100,7 +100,7 @@ export function ErrorBoundary(){
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Vaya...</title>
     </head>
-    <body className="h-4/5">
+    <body className="h-4/5 bg-slate-50">
       <div className="p-4">
         <h1 className="text-2xl font-mono my-4">Vaya...</h1>
         <p className="font-light">Si estás viendo esta página es porque se ha producido un error inesperado.</p>
