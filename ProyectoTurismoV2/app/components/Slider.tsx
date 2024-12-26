@@ -1,5 +1,9 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function Slider(){
     const urlImg='../../img/';
@@ -28,26 +32,40 @@ export default function Slider(){
     //Se ha quitado el "[]" para que las fotos cambien cada 5 segundos permanentemente.
 
     return(
-        <>
-        <div className="container-slider__carousel">
-            <section className="item-slider item-slider-1">
-                <img src={imagenes[selectedIndex]} alt={imagenes[selectedIndex]} className="item-slider__image"/>
-                <div className="infoItem">
-                    <span className="subtitle">Innumerables paisajes</span>
-                    <span className="mainTitle">Descubre España con Nosotros</span>
-                    <button className="botonItem hvr-sweep-to-top"><a href="#" className="linkItem">Conócelos ahora</a></button>
-                </div>
-            </section>
-            <div className="puntos-container">
-                {imagenes.map((_,index)=>
-                    <div key={index} className={`punto-item punto-item${index===selectedIndex ? '-active':''}`} onClick={() => handleClick(index)}>
-                        <svg fill="currentColor" width="15px" height="15px" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="127" cy="129" r="81" fillRule="evenodd"></circle> </g></svg>
-                    </div>
-                )}
-            </div>
-        </div>
-        
-        </>
+        <Swiper className={classNames(
+            "w-full",
+            "container-slider"
+        )}
+            modules={[Pagination,Autoplay,Navigation]}
+            pagination={{
+                clickable:true,
+            }}
+            autoplay={{
+                delay:5000,
+                disableOnInteraction:false,
+            }}
+            navigation={true}
+            loop={true}
+            lazyPreloadPrevNext={1}
+            centeredSlides={true}
+            spaceBetween={30}
+            >
+            <SwiperSlide>
+                <SliderItem imgUrl={imagenes[0]}></SliderItem>
+            </SwiperSlide>
+            <SwiperSlide>
+                <SliderItem imgUrl={imagenes[1]}></SliderItem>
+            </SwiperSlide>
+            <SwiperSlide>
+                <SliderItem imgUrl={imagenes[2]}></SliderItem>
+            </SwiperSlide>
+            <SwiperSlide>
+                <SliderItem imgUrl={imagenes[3]}></SliderItem>
+            </SwiperSlide>
+            <SwiperSlide>
+                <SliderItem imgUrl={imagenes[4]}></SliderItem>
+            </SwiperSlide>
+        </Swiper>
     );
 }
 type SliderItemProps = {
