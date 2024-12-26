@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 
 export default function Slider(){
@@ -48,4 +49,27 @@ export default function Slider(){
         
         </>
     );
+}
+type SliderItemProps = {
+    imgUrl : string,
+}
+function SliderItem({imgUrl}:SliderItemProps){
+    return(
+        <div className="w-full h-full overflow-hidden m-auto">
+            <img src={imgUrl} alt="xd" className="w-full h-full object-cover"/>
+            <div className={classNames("flex flex-col items-center absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2",
+                "text-white text-center text-2xl font-semibold md:text-4xl"
+            )}>
+                <span className="text-base">Innumerables paisajes</span>
+                <span className="mainTitle">Descubre España con Nosotros</span>
+                <button className={classNames(
+                    "text-xl w-32 h-12 mt-4 translate-y-0 bg-[rgba(0,0,0,0.35)]",
+                    "hvr-sweep-to-top"
+                )}>
+                    Navegar
+                </button>
+            </div>
+                
+        </div>
+    )
 }
