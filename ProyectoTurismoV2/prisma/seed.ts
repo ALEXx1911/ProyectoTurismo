@@ -18,9 +18,26 @@ function eliminarUser(){
         }
     });
 }
+function createCategory(){
+    return db.category.createMany({
+        data:[
+            {
+                name:"costa"
+            },
+            {
+                name:"islas"
+            },
+            {
+                name:"sierra"
+            }
+        ]
+    })
+}
 
 async function seed() {
     const user=await crearUser();
+    const category= await createCategory();
+
 }
 
 seed();
