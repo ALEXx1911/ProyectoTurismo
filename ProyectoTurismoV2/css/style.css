@@ -188,8 +188,8 @@
 .header__logo {
   animation: rollToRight 1s ease-out both;
   animation-delay: 1.5s;
-  width: 14vh;
-  height: 14vh;
+  width: 10vh;
+  height: 10vh;
   border-radius: 100px;
   margin-left: 2rem;
 }
@@ -236,7 +236,7 @@
   background-color: whitesmoke;
 }
 .header__search-bar__input:focus {
-  outline: 1px #2a9d8f solid;
+  outline: 1px black solid;
 }
 .header__search-bar__input::placeholder {
   text-transform: uppercase;
