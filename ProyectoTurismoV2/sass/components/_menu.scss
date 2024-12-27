@@ -1,15 +1,23 @@
 .menu{
   &__list{
-    padding: 1rem;
-    display: flex;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+    gap:0.5rem;
+    font-size:91%;
+    list-style: none;
+     /*display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
     list-style: none;
     @media only screen and (max-width: $max-width) {
-          z-index:10000; 
-    }
-    a{
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+      gap:0.5vw;
+    }*/
+    //Comentado por si hubiera que cambiarlo.
+      a{
         text-decoration: none;
         text-transform: uppercase;
         color:$color-black;
