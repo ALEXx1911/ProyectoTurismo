@@ -145,6 +145,16 @@
     transform: translateX(-8px);
   }
 }
+@keyframes scaleInCenter {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 .header {
   animation: moveInLeft 1.5s ease-in 0.2s both;
   background-color: #fabd00;
@@ -354,13 +364,14 @@
   background-color: #f4f4f9;
 }
 
-.login-container {
+.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 0.3rem;
+  position: relative;
 }
-.login-container__login-form {
+.form-container__form {
   text-align: center;
   width: 90%;
   animation: moveToBottom-2 2s ease-in;
@@ -370,7 +381,7 @@
   padding: 1.5rem;
   margin: 2rem;
 }
-.login-container__login-form__title {
+.form-container__form__title {
   animation: letters-animation 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
   animation-delay: 2.1s;
   text-transform: uppercase;
@@ -378,7 +389,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2.3rem;
 }
-.login-container__login-form__button-exit {
+.form-container__form__button-exit {
   position: relative;
   display: inline-block;
   padding: 12px 30px;
@@ -392,16 +403,16 @@
   transition: all 0.3s ease-in-out;
   overflow: hidden;
 }
-.login-container__login-form__button-exit:hover, .login-container__login-form__button-exit:focus {
+.form-container__form__button-exit:hover, .form-container__form__button-exit:focus {
   box-shadow: inset -3.5em 0 0 0 white, inset 3.5em 0 0 0 white;
   color: #e13236;
   background-color: white;
   border-color: white;
 }
-.login-container__login-form__button-exit:active {
+.form-container__form__button-exit:active {
   transform: scale(0.95);
 }
-.login-container__login-form__button-submit {
+.form-container__form__button-submit {
   position: relative;
   display: inline-block;
   padding: 12px 27px;
@@ -418,10 +429,10 @@
   position: relative;
   z-index: 1;
 }
-.login-container__login-form__button-submit:hover {
+.form-container__form__button-submit:hover {
   color: black;
 }
-.login-container__login-form__button-submit span {
+.form-container__form__button-submit span {
   position: absolute;
   width: 25%;
   height: 100%;
@@ -431,26 +442,27 @@
   transition: 0.5s;
   z-index: -1;
 }
-.login-container__login-form__button-submit span:nth-child(1) {
+.form-container__form__button-submit span:nth-child(1) {
   left: 0;
   transition-delay: 0.1s;
 }
-.login-container__login-form__button-submit span:nth-child(2) {
+.form-container__form__button-submit span:nth-child(2) {
   left: 25%;
   transition-delay: 0.2s;
 }
-.login-container__login-form__button-submit span:nth-child(3) {
+.form-container__form__button-submit span:nth-child(3) {
   left: 50%;
   transition-delay: 0.3s;
 }
-.login-container__login-form__button-submit span:nth-child(4) {
+.form-container__form__button-submit span:nth-child(4) {
   left: 75%;
   transition-delay: 0.4s;
 }
-.login-container__login-form__button-submit:hover span {
+.form-container__form__button-submit:hover span {
   transform: translateY(0) scale(2);
 }
-.login-container__login-form input {
+.form-container__form input {
+  align-self: flex-start;
   animation: fallWithRebound 1.5s both;
   animation-delay: 2s;
   border-radius: 0.5rem;
@@ -460,30 +472,31 @@
   transition: all 0.3s ease;
   outline: 0;
 }
-.login-container__login-form input:focus {
+.form-container__form input:focus {
   outline: auto;
   outline-color: rgb(0, 132, 255);
 }
-.login-container__login-form input::placeholder {
+.form-container__form input::placeholder {
   text-transform: uppercase;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.form-container__form-error {
+  animation: shake-animation 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  align-self: flex-start;
+  margin-left: 5vw;
+}
+.form-container__message {
+  animation: scaleInCenter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 2s;
+  font-weight: 400;
+  font-size: 1.1rem;
+  text-decoration: underline;
 }
 
 button {
   cursor: pointer;
   animation: flip-animation 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: 2s;
-}
-
-.login-error {
-  animation: shake-animation 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  opacity: 1;
-  transition-delay: 1s;
-  color: black;
-  text-align: center;
-}
-.login-error::after {
-  opacity: 0;
 }
 
 .slider-btn {
