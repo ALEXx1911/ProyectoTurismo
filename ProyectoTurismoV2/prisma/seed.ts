@@ -7,6 +7,7 @@ function crearUser(){
         data:{
             email:"ejemplo@gmail.com",
             name:"Ejemplo",
+           password:"Ejemplo"
         }
     });
 }
