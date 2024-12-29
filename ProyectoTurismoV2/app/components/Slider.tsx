@@ -48,6 +48,8 @@ export default function Slider(){
             loop={true}
             lazyPreloadPrevNext={1}
             centeredSlides={true}
+            slidesPerView={1}
+            resizeObserver={false}
             >
             <SwiperSlide>
                 <SliderItem imgUrl={imagenes[0]} titulo="Descubre España con Nosotros" subtitulo="Innumerables paisajes"></SliderItem>
