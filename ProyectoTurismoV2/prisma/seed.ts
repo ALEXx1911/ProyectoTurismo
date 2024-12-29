@@ -1,16 +1,21 @@
 import { PrismaClient } from "@prisma/client";
+import { hashPassword } from "~/utils/passwordUtils";
 //import { data } from "@remix-run/react";
 const db = new PrismaClient();
 
-function crearUser(){
+async function crearUser(){
+    const password="ejemplo";
+    const passwordConHash= await hashPassword(password);
+
     return db.user.create({
         data:{
             email:"ejemplo@gmail.com",
             name:"Ejemplo",
-           password:"Ejemplo"
+           password:passwordConHash
         }
     });
 }
+//Función para crear un usuario de prueba.
 
 function eliminarUser(){
     return db.user.delete({
