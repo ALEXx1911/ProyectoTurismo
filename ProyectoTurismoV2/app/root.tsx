@@ -87,7 +87,8 @@ return (
     </>
   );
 }
-//El "Header" y el "Footer" siempre se van a mostrar. También se mostrará el GIF del toro siempre y cuando se esté cargando algo.
+//El "Header" y el "Footer" siempre se van a mostrar. También se mostrará el GIF del toro siempre y 
+//cuando se esté cargando algo.
 
 export function ErrorBoundary(){
   const error=useRouteError();
@@ -100,7 +101,7 @@ export function ErrorBoundary(){
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Vaya...</title>
     </head>
-    <body className="h-4/5 bg-slate-50">
+    <body className="h-4/5">
       <div className="p-4">
         <h1 className="text-2xl font-mono my-4">Vaya...</h1>
         <p className="font-light">Si estás viendo esta página es porque se ha producido un error inesperado.</p>

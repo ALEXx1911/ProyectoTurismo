@@ -21,6 +21,7 @@ export default function Menu({active}:MenuProps){
 //Este componente devuelve un menú de opciones siempre y cuando "active" sea "true".
 //Se añadirá una opción que cuando la sesión esté iniciada, cambie el botón de "iniciar sesión" a
 //"cerrar sesión". 
+
 type MenuOptionProps={
     to:string;
     children:ReactNode;

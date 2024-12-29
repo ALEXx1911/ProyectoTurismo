@@ -8,3 +8,4 @@ export function ErrorMessage({className,...props}:ErrorMessageProps){
         <p {...props} className={classNames("text-red-600 text-lg",className)}/>
     ): null;
 }
+//Es una función que crea un tipo de párrafo por defecto para los mensajes de error.
