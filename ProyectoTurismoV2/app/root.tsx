@@ -73,6 +73,8 @@ export default function App() {
   const loaderData=useLoaderData<typeof loader>();
   const username=loaderData?.username;
   //Sacamos el "username" del "loader".
+  const profileImage=loaderData?.profile_image;
+  //Sacamos la imagen de perfil del usuario del "loader" si es que existe.
 return (
     <>
        {isLoading ?
@@ -81,7 +83,7 @@ return (
           alt=""/>
         </div>:null}
         {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo.*/}
-        <Header username={username} />
+        <Header username={username} profileImage={profileImage}/>
         <Outlet />
         <Footer/>
     </>

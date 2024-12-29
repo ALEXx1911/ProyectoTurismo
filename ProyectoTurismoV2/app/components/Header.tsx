@@ -4,9 +4,10 @@ import Menu from "./Menu";
 
 type HeaderProps={
   username:string | undefined;
+  profileImage: string | undefined;
 }
 
-export default function Header({username}:HeaderProps) {
+export default function Header({username,profileImage}:HeaderProps) {
   const [showMenu,setShowMenu]=useState(false);
   //Variable que controla la visibilidad del menú.
   function handleClickProfileBox(){
@@ -29,7 +30,7 @@ export default function Header({username}:HeaderProps) {
           />
         </form>
         <ProfileBox
-          image="../../img/imagen-perfil-default.jpg"
+          image={typeof profileImage=="string"?profileImage:"../../img/imagen-perfil-default.jpg"}
           username={typeof username=="string"?username:"No login"}
           //Si el "username" es de tipo "string" es porque hay un usuario con la sesión iniciada.
           handleClickProfileBox={handleClickProfileBox}

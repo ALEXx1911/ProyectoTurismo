@@ -4,7 +4,7 @@ import { json } from "@remix-run/react";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { getUser } from "~/models/user.server";
-import { commitSession, getSession } from "~/sessions";
+import { commitSession, destroySession, getSession } from "~/sessions";
 import { comparePasswords } from "~/utils/passwordUtils";
 import { validateForm } from "~/utils/validation";
 
@@ -29,8 +29,16 @@ export const action:ActionFunction=async({request})=>{
             if(passwordIsCorrect){
                 const cookieHeader=request.headers.get("cookie");
                 const session=await getSession(cookieHeader);
+                session.set("username",undefined);
+                session.set("profile_image",undefined);
+                //Dejamos en "undefined" los parámetros que estuvieran anteriormente.ç
+
                 session.set("username",user.name);
                 //Insertamos el nombre de usuario a la sesión. 
+                const userProfileImage=user.imageUrl;
+                if(userProfileImage!==null){
+                    session.set("profile_image",userProfileImage);
+                }
                 return redirect("/",{
                     headers:{
                         "Set-Cookie":await commitSession(session)
@@ -44,7 +52,7 @@ export const action:ActionFunction=async({request})=>{
 
         },
 
-        (errors)=>(json({errors,email:formData.get("email")},{status:403}))
+        (errors)=>(json({errors,email:formData.get("email"),username:formData.get("username")},{status:403}))
     );
 }
 //Se valida el "email" en el "action". Si el email es válido, te redirige a la página principal.
@@ -61,6 +69,7 @@ export default function login(){
                 <ButtonSubmit>Iniciar sesión</ButtonSubmit>
             </Form>
             <ErrorMessage className="form-container__form-error">{actionData?.errors?.email}</ErrorMessage>
+            <ErrorMessage className="form-container__form-error">{actionData?.errors?.username}</ErrorMessage>
             <Link className="form-container__message" to="../register">
                 ¿Aún no tiene cuenta? Regístrese ahora
             </Link>
