@@ -1,9 +1,10 @@
-.login-container {
+.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 0.3rem;
-  &__login-form {
+  position: relative;
+  &__form {
     text-align: center;
     width: 90%;
     animation: moveToBottom-2 2s ease-in;
@@ -109,6 +110,7 @@
     }
 
     & input {
+      align-self: flex-start;
       animation: fallWithRebound 1.5s both;
       animation-delay: 2s;
       border-radius: 0.5rem;
@@ -128,6 +130,19 @@
       }
     }
   }
+  &__form-error {
+    animation: shake-animation 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    
+   align-self: flex-start;
+   margin-left: 5vw;
+  }
+  &__message{
+    animation: scaleInCenter 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 2s;
+    font-weight: 400;
+    font-size:1.1rem;
+    text-decoration: underline;
+  }
 }
 
 button {
@@ -136,13 +151,3 @@ button {
   animation-delay: 2s;
 }
 
-.login-error {
-  animation: shake-animation 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-  opacity:1;
-  transition-delay: 1s;
-  color: $color-black;
-  text-align: center;
-  &::after{
-    opacity: 0;
-  }
-}
