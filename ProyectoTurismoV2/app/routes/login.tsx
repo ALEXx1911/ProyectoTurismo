@@ -12,7 +12,6 @@ const loginSchema=z.object({
     email:z.string().email(),
     password:z.string()
 });
-
 export const action:ActionFunction=async({request})=>{
     const formData=await request.formData();
     //Sacamos los datos del formulario.
@@ -52,7 +51,6 @@ export const action:ActionFunction=async({request})=>{
 
 export default function Login(){
     const actionData=useActionData<typeof action>();
-    //Sacamos los datos del "action".
     return (
         <div className="login-container">
             <Form className="login-container__login-form" method="POST">
