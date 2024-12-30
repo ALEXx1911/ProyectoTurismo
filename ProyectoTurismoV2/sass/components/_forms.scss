@@ -119,9 +119,8 @@
       width: 40%;
       transition: all 0.3s ease;
       outline: 0;
-      &:focus {
-        outline:auto;
-        outline-color: $color-blue-light;
+      &:focus:not([type^="file"]) {
+        outline:3px $color-black solid;
       }
 
       &::placeholder {

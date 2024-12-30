@@ -472,9 +472,8 @@
   transition: all 0.3s ease;
   outline: 0;
 }
-.form-container__form input:focus {
-  outline: auto;
-  outline-color: rgb(0, 132, 255);
+.form-container__form input:focus:not([type^=file]) {
+  outline: 3px black solid;
 }
 .form-container__form input::placeholder {
   text-transform: uppercase;
