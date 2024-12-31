@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { hashPassword } from "~/utils/passwordUtils";
-//import { data } from "@remix-run/react";
+import { createProvinces, connectCategoriesWithProvinces } from "./provincias";
+
 const db = new PrismaClient();
 
 async function crearUser(){
@@ -43,7 +44,8 @@ function createCategory(){
 async function seed() {
     const user=await crearUser();
     const category= await createCategory();
-
+    const provinces=await createProvinces();
+    await connectCategoriesWithProvinces();
 }
 
 seed();

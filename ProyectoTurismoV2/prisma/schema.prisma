@@ -23,7 +23,7 @@ datasource db {
 model Provinces {
   id                String      @id @default(cuid())
   userId            String?
-  name              String
+  name              String      @unique
   description       String
   imageUrl          String
   climate           String
