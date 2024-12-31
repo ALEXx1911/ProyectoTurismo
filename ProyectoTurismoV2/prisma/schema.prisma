@@ -22,7 +22,7 @@ datasource db {
 //Modelo de tarjeta de las provincias
 model Provinces {
   id                String      @id @default(cuid())
-  userId            String
+  userId            String?
   name              String
   description       String
   imageUrl          String
@@ -31,10 +31,11 @@ model Provinces {
   recommendedPlaces String
   typicalFood       String
   festivities       String
+  ccaaName          String
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 
-  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
   categories        Category[]  @relation("ProvincesToCategories")
 }
 
