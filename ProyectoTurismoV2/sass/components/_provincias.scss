@@ -1,0 +1,38 @@
+.provincias {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &__titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  &__border {
+    border-bottom-width: 2px;
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  &__padding {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  &__button {
+    padding-bottom: 0.625rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    @media (min-width: 768px) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    &:hover {
+      color: #6b7280;
+    }
+  }
+  &__border {
+    border-bottom-width: 2px;
+    border-bottom-color: #1d4ed8;
+  }
+}
