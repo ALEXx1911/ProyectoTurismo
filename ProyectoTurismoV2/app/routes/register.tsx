@@ -5,6 +5,7 @@ import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { createUser, getUser } from "~/models/user.server";
 import { validateForm } from "~/utils/validation";
+
 const registerSchema=z.object({
     email:z.string().email(),
     username:z.string().min(5),
@@ -18,7 +19,6 @@ export const action:ActionFunction=async({request})=>{
         const user=await getUser(email);
         if(user==null){
             const image=formData.get("image-profile");
-            console.log(image);
            try{
                 if (image && typeof image === "object" && "arrayBuffer" in image) {
                     const imageBuffer = await image.arrayBuffer(); 
