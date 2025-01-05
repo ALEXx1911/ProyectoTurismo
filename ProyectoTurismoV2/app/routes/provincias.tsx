@@ -7,7 +7,7 @@ export default function provincias() {
       <h1 className="provincias__titulo">Provincias</h1>
       <nav className="provincias__border">
         <NavLink
-          to="Provinci"
+          to="Provincia"
           className={({ isActive }) =>
             classNames(
               "provincias__button",
@@ -24,3 +24,4 @@ export default function provincias() {
     </div>
   );
 }
+//Aquí deben mostrarse todas las provincias.

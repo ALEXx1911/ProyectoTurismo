@@ -1,10 +1,25 @@
-import { NavLink } from "@remix-run/react";
+import { LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
+import { NavLink, useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import { ReactNode } from "react";
 type MenuProps={
     active:boolean;
 }
+export const loader=async({request}:LoaderFunctionArgs)=>{
+    const cookie=request.headers.get("cookie");
+    console.log(cookie);
+    return cookie;
+}   
+
 export default function Menu({active}:MenuProps){
+    const data=useLoaderData();
+    let userLogin:boolean=false;
+    if(data?.username){
+        userLogin=true;
+    }else{
+        userLogin=false;
+    }
+
   if(active){
     return( 
     <div className="menu">
@@ -12,8 +27,10 @@ export default function Menu({active}:MenuProps){
             <MenuOption to="/">Página principal</MenuOption>
             <MenuOption to="provincias">Todas las provincias</MenuOption>
             <MenuOption to="viajes">Tus viajes</MenuOption>
-            <MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>
-            <MenuOption to="login">Iniciar sesión</MenuOption>
+            {userLogin?<MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>:
+            <MenuOption to="register">Registrarse</MenuOption>}
+            <MenuOption to="login">{userLogin?"Iniciar sesión con otra cuenta":
+            "Iniciar sesión"}</MenuOption>
         </ul>
     </div>);
   }

@@ -12,6 +12,7 @@ const formSchema=z.object({
     email:z.string().email(),
     password:z.string()
 });
+
 export const action:ActionFunction=async({request})=>{
     const formData=await request.formData();
     //Sacamos los datos del formulario.
