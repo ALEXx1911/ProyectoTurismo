@@ -37,6 +37,7 @@ model Provinces {
 
   user              User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
   categories        Category[]  @relation("ProvincesToCategories")
+  ilikes            Ilike[]      @relation("ProvincesToIlikes") 
 }
 
 
@@ -52,6 +53,7 @@ model User {
   updatedAt         DateTime    @updatedAt
 
   provinces         Provinces[]
+  ilikes            Ilike[]     @relation("UsersToIlikes")
 }
 
 
@@ -64,4 +66,17 @@ model Category {
   updatedAt     DateTime      @updatedAt
 
   provinces     Provinces[]   @relation("ProvincesToCategories")
+}
+
+// Modelo Ilike para muchos a muchos
+model Ilike {
+  id            String       @id @default(cuid())
+  like          Boolean      @default(false)
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  // Relación muchos a muchos
+  users         User[]       @relation("UsersToIlikes")
+  provinces     Provinces[]  @relation("ProvincesToIlikes")
 }
