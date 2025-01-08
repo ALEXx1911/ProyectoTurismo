@@ -22,7 +22,11 @@
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-size:2.3rem;
     }
-
+    &__button-exit,&__button-submit{
+      cursor: pointer;
+      animation: flip-animation 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation-delay: 2s;
+    }
     &__button-exit {
       position: relative;
       display: inline-block;
@@ -143,10 +147,3 @@
     text-decoration: underline;
   }
 }
-
-button {
-  cursor: pointer;
-  animation: flip-animation 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation-delay: 2s;
-}
-

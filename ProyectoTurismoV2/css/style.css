@@ -389,6 +389,11 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2.3rem;
 }
+.form-container__form__button-exit, .form-container__form__button-submit {
+  cursor: pointer;
+  animation: flip-animation 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 2s;
+}
 .form-container__form__button-exit {
   position: relative;
   display: inline-block;
@@ -490,12 +495,6 @@
   font-weight: 400;
   font-size: 1.1rem;
   text-decoration: underline;
-}
-
-button {
-  cursor: pointer;
-  animation: flip-animation 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation-delay: 2s;
 }
 
 .slider-btn {
