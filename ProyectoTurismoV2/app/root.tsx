@@ -18,7 +18,8 @@ import "./tailwind.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { LoaderFunction } from "react-router-dom";
-import { getSession } from "./sessions";
+import { destroySession, getSession } from "./sessions";
+import { isUserLogged } from "./utils/auth.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -63,7 +64,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export const loader:LoaderFunction=async({request})=>{
   const cookieHeader=request.headers.get("cookie");
   const session=await getSession(cookieHeader);
-  return json(session.data);
+  const isUserLog=await isUserLogged(request);
+  if(isUserLog){
+    return json(session.data);
+  }else{
+    return json({
+      headers:{
+        "Set-Cookie":destroySession(session)
+      }
+    })
+  }
 
 }
 //Sacamos los datos de la cookie de sesión en el "loader".

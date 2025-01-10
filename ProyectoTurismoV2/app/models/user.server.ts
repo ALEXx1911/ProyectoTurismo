@@ -32,3 +32,12 @@ export async function createUser(email:string, username:string,password:string,i
    }
 }
 //Función para crear un usuario. La función hashea contraseña.
+
+export async function getUserById(userId:string){
+    return db.user.findUnique({
+        where:{
+            id:userId
+        }
+    });
+}
+//Función que busca el usuario según su ID.

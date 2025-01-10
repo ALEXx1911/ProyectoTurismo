@@ -4,7 +4,7 @@ import { json } from "@remix-run/react";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { getUser } from "~/models/user.server";
-import { commitSession, destroySession, getSession } from "~/sessions";
+import { commitSession, getSession } from "~/sessions";
 import { comparePasswords } from "~/utils/passwordUtils";
 import { validateForm } from "~/utils/validation";
 
@@ -30,10 +30,11 @@ export const action:ActionFunction=async({request})=>{
             if(passwordIsCorrect){
                 const cookieHeader=request.headers.get("cookie");
                 const session=await getSession(cookieHeader);
+                session.set("userId",undefined);
                 session.set("username",undefined);
                 session.set("profile_image",undefined);
-                //Dejamos en "undefined" los parámetros que estuvieran anteriormente.ç
-
+                //Dejamos en "undefined" los parámetros que estuvieran anteriormente.
+                session.set("userId",user.id);
                 session.set("username",user.name);
                 //Insertamos el nombre de usuario a la sesión. 
                 const userProfileImage=user.imageUrl;
