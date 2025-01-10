@@ -1,1 +1,1 @@
-Este es un proyecto de turismo , para clase xd
+Este es un proyecto de turismo , para clase
