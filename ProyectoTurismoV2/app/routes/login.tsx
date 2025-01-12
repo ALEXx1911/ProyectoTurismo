@@ -13,10 +13,12 @@ const formSchema=z.object({
     email:z.string().email("Se ha introducido un email inválido."),
     password:z.string()
 });
+
 export const loader=async({request}:LoaderFunctionArgs)=>{
     await userNotLoggedRequired(request);
     return null;
 }
+
 export const action:ActionFunction=async({request})=>{
     await userNotLoggedRequired(request);
     const formData=await request.formData();
