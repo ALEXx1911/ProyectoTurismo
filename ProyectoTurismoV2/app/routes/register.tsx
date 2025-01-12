@@ -1,4 +1,4 @@
-import { ActionFunction, json, redirect } from "@remix-run/node";
+import { ActionFunction, json, LoaderFunctionArgs, redirect } from "@remix-run/node";
 import { Form, Link, useActionData } from "@remix-run/react";
 import { useState } from "react";
 import sharp from "sharp";
@@ -7,6 +7,10 @@ import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { createUser, getUser } from "~/models/user.server";
 import { validateForm } from "~/utils/validation";
 
+export const loader=async({request}:LoaderFunctionArgs)=>{
+    await userNotLoggedRequired(request);
+    return null;
+}
 const registerSchema=z.object({
     email:z.string().email("Se ha introducido un email inválido."),
     username:z.string().min(5,"El nombre de usuario requiere al menos de 5 caracteres."),

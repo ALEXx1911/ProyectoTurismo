@@ -2,7 +2,7 @@ import { LoaderFunctionArgs } from "@remix-run/node";
 import { userLoggedRequired } from "~/utils/auth.server";
 
 export const loader=async({request}:LoaderFunctionArgs)=>{
-    const user=await userLoggedRequired(request);
+    await userLoggedRequired(request);
     //Es necesario que haya una sesión iniciada.
     return null;
 }
