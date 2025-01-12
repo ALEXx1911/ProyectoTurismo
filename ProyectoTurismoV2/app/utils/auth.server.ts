@@ -13,27 +13,19 @@ export async function getCurrentUser(request:Request){
 }
 //Función que devuelve el usuario que se encuentre actualmente con la sesión iniciada.
 
-export async function isUserLogged(request:Request){
-    const user= await getCurrentUser(request);
-    if(user==null){
-        return false;
-    }
-    return true;
-}
-//Función que devuelve si el usuario está o no con la sesión iniciada.
-
 export async function userLoggedRequired(request:Request){
-    const user= await getCurrentUser(request);
+    const user=await getCurrentUser(request);
     if(user==null){
-        return redirect("/login");
+        throw redirect("/");
     }
 }
-//Función que te redirige a "/" si no hay un usuario con la sesión iniciada.
+//Función que te redirige a "/" si no hay un usuario con la sesión iniciada o si ya no existe el usuario
+//con la sesión iniciada.
 
-export async function userLoggedNotRequired(request:Request){
-    const user= await getCurrentUser(request);
+export async function userNotLoggedRequired(request:Request){
+    const user=await getCurrentUser(request);
     if(user!==null){
-        return redirect("/");
+        throw redirect("/");
     }
 }
 //Función que te redirige a "/" si hay un usuario con la sesión iniciada.

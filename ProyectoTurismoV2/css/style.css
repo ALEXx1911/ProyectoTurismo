@@ -155,6 +155,20 @@
     opacity: 1;
   }
 }
+@keyframes slideInBlurredRight {
+  0% {
+    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    transform-origin: 0% 50%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
 .header {
   animation: moveInLeft 1.5s ease-in 0.2s both;
   background-color: #fabd00;
@@ -319,16 +333,6 @@
   gap: 0.5rem;
   font-size: 91%;
   list-style: none;
-  /*display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  list-style: none;
-  @media only screen and (max-width: $max-width) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
-    gap:0.5vw;
-  }*/
 }
 .menu__list a {
   text-decoration: none;
@@ -383,13 +387,13 @@
 }
 .form-container__form__title {
   animation: letters-animation 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  animation-delay: 2.1s;
+  animation-delay: 2s;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2.3rem;
 }
-.form-container__form__button-exit, .form-container__form__button-submit {
+.form-container__form__button-exit, .form-container__form__button-submit, .form-container__form__image-container__label {
   cursor: pointer;
   animation: flip-animation 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: 2s;
@@ -466,6 +470,36 @@
 .form-container__form__button-submit:hover span {
   transform: translateY(0) scale(2);
 }
+.form-container__form__image-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.form-container__form__image-container img {
+  animation: slideInBlurredRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation-delay: 2s;
+  background-color: white;
+  width: 25vh;
+  height: 25vh;
+  border-radius: 50%;
+  border: 6px solid white;
+}
+.form-container__form__image-container__label {
+  color: black;
+  background-color: white;
+  padding: 6px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px black solid;
+}
+.form-container__form__image-container__label:hover {
+  letter-spacing: 0.1rem;
+}
+.form-container__form__image-container input {
+  display: none;
+}
 .form-container__form input {
   align-self: flex-start;
   animation: fallWithRebound 1.5s both;
@@ -477,7 +511,7 @@
   transition: all 0.3s ease;
   outline: 0;
 }
-.form-container__form input:focus:not([type^=file]) {
+.form-container__form input:focus {
   outline: 3px black solid;
 }
 .form-container__form input::placeholder {

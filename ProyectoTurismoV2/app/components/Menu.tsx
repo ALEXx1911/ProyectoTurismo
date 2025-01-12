@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
-import { NavLink, useLoaderData } from "@remix-run/react";
+import { NavLink } from "@remix-run/react";
 import classNames from "classnames";
 import { ReactNode } from "react";
 
@@ -15,7 +14,6 @@ export default function Menu({active,isUserLogged}:MenuProps){
                 <ul className="menu__list">
                     <MenuOption to="/">Página principal</MenuOption>
                     <MenuOption to="provincias">Todas las provincias</MenuOption>
-                    <MenuOption to="viajes">Tus viajes</MenuOption>
                     {isUserLogged?<MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>:
                     <MenuOption to="register">Registrarse</MenuOption>}
                     {isUserLogged?<MenuOption to="logout">Cerrar sesión</MenuOption>:

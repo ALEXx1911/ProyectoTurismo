@@ -1,21 +1,20 @@
 import { ActionFunction, json, redirect } from "@remix-run/node";
 import { Form, Link, useActionData } from "@remix-run/react";
+import { useState } from "react";
 import sharp from "sharp";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { createUser, getUser } from "~/models/user.server";
-import { userLoggedNotRequired } from "~/utils/auth.server";
 import { validateForm } from "~/utils/validation";
 
 const registerSchema=z.object({
-    email:z.string().email(),
-    username:z.string().min(5),
-    password:z.string().min(5)
+    email:z.string().email("Se ha introducido un email inválido."),
+    username:z.string().min(5,"El nombre de usuario requiere al menos de 5 caracteres."),
+    password:z.string().min(5,"La contraseña tiene que ser de al menos 5 caracteres.")
 });
 //Parámetros de cómo deben ser los datos del registro.
 
 export const action:ActionFunction=async({request})=>{
-    await userLoggedNotRequired(request);
     const formData=await request.formData();
     return validateForm(formData,registerSchema,(async({email,username,password})=>{
         const user=await getUser(email);
@@ -30,13 +29,14 @@ export const action:ActionFunction=async({request})=>{
                     .toFormat('jpeg')
                     .toBuffer();
                     //Redimiensionamos la imagen, la pasamos a JPEG y obtenemos el buffer de la
-                    //nueva imagen.
+                    //nueva imagen. Necesitamos el redimensionado para poder guardar la URL de 
+                    //la imagen en la cookie.
                     const base64Image = `data:image/jpeg;base64,${resizedImage.toString('base64')}`;
-                    createUser(email,username,password,base64Image);
+                    await createUser(email,username,password,base64Image);
                     return redirect("../login");
                }
             }catch(error){
-                createUser(email,username,password);
+                await createUser(email,username,password);
                 return redirect("../login");
             }
             //Creamos el usuario con imagen de la imagen de perfil según haya sido o no seleccionada.
@@ -49,15 +49,46 @@ export const action:ActionFunction=async({request})=>{
     password:formData.get("password")}, {status:403})))
 }
 
-
 export default function register(){
     const actionData=useActionData<typeof action>();
+    const defaultFile ="../../img/imagen-perfil-default.jpg";
+    //Es la imagen que se va a mostrar por defecto cuando no haya ninguna foto de perfil introducida.
+    const [imageSrc, setImageSrc] = useState(defaultFile);
+    //Esta variable contiene la URL de la imagen que se va a mostrar en "img".
     return (
         <div className="form-container">
             <Form className="form-container__form" method="POST" encType="multipart/form-data">
                 <Link to="/"><button className="form-container__form__button-exit">Atrás</button></Link>
                 <h1 className="form-container__form__title">Registro</h1>
-                <input type="file" name="image-profile" accept="image/*" /><br/>
+                <div className="form-container__form__image-container">
+                    <img src={imageSrc} alt="" />
+                    <input type="file" name="image-profile" id="image-profile" accept="image/*" 
+                    onChange={(e)=>{
+                        const profileImage = e.target.files?.[0];
+                        //Extrae la imagen seleccionada si es que hay una. Si no se ha seleccionado
+                        //ninguna imagen, devuelve "undefined".
+                        if (profileImage) {
+                            const reader = new FileReader();
+                            //Un objeto "FileReader" sirve para leer un archivo.
+                            reader.onload = (event) => {
+                                if (event.target?.result && typeof event.target.result === "string") {
+                                    setImageSrc(event.target.result);
+                                }
+                                //Esta función cambia "imageSrc" para que sea "profileImage" si 
+                                //el resultado de "event" existe es tipo "string".
+                            };
+                            //Se define la función que se va a ejecuta cuando "reader" haya leído 
+                            //el archivo.
+                            reader.readAsDataURL(profileImage);
+                            //Lee la imagen y la codifica en base 64 para mostrar la imagen.
+                        }else {
+                            setImageSrc(defaultFile); 
+                            //Si no se introduce ninguna imagen, se pone la imagen por defecto.
+                        }
+                    }}/>
+                    <label className="form-container__form__image-container__label" 
+                    htmlFor="image-profile">Cambiar foto</label>
+                </div>
                 <input type="email" name="email" placeholder="Email" defaultValue={actionData?.email}/><br/><br/>
                 <input type="text" name="username" placeholder="Username" defaultValue={actionData?.username}/><br/><br/>
                 <input type="password" name="password" placeholder="Contraseña"/><br/><br/>

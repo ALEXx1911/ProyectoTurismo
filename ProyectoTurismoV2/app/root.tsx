@@ -80,7 +80,6 @@ export default function App() {
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
   const loaderData=useLoaderData<typeof loader>();
-  console.log("Loader data: ", loaderData);
   const username=loaderData?.username;
   //Sacamos el "username" del "loader".
   const profileImage=loaderData?.profile_image;

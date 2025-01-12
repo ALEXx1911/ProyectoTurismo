@@ -16,13 +16,13 @@
 
     &__title {
       animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-      animation-delay: 2.1s;
+      animation-delay: 2s;
       text-transform: uppercase;
       letter-spacing: 0.1rem;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-size:2.3rem;
     }
-    &__button-exit,&__button-submit{
+    &__button-exit,&__button-submit, &__image-container__label{
       cursor: pointer;
       animation: flip-animation 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
       animation-delay: 2s;
@@ -112,6 +112,39 @@
         transform: translateY(0) scale(2);
       }
     }
+    &__image-container{
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+
+      img{
+        animation: slideInBlurredRight 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+        animation-delay: 2s;
+        background-color: $color-white;
+        width: 25vh;
+        height: 25vh;
+        border-radius: 50%;
+        border: 6px solid $color-white;
+      }
+      
+      &__label {
+          color: $color-black;
+          background-color: $color-white;
+          padding: 6px 20px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border: 1px $color-black solid;
+          &:hover {
+            letter-spacing: 0.1rem;
+          }
+      }
+      input{
+        display: none;
+      }
+
+    }
 
     & input {
       align-self: flex-start;
@@ -123,8 +156,8 @@
       width: 40%;
       transition: all 0.3s ease;
       outline: 0;
-      &:focus:not([type^="file"]) {
-        outline:3px $color-black solid;
+      &:focus {
+        outline: 3px $color-black solid;
       }
 
       &::placeholder {

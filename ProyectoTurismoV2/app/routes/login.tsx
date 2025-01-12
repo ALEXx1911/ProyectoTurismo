@@ -1,21 +1,24 @@
-import { ActionFunction } from "@remix-run/node";
+import { ActionFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { Form,Link, redirect, useActionData } from "@remix-run/react";
 import { json } from "@remix-run/react";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { getUser } from "~/models/user.server";
 import { commitSession, getSession } from "~/sessions";
-import { userLoggedNotRequired } from "~/utils/auth.server";
+import { userNotLoggedRequired } from "~/utils/auth.server";
 import { comparePasswords } from "~/utils/passwordUtils";
 import { validateForm } from "~/utils/validation";
 
 const formSchema=z.object({
-    email:z.string().email(),
+    email:z.string().email("Se ha introducido un email inválido."),
     password:z.string()
 });
-
+export const loader=async({request}:LoaderFunctionArgs)=>{
+    await userNotLoggedRequired(request);
+    return null;
+}
 export const action:ActionFunction=async({request})=>{
-    await userLoggedNotRequired(request);
+    await userNotLoggedRequired(request);
     const formData=await request.formData();
     //Sacamos los datos del formulario.
     return validateForm(formData,formSchema,
