@@ -18,8 +18,7 @@ import "./tailwind.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { LoaderFunction } from "react-router-dom";
-import { destroySession, getSession } from "./sessions";
-import { isUserLogged } from "./utils/auth.server";
+import { getCurrentUser } from "./utils/auth.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -62,30 +61,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 export const loader:LoaderFunction=async({request})=>{
-  const cookieHeader=request.headers.get("cookie");
-  const session=await getSession(cookieHeader);
-  const isUserLog=await isUserLogged(request);
-  if(isUserLog){
-    return json(session.data);
-  }else{
+  const user= await getCurrentUser(request);
+  if(user==null){
     return json({
-      headers:{
-        "Set-Cookie":destroySession(session)
-      }
-    })
+      isUserLogged:false
+    });
   }
-
+  return json({
+    isUserLogged:true,
+    username:user.name,
+    profile_image:user.imageUrl
+  });
 }
-//Sacamos los datos de la cookie de sesión en el "loader".
+//Controlamos que el usuario tenga la sesión iniciada con "isUserLogged", cuyo valor cambia según
+//el usuario tenga o no la sesión iniciada. Si el usuario está logueado, se devuelve también su 
+//nombre de usuario y la URL de su imagen de perfil.
 export default function App() {
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
   const loaderData=useLoaderData<typeof loader>();
+  console.log("Loader data: ", loaderData);
   const username=loaderData?.username;
   //Sacamos el "username" del "loader".
   const profileImage=loaderData?.profile_image;
   //Sacamos la imagen de perfil del usuario del "loader" si es que existe.
-return (
+  const userIsLogged=loaderData.isUserLogged;
+  //Sacamos el valor de "isUserLogged" del "loader".
+  return (
     <>
        {isLoading ?
         <div className="bull-gif-container">
@@ -93,7 +95,7 @@ return (
           alt=""/>
         </div>:null}
         {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo.*/}
-        <Header username={username} profileImage={profileImage}/>
+        <Header username={username} profileImage={profileImage} isUserLogged={userIsLogged}/>
         <Outlet />
         <Footer/>
     </>

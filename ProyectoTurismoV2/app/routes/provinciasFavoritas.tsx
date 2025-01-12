@@ -1,3 +1,11 @@
+import { LoaderFunctionArgs } from "@remix-run/node";
+import { userLoggedRequired } from "~/utils/auth.server";
+
+export const loader=async({request}:LoaderFunctionArgs)=>{
+     await userLoggedRequired(request);
+    //Es necesario que no haya una sesión iniciada.
+    return null;
+}
 export default function provinciasFavoritas(){
     return (
         <div>

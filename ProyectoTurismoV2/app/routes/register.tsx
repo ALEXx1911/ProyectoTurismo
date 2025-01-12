@@ -4,6 +4,7 @@ import sharp from "sharp";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { createUser, getUser } from "~/models/user.server";
+import { userLoggedNotRequired } from "~/utils/auth.server";
 import { validateForm } from "~/utils/validation";
 
 const registerSchema=z.object({
@@ -14,6 +15,7 @@ const registerSchema=z.object({
 //Parámetros de cómo deben ser los datos del registro.
 
 export const action:ActionFunction=async({request})=>{
+    await userLoggedNotRequired(request);
     const formData=await request.formData();
     return validateForm(formData,registerSchema,(async({email,username,password})=>{
         const user=await getUser(email);

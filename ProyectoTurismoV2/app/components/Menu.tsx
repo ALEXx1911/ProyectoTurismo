@@ -5,22 +5,10 @@ import { ReactNode } from "react";
 
 type MenuProps={
     active:boolean;
+    isUserLogged:boolean;
 }
 
-export const loader=async({request}:LoaderFunctionArgs)=>{
-    const cookie=request.headers.get("cookie");
-    return cookie;
-}   
-
-export default function Menu({active}:MenuProps){
-    const data=useLoaderData();
-    let userLogin:boolean=false;
-    if(data?.username){
-        userLogin=true;
-    }else{
-        userLogin=false;
-    }
-
+export default function Menu({active,isUserLogged}:MenuProps){
     if(active){
         return( 
             <div className="menu">
@@ -28,10 +16,10 @@ export default function Menu({active}:MenuProps){
                     <MenuOption to="/">Página principal</MenuOption>
                     <MenuOption to="provincias">Todas las provincias</MenuOption>
                     <MenuOption to="viajes">Tus viajes</MenuOption>
-                    {userLogin?<MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>:
+                    {isUserLogged?<MenuOption to="provinciasFavoritas">Provincias Favoritas</MenuOption>:
                     <MenuOption to="register">Registrarse</MenuOption>}
-                    <MenuOption to="login">{userLogin?"Iniciar sesión con otra cuenta":
-                    "Iniciar sesión"}</MenuOption>
+                    {isUserLogged?<MenuOption to="logout">Cerrar sesión</MenuOption>:
+                    <MenuOption to="login">Iniciar sesión</MenuOption>}
                 </ul>
             </div>);
   }

@@ -25,7 +25,7 @@ export async function isUserLogged(request:Request){
 export async function userLoggedRequired(request:Request){
     const user= await getCurrentUser(request);
     if(user==null){
-        return redirect("/");
+        return redirect("/login");
     }
 }
 //Función que te redirige a "/" si no hay un usuario con la sesión iniciada.

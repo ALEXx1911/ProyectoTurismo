@@ -1,12 +1,17 @@
-import { LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { closeSession } from "~/sessions";
+import { json, LoaderFunctionArgs, redirect } from "@remix-run/node";
+import { destroySession, getSession } from "~/sessions";
 import { userLoggedRequired } from "~/utils/auth.server";
-
 export const loader=async({request}:LoaderFunctionArgs)=>{
     await userLoggedRequired(request);
-    await closeSession(request);
+    const cookie=request.headers.get("cookie");
+    const session=await getSession(cookie);
+    return json("",{
+        headers:{
+            "Set-Cookie": await destroySession(session)
+        }
+    });
 }
-//Cerramos la sesión en el servidor.
+//Destruimos la sesión en el "loader".
 export default function Logout(){
     return redirect("/");
 }

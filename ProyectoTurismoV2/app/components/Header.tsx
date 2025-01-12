@@ -5,9 +5,10 @@ import Menu from "./Menu";
 type HeaderProps={
   username:string | undefined;
   profileImage: string | undefined;
+  isUserLogged:boolean;
 }
 
-export default function Header({username,profileImage}:HeaderProps) {
+export default function Header({username,profileImage,isUserLogged}:HeaderProps) {
   const [showMenu,setShowMenu]=useState(false);
   //Variable que controla la visibilidad del menú.
   function handleClickProfileBox(){
@@ -36,7 +37,7 @@ export default function Header({username,profileImage}:HeaderProps) {
           handleClickProfileBox={handleClickProfileBox}
         />
       </div>
-      <Menu active={showMenu}/>
+      <Menu active={showMenu} isUserLogged={isUserLogged}/>
     </>
   );
 }

@@ -25,3 +25,8 @@ export default function provincias() {
   );
 }
 //Aquí deben mostrarse todas las provincias.
+
+function provincia(){
+
+}
+//Aquí se puede hacer el componente para cada provincia.
