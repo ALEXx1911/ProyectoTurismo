@@ -5,6 +5,7 @@ import sharp from "sharp";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { createUser, getUser } from "~/models/user.server";
+import { userNotLoggedRequired } from "~/utils/auth.server";
 import { validateForm } from "~/utils/validation";
 
 export const loader=async({request}:LoaderFunctionArgs)=>{
