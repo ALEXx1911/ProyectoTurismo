@@ -35,7 +35,7 @@ export default function provincias() {
             <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">Provincias de España</h1>
             <div className="my-6 mx-16 grid auto-cols-[minmax(_1fr,_2fr)] gap-2 md:grid-cols-2">
                 {data.map((provincia)=>{
-                    return <ProvincieCard imageUrl={provincia.imageUrl} name={provincia.name} info={provincia.description} climate={provincia.climate}
+                    return <ProvincieCard key={provincia.id} imageUrl={provincia.imageUrl} name={provincia.name} info={provincia.description} climate={provincia.climate}
                     places={provincia.recommendedPlaces} food={provincia.typicalFood} festivities={provincia.festivities} beaches={provincia.beaches}></ProvincieCard>
                 })}
             </div>
