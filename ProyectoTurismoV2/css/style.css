@@ -604,6 +604,29 @@
   border-bottom-color: #1d4ed8;
 }
 
+.card {
+  height: 42rem;
+}
+
+.titulo {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-column-gap: 1.5rem;
+  align-items: center;
+  font-size: 1.6rem;
+  color: red;
+}
+.titulo::before, .titulo::after {
+  content: "";
+  height: 1px;
+  display: block;
+  background-color: currentColor;
+}
+
+.imagenxd {
+  border-radius: 20px;
+}
+
 .search-result__content {
   margin-top: 20px;
 }
