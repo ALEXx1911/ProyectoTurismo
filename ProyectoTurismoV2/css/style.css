@@ -627,6 +627,30 @@
   border-radius: 20px;
 }
 
+.buttonCard {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: #e13236;
+  border: 2px solid #e13236;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+.buttonCard:hover, .buttonCard:focus {
+  box-shadow: inset -3.5em 0 0 0 white, inset 3.5em 0 0 0 white;
+  color: #e13236;
+  background-color: white;
+  border-color: white;
+}
+.buttonCard:active {
+  transform: scale(0.95);
+}
+
 .search-result__content {
   margin-top: 20px;
 }

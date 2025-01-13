@@ -77,7 +77,7 @@ function ProvincieCard({imageUrl,name,info,climate,beaches,places,food,festiviti
               {beaches ? <p><span className="font-bold">Playas: </span>{beaches}</p>:""}
               <p><span className="font-bold">Comida típica: </span>{food}</p>
               <p><span className="font-bold">Festividades: </span>{festivities}</p>
-              <button className="login-container__login-form__button-exit mb-1 mt-1 hover:border-red-600 self-center">Añadir</button>
+              <button className="buttonCard mb-1 mt-1 hover:border-red-600 self-center">Añadir</button>
           </div>
       </div>
   );
