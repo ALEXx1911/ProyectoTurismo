@@ -65,3 +65,9 @@ export async function deleteProvinceFromFavorites(userId:string,provinceId:strin
     return null;
 }
 //Función que elimina una provincia a las favoritas de un usuario.
+//Función para obtener las provicias y verlas en el apartado de todas las provincias.
+export function getProvincies(){
+    return db.provinces.findMany({
+        take:8
+    })
+}
