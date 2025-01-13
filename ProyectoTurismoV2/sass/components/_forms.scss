@@ -7,7 +7,7 @@
   &__form {
     text-align: center;
     width: 90%;
-    animation: moveToBottom-2 2s ease-in;
+    animation: moveToBottom-2 1s ease-in;
     animation-fill-mode: both;
     background-color: $color-red-dark;
     border: 2px black solid;
@@ -16,7 +16,7 @@
 
     &__title {
       animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-      animation-delay: 2s;
+      animation-delay: 1s;
       text-transform: uppercase;
       letter-spacing: 0.1rem;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -25,7 +25,7 @@
     &__button-exit,&__button-submit, &__image-container__label{
       cursor: pointer;
       animation: flip-animation 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-      animation-delay: 2s;
+      animation-delay: 1s;
     }
     &__button-exit {
       position: relative;
@@ -121,7 +121,7 @@
 
       img{
         animation: slideInBlurredRight 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-        animation-delay: 2s;
+        animation-delay: 1s;
         background-color: $color-white;
         width: 25vh;
         height: 25vh;
@@ -149,7 +149,7 @@
     & input {
       align-self: flex-start;
       animation: fallWithRebound 1.5s both;
-      animation-delay: 2s;
+      animation-delay: 1s;
       border-radius: 0.5rem;
       border: none;
       padding: 1rem;
@@ -174,7 +174,7 @@
   }
   &__message{
     animation: scaleInCenter 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation-delay: 2s;
+    animation-delay: 1s;
     font-weight: 400;
     font-size:1.1rem;
     text-decoration: underline;
