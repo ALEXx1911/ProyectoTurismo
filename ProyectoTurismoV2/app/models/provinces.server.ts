@@ -68,6 +68,9 @@ export async function deleteProvinceFromFavorites(userId:string,provinceId:strin
 //Función para obtener las provicias y verlas en el apartado de todas las provincias.
 export function getProvincies(){
     return db.provinces.findMany({
-        take:8
+        take:8,
+        orderBy:{
+            name:"asc"
+        }
     })
 }
