@@ -33,54 +33,53 @@
   }
   &__border {
     border-bottom-width: 2px;
-    border-bottom-color: #1d4ed8;
+    border-bottom-color: #ff0000;
   }
 }
-.card{
-  height:42rem;
+.card {
+  height: 42rem;
 }
-.titulo{
-  display:grid;
+.titulo {
+  display: grid;
   grid-template-columns: 1fr max-content 1fr;
   grid-column-gap: 1.5rem;
   align-items: center;
   font-size: 1.6rem;
   color: red;
-  &::before,&::after{
+  &::before,
+  &::after {
     content: "";
     height: 1px;
     display: block;
     background-color: currentColor;
   }
 }
-.imagenxd{
+.imagenxd {
   border-radius: 20px;
 }
-.buttonCard{
-    position: relative;
-    display: inline-block;
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: $color-white; 
-    background-color: $color-red-dark;  
-    border: 2px solid $color-red-dark;  
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
-  
-    &:hover,
-    &:focus {
-      box-shadow: 
-        inset -3.5em 0 0 0 $color-white,   
-        inset 3.5em 0 0 0 $color-white;    
-      color: $color-red-dark;  
-      background-color: $color-white;  
-      border-color: $color-white;
-    }
-    
-    &:active {
-      transform: scale(0.95);
-    }
+.buttonCard {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $color-white;
+  background-color: $color-red-dark;
+  border: 2px solid $color-red-dark;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    box-shadow: inset -3.5em 0 0 0 $color-white, inset 3.5em 0 0 0 $color-white;
+    color: $color-red-dark;
+    background-color: $color-white;
+    border-color: $color-white;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
