@@ -25,17 +25,6 @@
     transform: translate(0);
   }
 }
-@keyframes moveToBottom-2 {
-  0% {
-    transform: translateY(-20rem);
-  }
-  80% {
-    transform: translateY(1rem);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
 @keyframes letters-animation {
   0% {
     letter-spacing: -0.5em;
@@ -290,12 +279,13 @@
 }
 .header__profile-box__image {
   margin-top: -3vh;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 0.3rem;
 }
 .header__profile-box__username {
   margin-top: -8vh;
+  font-size: 1.08rem;
   font-weight: 300;
 }
 
