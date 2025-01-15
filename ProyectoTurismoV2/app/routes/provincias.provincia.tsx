@@ -3,9 +3,10 @@ import { type LoaderArgs, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import db from "~/db.server";
-import { getAllProvincies } from "~/models/provinces.server";
-import { SearchIcon } from "~/components/icons";
+import { getAllProvincies, createProvinces } from "~/models/provinces.server";
+import { SearchIcon, PlusIcon } from "~/components/icons";
 import {
+  ActionFunction,
   Form,
   LoaderFunction,
   LoaderFunctionArgs,
@@ -13,6 +14,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { Navigation } from "swiper/modules";
+import { PrimaryButton } from "~/components/forms";
 // Define el tipo de Provincia
 type Province = {
   id: number;
@@ -27,6 +29,10 @@ export const loader: LoaderFunction = async ({ request }) => {
   const q = url.searchParams.get("q");
   const provincialstables = await getAllProvincies(q);
   return json({ provincialstables });
+};
+
+export const action: ActionFunction = async () => {
+  return createProvinces();
 };
 
 export default function Provincia() {
@@ -55,12 +61,15 @@ export default function Provincia() {
           className="w-full py-3 px-2 outline-none"
         />
       </Form>
-      <Form reloadDocument>
-        <button></button>
+      <Form method="post" reloadDocument>
+        <PrimaryButton className="mt-4 w-full md:w-fit">
+          <PlusIcon />
+          <span>Create province</span>
+        </PrimaryButton>
       </Form>
       <ul
         className={classNames(
-          "flex gap-8 overflow-x-auto mt-4",
+          "flex gap-8 overflow-x-auto mt-4 pb-4",
           "snap-x snap-mandatory"
         )}
       >
