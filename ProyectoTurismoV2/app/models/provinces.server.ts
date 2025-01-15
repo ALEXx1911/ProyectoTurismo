@@ -74,3 +74,18 @@ export function getProvincies(){
         }
     })
 }
+
+//funcion de pruebas 
+export function getAllProvincies(query: string | null){
+    return db.provinces.findMany({
+        where: {
+            name: {
+                contains: query ?? ""
+            },
+        },
+        take: 8,
+        orderBy: {
+            name: "asc",
+        },
+    });
+}
