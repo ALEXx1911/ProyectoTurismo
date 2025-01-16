@@ -5,13 +5,14 @@ import {
   Meta,
   MetaFunction,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
   useLoaderData,
   useNavigation,
   useRouteError,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { ActionFunction, LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 
@@ -19,6 +20,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { LoaderFunction } from "react-router-dom";
 import { getCurrentUser } from "./utils/auth.server";
+import { getProvinceByName } from "./models/provinces.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -76,6 +78,19 @@ export const loader:LoaderFunction=async({request})=>{
 //Controlamos que el usuario tenga la sesión iniciada con "isUserLogged", cuyo valor cambia según
 //el usuario tenga o no la sesión iniciada. Si el usuario está logueado, se devuelve también su 
 //nombre de usuario y la URL de su imagen de perfil.
+export const action:ActionFunction=async({request})=>{
+  const formData=await request.formData();
+  const provinceName=formData?.get("province");
+  //Obtenemos el nombre de la provincia.
+  if(typeof provinceName=="string"){
+    const province=await getProvinceByName(provinceName);
+    const url=new URL(request.url);
+    url.pathname=`/provincias/${province?.id}`;
+    return redirect(url.toString());
+  }
+  return null;
+}
+//En "root" se hace la ruta. 
 export default function App() {
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";

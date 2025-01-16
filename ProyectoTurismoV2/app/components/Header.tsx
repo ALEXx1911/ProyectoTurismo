@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProfileBox from "./ProfileBox";
 import Menu from "./Menu";
+import { Form } from "@remix-run/react";
 
 type HeaderProps={
   username:string | undefined;
@@ -23,13 +24,14 @@ export default function Header({username,profileImage,isUserLogged}:HeaderProps)
           <h4 className="header__name">turismoEspaña</h4>
         </div>
 
-        <form className="header__search-bar" method="POST">
+        <Form className="header__search-bar" method="POST">
           <input
             type="text"
             className="header__search-bar__input"
             placeholder="Buscar provincia"
+            name="province"
           />
-        </form>
+        </Form>
         <ProfileBox
           image={typeof profileImage=="string"?profileImage:"../../img/imagen-perfil-default.jpg"}
           username={typeof username=="string"?username:"No login"}
