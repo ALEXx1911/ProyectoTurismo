@@ -1,6 +1,7 @@
 import classNames from "classnames";
+import { text } from "node:stream/consumers";
 import React, { HTMLAttributes, ReactNode } from "react";
-
+import type { ButtonHTMLAttributes } from "react";
 interface ErrorMessageProps extends HTMLAttributes<HTMLParagraphElement> {}
 
 export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
@@ -30,12 +31,14 @@ export function ButtonSubmit({ children }: ButtonSubmitProps) {
 //Una funcion de botton para enviar form, se usara para crear provincias
 type ButtonProps = {
   children: React.ReactNode;
-  className?: String;
+  className?: string;
+  name?: string;
 };
 
-export function Button({ children, className }: ButtonProps) {
+export function Button({ children, className, ...props }: ButtonProps) {
   return (
     <button
+      {...props}
       className={classNames(
         "flex px-3 py-2 rounded-md justify-center",
         className
@@ -52,6 +55,19 @@ export function PrimaryButton({ className, ...props }: ButtonProps) {
       {...props}
       className={classNames(
         "text-white bg-red-400 hover:bg-red-400 ",
+        className
+      )}
+    />
+  );
+}
+
+export function DeleteButton({ className, ...props }: ButtonProps) {
+  return (
+    <Button
+      {...props}
+      className={classNames(
+        "border-2 border-yellow-200 text-red-500",
+        "hover:bg-yellow-200 hover:text-white",
         className
       )}
     />

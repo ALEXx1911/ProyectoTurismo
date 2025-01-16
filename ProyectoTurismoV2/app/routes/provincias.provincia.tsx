@@ -14,7 +14,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { Navigation } from "swiper/modules";
-import { PrimaryButton } from "~/components/forms";
+import { PrimaryButton, DeleteButton } from "~/components/forms";
 // Define el tipo de Provincia
 type Province = {
   id: number;
@@ -31,7 +31,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   return json({ provincialstables });
 };
 
-export const action: ActionFunction = async () => {
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
   return createProvinces();
 };
 
@@ -40,6 +41,7 @@ export default function Provincia() {
   const [searchParams] = useSearchParams();
   const navigation = useNavigation();
   const isSearching = navigation.formData?.has("q");
+  const isCreatingProvince = navigation.formData?.has("CreateProvince");
   return (
     <div>
       <Form
@@ -61,16 +63,26 @@ export default function Provincia() {
           className="w-full py-3 px-2 outline-none"
         />
       </Form>
-      <Form method="post" reloadDocument>
-        <PrimaryButton className="mt-4 w-full md:w-fit">
+      <Form method="post">
+        <PrimaryButton
+          name="_action"
+          value="createProvince"
+          className={classNames(
+            "mt-4 w-full md:w-fit",
+            isCreatingProvince ? "bg-red-400" : ""
+          )}
+        >
           <PlusIcon />
-          <span>Create province</span>
+          <span className="pl-2">
+            {isCreatingProvince ? "creating Province" : "crete Province"}
+          </span>
         </PrimaryButton>
       </Form>
       <ul
         className={classNames(
           "flex gap-8 overflow-x-auto mt-4 pb-4",
-          "snap-x snap-mandatory"
+          "snap-x snap-mandatory",
+          isCreatingProvince ? "bg-red-500" : ""
         )}
       >
         {data.provincialstables.map((province) => (
@@ -81,8 +93,13 @@ export default function Provincia() {
               "w-[calc(100vw-2rem)] flex-none snap-center"
             )}
           >
-            <h1 className="text-2xl font-extrabold">{province.name}</h1>
+            <h1 className="text-2xl font-extrabold md-2">{province.name}</h1>
             <p>{province.description}</p> {}
+            <Form method="post" className="pt-8">
+              <DeleteButton className="w-full" name="deleteProvince">
+                Delete Province
+              </DeleteButton>
+            </Form>
           </li>
         ))}
       </ul>
