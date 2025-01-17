@@ -25,17 +25,6 @@
     transform: translate(0);
   }
 }
-@keyframes moveToBottom-2 {
-  0% {
-    transform: translateY(-20rem);
-  }
-  80% {
-    transform: translateY(1rem);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
 @keyframes letters-animation {
   0% {
     letter-spacing: -0.5em;
@@ -290,12 +279,13 @@
 }
 .header__profile-box__image {
   margin-top: -3vh;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 0.3rem;
 }
 .header__profile-box__username {
   margin-top: -8vh;
+  font-size: 1.08rem;
   font-weight: 300;
 }
 
@@ -377,44 +367,40 @@
 }
 .form-container__form {
   text-align: center;
-  width: 90%;
-  animation: moveToBottom-2 1s ease-in;
-  animation-fill-mode: both;
-  background-color: #e13236;
-  border: 2px black solid;
+  width: 70%;
+  background-color: black;
   padding: 1.5rem;
   margin: 2rem;
+  border-radius: 4px;
 }
 .form-container__form__title {
   animation: letters-animation 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  animation-delay: 1s;
   text-transform: uppercase;
+  color: white;
   letter-spacing: 0.1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2.3rem;
+  margin-bottom: 1rem;
 }
 .form-container__form__button-exit, .form-container__form__button-submit, .form-container__form__image-container__label {
   cursor: pointer;
   animation: flip-animation 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation-delay: 1s;
 }
 .form-container__form__button-exit {
-  position: relative;
-  display: inline-block;
   padding: 12px 30px;
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
   color: white;
-  background-color: #e13236;
-  border: 2px solid #e13236;
+  background-color: black;
+  border: 2px solid black;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
 }
 .form-container__form__button-exit:hover, .form-container__form__button-exit:focus {
   box-shadow: inset -3.5em 0 0 0 white, inset 3.5em 0 0 0 white;
-  color: #e13236;
+  color: black;
   background-color: white;
   border-color: white;
 }
@@ -479,7 +465,6 @@
 }
 .form-container__form__image-container img {
   animation: slideInBlurredRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation-delay: 1s;
   background-color: white;
   width: 25vh;
   height: 25vh;
@@ -501,9 +486,8 @@
   display: none;
 }
 .form-container__form input {
-  align-self: flex-start;
+  background-color: whitesmoke;
   animation: fallWithRebound 1.5s both;
-  animation-delay: 1s;
   border-radius: 0.5rem;
   border: none;
   padding: 1rem;
@@ -512,9 +496,11 @@
   outline: 0;
 }
 .form-container__form input:focus {
-  outline: 3px black solid;
+  outline: 3px rgb(20, 173, 20) solid;
 }
 .form-container__form input::placeholder {
+  font-size: 95%;
+  color: black;
   text-transform: uppercase;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
@@ -525,7 +511,6 @@
 }
 .form-container__message {
   animation: scaleInCenter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation-delay: 1s;
   font-weight: 400;
   font-size: 1.1rem;
   text-decoration: underline;

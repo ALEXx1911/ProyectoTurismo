@@ -30,20 +30,6 @@
     }    
 }
 
-@keyframes moveToBottom-2 {
-    0% {
-        transform: translateY(-20rem);
-    }
-
-    80% {
-        transform: translateY(1rem);
-    }
-
-    100% {
-        transform: translate(0);
-    }    
-}
-
   @keyframes letters-animation {
     0% {
         letter-spacing: -0.5em;

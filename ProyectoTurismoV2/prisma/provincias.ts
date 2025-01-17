@@ -6,7 +6,7 @@ export function createProvinces(){
       {
         name: 'Álava',
         description: 'Provincia del País Vasco conocida por su rica historia y la belleza de su capital, Vitoria-Gasteiz.',
-        imageUrl: '~/../img/alava.jpg',
+        imageUrl: '/img/alava.jpg',
         climate: 'Clima oceánico, con temperaturas suaves y lluvias durante todo el año.',
         beaches: "",
         recommendedPlaces:"Catedral de Santa María,Anillo Verde de Vitoria,Museo de Bellas Artes",
@@ -17,7 +17,7 @@ export function createProvinces(){
       {
         name: "Albacete",
         description: "Provincia de Castilla-La Mancha famosa por su cuchillería y fiestas populares.",
-        imageUrl: "~/../img/albacete.jpg",
+        imageUrl: "/img/albacete.jpg",
         climate: "Clima continental, con veranos cálidos e inviernos fríos.",
         beaches: "",
         recommendedPlaces: "Catedral de San Juan Bautista, Pasaje de Lodares, Museo de la Cuchillería",
@@ -28,7 +28,7 @@ export function createProvinces(){
       {
         name: "Alicante",
         description: "Provincia de la Comunidad Valenciana con famosas costas y ciudades como Benidorm y Calpe.",
-        imageUrl: "~/../img/alicante.jpg",
+        imageUrl: "/img/alicante.jpg",
         climate: "Clima mediterráneo, con veranos calurosos e inviernos suaves.",
         beaches: "costa de San Juan, costa del Postiguet, costa de Levante",
         recommendedPlaces: "Castillo de Santa Bárbara, Isla de Tabarca, Explanada de España",
@@ -39,7 +39,7 @@ export function createProvinces(){
       {
         name: "Almería",
         description: "Provincia andaluza conocida por sus costas, su desierto y su Alcazaba.",
-        imageUrl: "~/../img/almeria.jpg",
+        imageUrl: "/img/almeria.jpg",
         climate: "Clima semiárido, con veranos calurosos e inviernos suaves.",
         beaches: "costa de los Genoveses, costa de Mónsul, costa de las Negras",
         recommendedPlaces: "Cabo de Gata, Alcazaba de Almería, Mini Hollywood en el desierto de Tabernas",
@@ -50,7 +50,7 @@ export function createProvinces(){
       {
         name: "Ávila",
         description: "Provincia de Castilla y León famosa por sus murallas medievales y la arquitectura gótica.",
-        imageUrl: "~/../img/avila.jpg",
+        imageUrl: "/img/avila.jpg",
         climate: "Clima continental, con inviernos fríos y veranos suaves.",
         beaches: "",
         recommendedPlaces: "Murallas de Ávila, Catedral de Ávila, Basílica de San Vicente",
@@ -61,7 +61,7 @@ export function createProvinces(){
       {
         name: "Badajoz",
         description: "Provincia de Extremadura con una rica herencia histórica y cultural.",
-        imageUrl: "~/../img/badajoz.jpg",
+        imageUrl: "/img/badajoz.jpg",
         climate: "Clima mediterráneo continental, con veranos calurosos e inviernos suaves.",
         beaches: "",
         recommendedPlaces: "Alcazaba de Badajoz, Puente de Palmas, Plaza Alta",
@@ -72,7 +72,7 @@ export function createProvinces(){
       {
         name: "Islas Baleares",
         description: "Conjunto de islas mediterráneas conocidas por sus costas y su ambiente festivo.",
-        imageUrl: "~/../img/baleares.jpg",
+        imageUrl: "/img/baleares.jpg",
         climate: "Clima mediterráneo, con inviernos suaves y veranos calurosos.",
         beaches: "Cala Comte, Cala Macarella, Es Trenc",
         recommendedPlaces: "Catedral de Palma, Dalt Vila en Ibiza, Cuevas del Drach en Mallorca",
@@ -83,7 +83,7 @@ export function createProvinces(){
       {
         name: "Barcelona",
         description: "Provincia en la costa mediterránea de Cataluña, famosa por su arquitectura modernista y costas.",
-        imageUrl: "~/../img/barcelona.jpg",
+        imageUrl: "/img/barcelona.jpg",
         climate: "Clima mediterráneo, con inviernos suaves y veranos cálidos.",
         beaches: "costa de la Barceloneta, costa de Ocata, costa de Castelldefels",
         recommendedPlaces: "Sagrada Familia, Parque Güell, Casa Batlló, Las Ramblas, Montjuïc",
@@ -94,7 +94,7 @@ export function createProvinces(){
       {
         name: "Burgos",
         description: "Provincia de Castilla y León con una gran herencia histórica y paisajes naturales.",
-        imageUrl: "~/../img/burgos.jpg",
+        imageUrl: "/img/burgos.jpg",
         climate: "Clima continental, con inviernos fríos y veranos suaves.",
         beaches: "",
         recommendedPlaces: "Catedral de Burgos, Monasterio de las Huelgas, Cartuja de Miraflores, Museo de la Evolución Humana",
@@ -105,7 +105,7 @@ export function createProvinces(){
       {
         name: "Cádiz",
         description: "Provincia de Andalucía conocida por sus costas, carnavales y pueblos blancos.",
-        imageUrl: "~/../img/cadiz.jpg",
+        imageUrl: "/img/cadiz.jpg",
         climate: "Clima mediterráneo oceánico, con veranos cálidos y suaves inviernos.",
         beaches: "costa de la Victoria, costa de Zahara de los Atunes, costa de Bolonia",
         recommendedPlaces: "Catedral de Cádiz, costa de la Caleta, Castillo de San Sebastián, Parque Natural de Doñana",
@@ -116,7 +116,7 @@ export function createProvinces(){
       {
         name: "Cantabria",
         description: "Región del norte de España conocida por sus paisajes verdes, costas y cuevas prehistóricas.",
-        imageUrl: "~/../img/cantabria.jpg",
+        imageUrl: "/img/cantabria.jpg",
         climate: "Clima oceánico, con temperaturas moderadas y abundantes lluvias.",
         beaches: "costa de El Sardinero, costa de Oyambre, costa de Comillas",
         recommendedPlaces: "Parque Nacional de los Picos de Europa, Cueva de Altamira, Santillana del Mar, Palacio de la Magdalena",
@@ -127,7 +127,7 @@ export function createProvinces(){
       {
         name: "Castellón",
         description: "Provincia de la Comunidad Valenciana, famosa por sus costas, montañas y cerámica.",
-        imageUrl: "~/../img/castellon.jpg",
+        imageUrl: "/img/castellon.jpg",
         climate: "Clima mediterráneo, con veranos cálidos e inviernos suaves.",
         beaches: "costa Norte de Peñíscola, costa de Benicàssim, costa del Pinar",
         recommendedPlaces: "Peñíscola, Desierto de las Palmas, Basílica de la Mare de Déu del Lledó, Castillo de Morella",
@@ -138,7 +138,7 @@ export function createProvinces(){
       {
         name: "Ciudad Real",
         description: "Provincia en Castilla-La Mancha conocida por sus castillos y por ser la tierra de Don Quijote.",
-        imageUrl: "~/../img/ciudadReal.jpg",
+        imageUrl: "/img/ciudadReal.jpg",
         climate: "Clima continental, con inviernos fríos y veranos calurosos.",
         beaches: "",
         recommendedPlaces: "Parque Nacional de Las Tablas de Daimiel, Castillo de Calatrava la Nueva, Catedral de Ciudad Real",
@@ -149,7 +149,7 @@ export function createProvinces(){
       {
         name: "Córdoba",
         description: "Provincia de Andalucía famosa por su Mezquita-Catedral y su histórico casco antiguo.",
-        imageUrl: "~/../img/cordoba.jpg",
+        imageUrl: "/img/cordoba.jpg",
         climate: "Clima mediterráneo, con veranos muy calurosos y inviernos suaves.",
         beaches: "",
         recommendedPlaces: "Mezquita-Catedral de Córdoba, Alcázar de los Reyes Cristianos, Patios de Córdoba",
@@ -160,7 +160,7 @@ export function createProvinces(){
       {
         name: "Cuenca",
         description: "Provincia de Castilla-La Mancha conocida por sus famosas Casas Colgadas y la Ciudad Encantada.",
-        imageUrl: "~/../img/cuenca.jpg",
+        imageUrl: "/img/cuenca.jpg",
         climate: "Clima mediterráneo continental, con inviernos fríos y veranos templados.",
         beaches: "",
         recommendedPlaces: "Casas Colgadas de Cuenca, Ciudad Encantada, Catedral de Cuenca",
@@ -171,7 +171,7 @@ export function createProvinces(){
       {
         name: "Gerona",
         description: "Provincia de Cataluña con preciosas costas, historia medieval y bellos paisajes.",
-        imageUrl: "~/../img/gerona.jpg",
+        imageUrl: "/img/gerona.jpg",
         climate: "Clima mediterráneo, con inviernos suaves y veranos cálidos.",
         beaches: "Cala Sa Boadella, costa de Aiguablava, costa de Tamariu",
         recommendedPlaces: "Barri Vell de Girona, Catedral de Girona, Murallas de Girona, Call Jueu",
@@ -182,7 +182,7 @@ export function createProvinces(){
       {
         name: "Granada",
         description: "Provincia andaluza famosa por la Alhambra y sus paisajes de montaña y costa.",
-        imageUrl: "~/../img/granada.jpg",
+        imageUrl: "/img/granada.jpg",
         climate: "Clima mediterráneo con influencia continental, veranos cálidos e inviernos fríos en la sierra.",
         beaches: "costa de la Herradura, costa de Salobreña, costa de Almuñécar",
         recommendedPlaces: "Alhambra, Generalife, Sierra Nevada, Albaicín",
@@ -193,7 +193,7 @@ export function createProvinces(){
     {
         name: "Guadalajara",
         description: "Provincia de Castilla-La Mancha con castillos medievales y entornos naturales espectaculares.",
-        imageUrl: "~/../img/guadalajara.jpg",
+        imageUrl: "/img/guadalajara.jpg",
         climate: "Clima mediterráneo continental, con inviernos fríos y veranos cálidos.",
         beaches: "",
         recommendedPlaces: "Castillo de Sigüenza, Palacio del Infantado, Parque Natural del Alto Tajo",
@@ -204,7 +204,7 @@ export function createProvinces(){
     {
         name: "Guipúzcoa",
         description: "Provincia del País Vasco famosa por su gastronomía, paisajes verdes y costas.",
-        imageUrl: "~/../img/guipuzcoa.jpg",
+        imageUrl: "/img/guipuzcoa.jpg",
         climate: "Clima oceánico, con temperaturas suaves y lluvias durante todo el año.",
         beaches: "costa de la Concha, costa de Ondarreta, costa de Zarautz",
         recommendedPlaces: "San Sebastián, Museo Chillida-Leku, Monte Igueldo, Peine del Viento",
@@ -215,7 +215,7 @@ export function createProvinces(){
     {
         name: "Huesca",
         description: "Provincia aragonesa conocida por los Pirineos y su rica herencia medieval.",
-        imageUrl: "~/../img/huesca.jpg",
+        imageUrl: "/img/huesca.jpg",
         climate: "Clima de montaña en el norte y mediterráneo en el sur, con inviernos fríos en zonas elevadas.",
         beaches: "",
         recommendedPlaces: "Parque Nacional de Ordesa y Monte Perdido, Catedral de Huesca, Castillo de Loarre",
@@ -226,7 +226,7 @@ export function createProvinces(){
     {
         name: "Jaén",
         description: "Provincia andaluza famosa por sus olivares y el patrimonio renacentista de Úbeda y Baeza.",
-        imageUrl: "~/../img/jaen.jpg",
+        imageUrl: "/img/jaen.jpg",
         climate: "Clima mediterráneo continental, con inviernos frescos y veranos calurosos.",
         beaches: "",
         recommendedPlaces: "Catedral de Jaén, Castillo de Santa Catalina, Parque Natural de Cazorla",
@@ -237,7 +237,7 @@ export function createProvinces(){
     {
         name: "León",
         description: "Provincia de Castilla y León con una rica historia y arquitectura románica.",
-        imageUrl: "~/../img/leon.jpg",
+        imageUrl: "/img/leon.jpg",
         climate: "Clima continental, con inviernos fríos y veranos suaves.",
         beaches: "",
         recommendedPlaces: "Catedral de León, Basílica de San Isidoro, Las Médulas, Astorga",
@@ -248,7 +248,7 @@ export function createProvinces(){
     {
         name: "Lleida",
         description: "Provincia catalana de paisajes montañosos y sitios de interés medievales.",
-        imageUrl: "~/../img/lleida.jpg",
+        imageUrl: "/img/lleida.jpg",
         climate: "Clima mediterráneo continental, con inviernos fríos y veranos calurosos.",
         beaches: "",
         recommendedPlaces: "La Seu Vella, Vall de Boí, Parque Nacional de Aigüestortes",
@@ -259,7 +259,7 @@ export function createProvinces(){
     {
         name: "Lugo",
         description: "Provincia gallega con costa atlántica, montañas y la famosa muralla romana de Lugo.",
-        imageUrl: "~/../img/lugo.jpg",
+        imageUrl: "/img/lugo.jpg",
         climate: "Clima oceánico, con inviernos suaves y lluvias frecuentes.",
         beaches: "costa de las Catedrales, costa de Llas, costa de Peizás",
         recommendedPlaces: "Muralla romana de Lugo, Catedral de Lugo, costa de las Catedrales",
@@ -270,7 +270,7 @@ export function createProvinces(){
     {
         name: "Madrid",
         description: "Comunidad de Madrid, capital de España, famosa por su vida cultural y monumental.",
-        imageUrl: "~/../img/madrid.jpg",
+        imageUrl: "/img/madrid.jpg",
         climate: "Clima mediterráneo continental, con veranos calurosos e inviernos frescos.",
         beaches: "",
         recommendedPlaces: "Museo del Prado, Palacio Real, Parque del Retiro, Plaza Mayor",
@@ -281,7 +281,7 @@ export function createProvinces(){
     {
         name: "Málaga",
         description: "Provincia andaluza con costas, gastronomía mediterránea y una activa vida cultural.",
-        imageUrl: "~/../img/malaga.jpg",
+        imageUrl: "/img/malaga.jpg",
         climate: "Clima mediterráneo, con veranos calurosos e inviernos suaves.",
         beaches: "costa de la Malagueta, costa de Burriana, costa del Palo",
         recommendedPlaces: "Museo Picasso, Alcazaba de Málaga, Catedral de Málaga, Caminito del Rey",
@@ -293,7 +293,7 @@ export function createProvinces(){
     {
         name: "Murcia",
         description: "Región del sureste de España famosa por su huerta, gastronomía y costa en el Mar Menor.",
-        imageUrl: "~/../img/murcia.jpg",
+        imageUrl: "/img/murcia.jpg",
         climate: "Clima semiárido, con veranos calurosos e inviernos suaves.",
         beaches: "costa de Los Narejos, costa de La Manga, costa de Calblanque",
         recommendedPlaces: "Catedral de Murcia, Real Casino de Murcia, Mar Menor",
@@ -305,7 +305,7 @@ export function createProvinces(){
     {
         name: "Navarra",
         description: "Provincia histórica conocida por los Sanfermines y sus paisajes verdes.",
-        imageUrl: "~/../img/navarra.jpg",
+        imageUrl: "/img/navarra.jpg",
         climate: "Clima variado: oceánico en el norte y mediterráneo continental en el sur.",
         beaches: "",
         recommendedPlaces: "Pamplona, Selva de Irati, Monasterio de Leyre",
@@ -316,7 +316,7 @@ export function createProvinces(){
     {
         name: "Ourense",
         description: "Provincia gallega conocida por sus aguas termales y su catedral.",
-        imageUrl: "~/../img/ourense.jpg",
+        imageUrl: "/img/ourense.jpg",
         climate: "Clima oceánico de transición, con inviernos frescos y lluvias moderadas.",
         beaches: "",
         recommendedPlaces: "Catedral de Ourense, Termas de Outariz, Puente Romano de Ourense",
@@ -327,7 +327,7 @@ export function createProvinces(){
     {
         name: "Palencia",
         description: "Provincia de Castilla y León con importantes monumentos románicos y góticos.",
-        imageUrl: "~/../img/palencia.jpg",
+        imageUrl: "/img/palencia.jpg",
         climate: "Clima continental, con inviernos fríos y veranos suaves.",
         beaches: "",
         recommendedPlaces: "Catedral de Palencia, Villa Romana de La Olmeda, Canal de Castilla",
@@ -338,7 +338,7 @@ export function createProvinces(){
     {
         name: "Pontevedra",
         description: "Provincia gallega con costa atlántica, ciudades históricas y costas hermosas.",
-        imageUrl: "~/../img/pontevedra.jpg",
+        imageUrl: "/img/pontevedra.jpg",
         climate: "Clima oceánico, con temperaturas suaves y lluvias abundantes.",
         beaches: "costa de Rodas (Islas Cíes), costa de Samil, costa de A Lanzada",
         recommendedPlaces: "Catedral de Tui, Ría de Arousa, Islas Cíes",
@@ -350,7 +350,7 @@ export function createProvinces(){
     {
         name: "La Rioja",
         description: "Región famosa por sus viñedos, arquitectura moderna de bodegas y gastronomía.",
-        imageUrl: "~/../img/rioja.jpg",
+        imageUrl: "/img/rioja.jpg",
         climate: "Clima mediterráneo continental, con veranos calurosos e inviernos frescos.",
         beaches: "",
         recommendedPlaces: "Monasterio de San Millán de la Cogolla, Bodega Marqués de Riscal, Logroño",
@@ -361,7 +361,7 @@ export function createProvinces(){
     {
         name: "Salamanca",
         description: "Provincia castellana famosa por su universidad y arquitectura renacentista.",
-        imageUrl: "~/../img/salamanca.jpg",
+        imageUrl: "/img/salamanca.jpg",
         climate: "Clima continental, con inviernos fríos y veranos suaves.",
         beaches: "",
         recommendedPlaces: "Plaza Mayor de Salamanca, Universidad de Salamanca, Catedral de Salamanca",
@@ -372,7 +372,7 @@ export function createProvinces(){
     {
         name: "Segovia",
         description: "Provincia famosa por su acueducto romano y su arquitectura medieval.",
-        imageUrl: "~/../img/segovia.jpg",
+        imageUrl: "/img/segovia.jpg",
         climate: "Clima continental, con inviernos fríos y veranos moderados.",
         beaches: "",
         recommendedPlaces: "Acueducto de Segovia, Alcázar de Segovia, Catedral de Segovia",
@@ -383,7 +383,7 @@ export function createProvinces(){
     {
         name: "Sevilla",
         description: "Provincia andaluza conocida por su rica herencia cultural y sus fiestas populares.",
-        imageUrl: "~/../img/sevilla.jpg",
+        imageUrl: "/img/sevilla.jpg",
         climate: "Clima mediterráneo, con veranos muy calurosos e inviernos suaves.",
         beaches: "",
         recommendedPlaces: "Catedral de Sevilla, Real Alcázar, Plaza de España",
@@ -394,7 +394,7 @@ export function createProvinces(){
     {
         name: "Soria",
         description: "Provincia castellana con espacios naturales únicos y una gran herencia histórica.",
-        imageUrl: "~/../img/soria.jpg",
+        imageUrl: "/img/soria.jpg",
         climate: "Clima continental, con inviernos fríos y veranos templados.",
         beaches: "",
         recommendedPlaces: "Cañón del Río Lobos, Iglesia de San Juan de Duero, Laguna Negra",
@@ -405,7 +405,7 @@ export function createProvinces(){
     {
         name: "Tarragona",
         description: "Provincia catalana con costas y ruinas romanas destacadas.",
-        imageUrl: "~/../img/tarragona.jpg",
+        imageUrl: "/img/tarragona.jpg",
         climate: "Clima mediterráneo, con inviernos suaves y veranos cálidos.",
         beaches: "costa Larga, Cala Fonda, costa de Tamarit",
         recommendedPlaces: "Anfiteatro romano de Tarragona, Catedral de Tarragona, Delta del Ebro",
@@ -417,7 +417,7 @@ export function createProvinces(){
     {
         name: "Teruel",
         description: "Provincia de Aragón conocida por su arquitectura mudéjar y su entorno natural.",
-        imageUrl: "~/../img/teruel.jpg",
+        imageUrl: "/img/teruel.jpg",
         climate: "Clima continental, con inviernos fríos y veranos suaves.",
         beaches: "",
         recommendedPlaces: "Plaza del Torico, Catedral de Teruel, Albarracín",
@@ -428,7 +428,7 @@ export function createProvinces(){
     {
         name: "Toledo",
         description: "Provincia histórica de Castilla-La Mancha con rica arquitectura medieval.",
-        imageUrl: "~/../img/toledo.jpg",
+        imageUrl: "/img/toledo.jpg",
         climate: "Clima mediterráneo continental, con inviernos frescos y veranos cálidos.",
         beaches: "",
         recommendedPlaces: "Alcázar de Toledo, Catedral de Toledo, Monasterio de San Juan de los Reyes",
@@ -439,7 +439,7 @@ export function createProvinces(){
     {
         name: "Valencia",
         description: "Provincia de la Comunidad Valenciana famosa por sus costas, cultura y gastronomía.",
-        imageUrl: "~/../img/valencia.jpg",
+        imageUrl: "/img/valencia.jpg",
         climate: "Clima mediterráneo, con inviernos suaves y veranos cálidos.",
         beaches: "costa de la Malvarrosa, costa de El Saler, costa de la Patacona",
         recommendedPlaces: "Ciudad de las Artes y las Ciencias, L’Oceanogràfic, Lonja de la Seda",
@@ -451,7 +451,7 @@ export function createProvinces(){
     {
         name: "Valladolid",
         description: "Provincia de Castilla y León conocida por su arquitectura renacentista y su vino.",
-        imageUrl: "~/../img/valladolid.jpg",
+        imageUrl: "/img/valladolid.jpg",
         climate: "Clima continental, con inviernos fríos y veranos cálidos.",
         beaches: "",
         recommendedPlaces: "Catedral de Valladolid, Plaza Mayor, Castillo de la Mota",
@@ -462,7 +462,7 @@ export function createProvinces(){
     {
         name: "Vizcaya",
         description: "Provincia vasca conocida por su capital Bilbao, su costa atlántica y su cultura vasca.",
-        imageUrl: "~/../img/vizcaya.jpg",
+        imageUrl: "/img/vizcaya.jpg",
         climate: "Clima oceánico, con veranos frescos e inviernos suaves.",
         beaches: "costa de Sopelana, costa de Gorliz, costa de Mundaka",
         recommendedPlaces: "Museo Guggenheim, Puente Colgante de Bizkaia, Plaza Nueva de Bilbao",
@@ -474,7 +474,7 @@ export function createProvinces(){
     {
         name: "Zamora",
         description: "Provincia de Castilla y León conocida por su arquitectura medieval y su paisaje natural.",
-        imageUrl: "~/../img/zamora.jpg",
+        imageUrl: "/img/zamora.jpg",
         climate: "Clima continental, con inviernos fríos y veranos cálidos.",
         beaches: "",
         recommendedPlaces: "Castillo de Zamora, Catedral de Zamora, Duero y Arribes del Duero",
@@ -485,7 +485,7 @@ export function createProvinces(){
     {
         name: "Zaragoza",
         description: "Provincia de Aragón famosa por su historia romana, arquitectura mudéjar y la Basílica del Pilar.",
-        imageUrl: "~/../img/zaragoza.jpg",
+        imageUrl: "/img/zaragoza.jpg",
         climate: "Clima semiárido, con inviernos suaves y veranos calurosos.",
         beaches: "",
         recommendedPlaces: "Basílica del Pilar, Palacio de la Aljafería, Plaza del Pilar",

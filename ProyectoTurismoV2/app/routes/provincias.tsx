@@ -12,24 +12,7 @@ export const loader = async () => {
 export default function provincias() {
   const data = useLoaderData<typeof loader>();
   return (
-    <div className="provincias">
-      <h1 className="provincias__titulo">Provincias</h1>
-      <nav className="provincias__border">
-        <NavLink
-          to="Provincia"
-          className={({ isActive }) =>
-            classNames(
-              "provincias__button",
-              isActive ? "provincias__border" : ""
-            )
-          }
-        >
-          Provincia
-        </NavLink>
-      </nav>
-      <div className="py-4 overflow-y-auto">
-        <Outlet />
-      </div>
+    <div className="">
       <div>
         <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">
           Provincias de España

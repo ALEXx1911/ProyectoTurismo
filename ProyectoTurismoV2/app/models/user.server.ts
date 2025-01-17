@@ -1,4 +1,3 @@
-//En este ficheros se realizarán las funciones para extraer, editar, crear y borrar usuarios.
 import db from "~/db.server";
 import { hashPassword } from "~/utils/passwordUtils";
 

@@ -95,7 +95,7 @@ export default function register(){
                     htmlFor="image-profile">Cambiar foto</label>
                 </div>
                 <input type="email" name="email" placeholder="Email" defaultValue={actionData?.email}/><br/><br/>
-                <input type="text" name="username" placeholder="Username" defaultValue={actionData?.username}/><br/><br/>
+                <input type="text" name="username" placeholder="Nombre de usuario" defaultValue={actionData?.username}/><br/><br/>
                 <input type="password" name="password" placeholder="Contraseña"/><br/><br/>
                 <ButtonSubmit>Registrarse</ButtonSubmit>
             </Form>

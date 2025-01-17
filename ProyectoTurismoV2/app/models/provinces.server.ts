@@ -69,7 +69,8 @@ export async function deleteProvinceFromFavorites(
 }
 //Función que elimina una provincia a las favoritas de un usuario.
 //Función para obtener las provicias y verlas en el apartado de todas las provincias.
-export function getProvincies() {
+
+export function getProvinciestwo() {
   return db.provinces.findMany({
     take: 8,
     orderBy: {
@@ -108,3 +109,21 @@ export function createProvinces() {
     },
   });
 }
+
+export function getProvincies() {
+  return db.provinces.findMany({
+    take: 8,
+    orderBy: {
+      name: "asc",
+    },
+  });
+}
+
+export async function getProvinceByName(provinceName: string) {
+  return await db.provinces.findUnique({
+    where: {
+      name: provinceName,
+    },
+  });
+}
+//Función que devuelve una provincia según un ID especificado.
