@@ -127,3 +127,12 @@ export async function getProvinceByName(provinceName: string) {
   });
 }
 //Función que devuelve una provincia según un ID especificado.
+
+export async function getProvinceById(provinceId:string){
+  return db.provinces.findUnique({
+    where:{
+      id:provinceId
+    }
+  });
+}
+//Función que obtiene una provincia a partir de un ID especificado.

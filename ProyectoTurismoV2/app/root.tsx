@@ -8,6 +8,7 @@ import {
   redirect,
   Scripts,
   ScrollRestoration,
+  useActionData,
   useLoaderData,
   useNavigation,
   useRouteError,
@@ -78,19 +79,28 @@ export const loader:LoaderFunction=async({request})=>{
 //Controlamos que el usuario tenga la sesión iniciada con "isUserLogged", cuyo valor cambia según
 //el usuario tenga o no la sesión iniciada. Si el usuario está logueado, se devuelve también su 
 //nombre de usuario y la URL de su imagen de perfil.
+
 export const action:ActionFunction=async({request})=>{
   const formData=await request.formData();
-  const provinceName=formData?.get("province");
-  //Obtenemos el nombre de la provincia.
-  if(typeof provinceName=="string"){
-    const province=await getProvinceByName(provinceName);
-    const url=new URL(request.url);
-    url.pathname=`/provincias/${province?.id}`;
-    return redirect(url.toString());
+  const proviceName=formData.get("province");
+  if(typeof proviceName=="string"){
+    const province=await getProvinceByName(proviceName);
+    if(province!==null){
+      const url=new URL(request.url);
+      url.pathname=`/provincias/${province?.id}`;
+      //Construimos el nuevo "pathname".
+      return redirect(url.toString());
+    }
   }
-  return null;
+  return json({
+    errors:{
+      province:"Se ha introducido una provincia que no existe."
+    }
+  });
+  //Devolvemos un json con un mensaje de error si la provincia introducida en el la barra de 
+  //búsqueda del "header" no está en la base de datos.
 }
-//En "root" se hace la ruta. 
+//Este "action" es para el "Form" del "header".
 export default function App() {
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
@@ -101,15 +111,19 @@ export default function App() {
   //Sacamos la imagen de perfil del usuario del "loader" si es que existe.
   const userIsLogged=loaderData.isUserLogged;
   //Sacamos el valor de "isUserLogged" del "loader".
+  const actionData=useActionData<typeof action>();
+  const errorMessage=actionData?.errors?.province;
+  //Extreamos el mensaje de error si existe.
   return (
     <>
        {isLoading ?
         <div className="bull-gif-container">
-          <img className="bull-gif-container__bull-gif" src="../../img/torocorriendo.gif" 
+          <img className="bull-gif-container__bull-gif" src="/img/torocorriendo.gif" 
           alt=""/>
         </div>:null}
         {/*Se va a ver un GIF de un toro corriendo cuando se esté cargando algo.*/}
-        <Header username={username} profileImage={profileImage} isUserLogged={userIsLogged}/>
+        <Header username={username} profileImage={profileImage} isUserLogged={userIsLogged}
+        errorMessage={errorMessage}/>
         <Outlet />
         <Footer/>
     </>

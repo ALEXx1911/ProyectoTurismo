@@ -1,8 +1,5 @@
-import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import { NavLink, Outlet } from "react-router-dom";
-import { getProvincies } from "~/models/provinces.server";
 
 export default function iterinarioDeViajes() {
   return (

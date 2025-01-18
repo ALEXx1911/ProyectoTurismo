@@ -2,14 +2,18 @@ import { useState } from "react";
 import ProfileBox from "./ProfileBox";
 import Menu from "./Menu";
 import { Form } from "@remix-run/react";
+import { ErrorMessage } from "./forms";
+import { SearchIcon } from "./icons";
+import classNames from "classnames";
 
 type HeaderProps={
   username:string | undefined;
   profileImage: string | undefined;
   isUserLogged:boolean;
+  errorMessage:any;
 }
 
-export default function Header({username,profileImage,isUserLogged}:HeaderProps) {
+export default function Header({username,profileImage,isUserLogged,errorMessage}:HeaderProps) {
   const [showMenu,setShowMenu]=useState(false);
   //Variable que controla la visibilidad del menú.
   function handleClickProfileBox(){
@@ -24,14 +28,21 @@ export default function Header({username,profileImage,isUserLogged}:HeaderProps)
           <h4 className="header__name">turismoEspaña</h4>
         </div>
 
-        <Form className="header__search-bar" method="POST">
+      <div className="header__search-bar-container">
+        <Form className="header__search-bar-container__form" method="POST">
           <input
             type="text"
-            className="header__search-bar__input"
+            className="header__search-bar-container__form__search-bar"
+            autoComplete="off"
             placeholder="Buscar provincia"
             name="province"
           />
+          <button className="header__search-bar-container__form__search-button"><SearchIcon /></button>
         </Form>
+        <ErrorMessage className="header__search-bar-container__form__error-message">
+          {errorMessage}
+        </ErrorMessage>
+       </div>
         <ProfileBox
           image={typeof profileImage=="string"?profileImage:"../../img/imagen-perfil-default.jpg"}
           username={typeof username=="string"?username:"No login"}

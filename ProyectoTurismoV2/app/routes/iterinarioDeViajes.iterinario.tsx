@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
-import { type LoaderArgs, json } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
-import db from "~/db.server";
 import { getAllProvincies, createProvinces } from "~/models/provinces.server";
 import { SearchIcon, PlusIcon } from "~/components/icons";
 import {
