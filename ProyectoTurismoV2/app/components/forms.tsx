@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { ButtonHTMLAttributes, HTMLAttributes, ReactNode, useState } from "react";
+import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 interface ErrorMessageProps extends HTMLAttributes<HTMLParagraphElement> {}
 
 export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
