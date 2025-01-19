@@ -108,7 +108,7 @@ export default function App() {
   const username=loaderData?.username;
   //Sacamos el "username" del "loader".
   const profileImage=loaderData?.profile_image;
-  //Sacamos la imagen de perfil del usuario del "loader" si es que existe.
+  //Sacamos la imagen de perfil del usuario del "loader".
   const userIsLogged=loaderData.isUserLogged;
   //Sacamos el valor de "isUserLogged" del "loader".
   const actionData=useActionData<typeof action>();

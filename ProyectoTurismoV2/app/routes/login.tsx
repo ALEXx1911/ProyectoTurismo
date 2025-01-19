@@ -39,15 +39,10 @@ export const action:ActionFunction=async({request})=>{
                 const session=await getSession(cookieHeader);
                 session.set("userId",undefined);
                 session.set("username",undefined);
-                session.set("profile_image",undefined);
                 //Dejamos en "undefined" los parámetros que estuvieran anteriormente.
                 session.set("userId",user.id);
                 session.set("username",user.name);
                 //Insertamos el nombre de usuario a la sesión. 
-                const userProfileImage=user.imageUrl;
-                if(userProfileImage!==null){
-                    session.set("profile_image",userProfileImage);
-                }
                 return redirect("/",{
                     headers:{
                         "Set-Cookie":await commitSession(session)

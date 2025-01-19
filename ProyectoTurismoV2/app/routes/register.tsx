@@ -29,20 +29,18 @@ export const action:ActionFunction=async({request})=>{
                 if (image && typeof image === "object" && "arrayBuffer" in image) {
                     const imageBuffer = await image.arrayBuffer(); 
                     //Convertimos la imagen en un buffer.
-                    const resizedImage = await sharp(Buffer.from(imageBuffer))
-                    .resize(80, 80)
-                    .toFormat('jpeg')
-                    .toBuffer();
-                    //Redimiensionamos la imagen, la pasamos a JPEG y obtenemos el buffer de la
-                    //nueva imagen. Necesitamos el redimensionado para poder guardar la URL de 
-                    //la imagen en la cookie.
-                    const base64Image = `data:image/jpeg;base64,${resizedImage.toString('base64')}`;
+                    const resolvedImage = await sharp(Buffer.from(imageBuffer)).toBuffer();
+                    //Obtenemos el buffer de la nueva imagen.
+                    const base64Image = `data:image/jpeg;base64,${resolvedImage.toString('base64')}`;
+                    //Creamos el base64 de la imagen.
                     await createUser(email,username,password,base64Image);
-                    return redirect("../login");
+                    return redirect("/login");
                }
             }catch(error){
-                await createUser(email,username,password);
-                return redirect("../login");
+                const defaultFile ="/img/imagen-perfil-default.jpg";
+                //Si no hay una imagen, metemos la imagen por defecto como imagen de perfil.
+                await createUser(email,username,password,defaultFile);
+                return redirect("/login");
             }
             //Creamos el usuario con imagen de la imagen de perfil según haya sido o no seleccionada.
         }else{
@@ -56,7 +54,7 @@ export const action:ActionFunction=async({request})=>{
 
 export default function register(){
     const actionData=useActionData<typeof action>();
-    const defaultFile ="../../img/imagen-perfil-default.jpg";
+    const defaultFile ="/img/imagen-perfil-default.jpg";
     //Es la imagen que se va a mostrar por defecto cuando no haya ninguna foto de perfil introducida.
     const [imageSrc, setImageSrc] = useState(defaultFile);
     //Esta variable contiene la URL de la imagen que se va a mostrar en "img".
@@ -100,6 +98,7 @@ export default function register(){
                 <ButtonSubmit>Registrarse</ButtonSubmit>
             </Form>
            <ErrorMessage className="form-container__form-error">{actionData?.errors?.email}</ErrorMessage>
+           <ErrorMessage className="form-container__form-error">{actionData?.errors?.username}</ErrorMessage>
            <ErrorMessage className="form-container__form-error">{actionData?.errors?.password}</ErrorMessage>
            <Link className="form-container__message" to="../login">¿Ya tiene una cuenta? Inicie sesión ahora</Link>
         </div>

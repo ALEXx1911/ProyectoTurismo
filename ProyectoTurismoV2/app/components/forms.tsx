@@ -1,7 +1,5 @@
 import classNames from "classnames";
-import { text } from "node:stream/consumers";
-import React, { HTMLAttributes, ReactNode } from "react";
-import type { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, HTMLAttributes, ReactNode, useState } from "react";
 interface ErrorMessageProps extends HTMLAttributes<HTMLParagraphElement> {}
 
 export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
@@ -11,13 +9,13 @@ export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
 }
 //Es una función que crea un tipo de párrafo por defecto para los mensajes de error.
 
-type ButtonSubmitProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-};
+}
 
-export function ButtonSubmit({ children }: ButtonSubmitProps) {
+export function ButtonSubmit({ children,...props }: ButtonProps) {
   return (
-    <button className="form-container__form__button-submit">
+    <button {...props} className="form-container__form__button-submit">
       {children}
       <span></span>
       <span></span>
@@ -29,11 +27,6 @@ export function ButtonSubmit({ children }: ButtonSubmitProps) {
 //Se hace un componente del botón de enviar los formularios.
 
 //Una funcion de botton para enviar form, se usara para crear provincias
-type ButtonProps = {
-  children: React.ReactNode;
-  className?: string;
-  name?: string;
-};
 
 export function Button({ children, className, ...props }: ButtonProps) {
   return (

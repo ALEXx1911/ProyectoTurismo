@@ -47,7 +47,7 @@ model User {
   email             String      @unique
   name              String
   password          String
-  imageUrl          String?
+  imageUrl          String
 
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt

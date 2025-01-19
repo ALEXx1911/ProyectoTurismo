@@ -11,16 +11,18 @@ export async function getCurrentUser(request:Request){
     }
     return getUserById(userId);
 }
-//Función que devuelve el usuario que se encuentre actualmente con la sesión iniciada.
+//Función que devuelve el usuario que se encuentre actualmente con la sesión iniciada. Si hay un
+//usuario con la sesión iniciada, pero no existe, nos devuelve "null".
 
 export async function userLoggedRequired(request:Request){
     const user=await getCurrentUser(request);
     if(user==null){
-        throw redirect("/");
+        throw redirect("/login");
     }
+    return user;
 }
 //Función que te redirige a "/" si no hay un usuario con la sesión iniciada o si ya no existe el usuario
-//con la sesión iniciada.
+//con la sesión iniciada. Devuelve el "user" si hay un usuario con la sesión iniciada.
 
 export async function userNotLoggedRequired(request:Request){
     const user=await getCurrentUser(request);

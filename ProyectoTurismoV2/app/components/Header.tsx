@@ -44,7 +44,7 @@ export default function Header({username,profileImage,isUserLogged,errorMessage}
         </ErrorMessage>
        </div>
         <ProfileBox
-          image={typeof profileImage=="string"?profileImage:"../../img/imagen-perfil-default.jpg"}
+          image={typeof profileImage=="string"?profileImage:"/img/imagen-perfil-default.jpg"}
           username={typeof username=="string"?username:"No login"}
           //Si el "username" es de tipo "string" es porque hay un usuario con la sesión iniciada.
           handleClickProfileBox={handleClickProfileBox}

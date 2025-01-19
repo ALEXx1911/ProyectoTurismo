@@ -14,6 +14,8 @@ export default function Menu({ active, isUserLogged }: MenuProps) {
         <ul className="menu__list">
           <MenuOption to="/">Página principal</MenuOption>
           <MenuOption to="provincias">Todas las provincias</MenuOption>
+          <MenuOption to="iterinarioDeViajes">Iterinario de viajes</MenuOption>
+           
           {isUserLogged ? (
             <MenuOption to="provinciasFavoritas">
               Provincias Favoritas
@@ -21,9 +23,11 @@ export default function Menu({ active, isUserLogged }: MenuProps) {
           ) : (
             <MenuOption to="register">Registrarse</MenuOption>
           )}
-          <MenuOption to="iterinarioDeViajes">Iterinario de viajes</MenuOption>
           {isUserLogged ? (
-            <MenuOption to="logout">Cerrar sesión</MenuOption>
+            <>
+              <MenuOption to="profile">Editar perfil</MenuOption>
+              <MenuOption to="logout">Cerrar sesión</MenuOption>
+            </>
           ) : (
             <MenuOption to="login">Iniciar sesión</MenuOption>
           )}
