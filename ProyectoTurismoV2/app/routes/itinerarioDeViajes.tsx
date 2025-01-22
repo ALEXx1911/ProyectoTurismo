@@ -4,10 +4,10 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function iterinarioDeViajes() {
   return (
     <div>
-      <h1 className="provincias__titulo">Provincias</h1>
+      <h1 className="provincias__titulo">Irinerario</h1>
       <nav className="provincias__border">
         <NavLink
-          to="iterinario"
+          to="itirinario"
           className={({ isActive }) =>
             classNames(
               "provincias__button",
@@ -15,7 +15,7 @@ export default function iterinarioDeViajes() {
             )
           }
         >
-          Provincia
+          Itirerarios
         </NavLink>
       </nav>
       <div className="py-4 overflow-y-auto">

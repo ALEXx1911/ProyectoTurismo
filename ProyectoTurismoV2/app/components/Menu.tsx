@@ -14,8 +14,8 @@ export default function Menu({ active, isUserLogged }: MenuProps) {
         <ul className="menu__list">
           <MenuOption to="/">Página principal</MenuOption>
           <MenuOption to="provincias">Todas las provincias</MenuOption>
-          <MenuOption to="iterinarioDeViajes">Iterinario de viajes</MenuOption>
-           
+          <MenuOption to="itinerarioDeViajes">Itinerario de viajes</MenuOption>
+
           {isUserLogged ? (
             <MenuOption to="provinciasFavoritas">
               Provincias Favoritas
