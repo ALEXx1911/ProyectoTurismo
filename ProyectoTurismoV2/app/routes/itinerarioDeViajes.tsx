@@ -7,7 +7,7 @@ export default function iterinarioDeViajes() {
       <h1 className="provincias__titulo">Irinerario</h1>
       <nav className="provincias__border">
         <NavLink
-          to="itirinario"
+          to="itinerario"
           className={({ isActive }) =>
             classNames(
               "provincias__button",

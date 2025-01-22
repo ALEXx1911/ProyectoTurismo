@@ -18,7 +18,7 @@ datasource db {
 //npx prisma migrate dev --name init
 //npm install @prisma/client
 
-
+//Cuando se crea un modelo se debe ejecutar el siguiente comando npx prisma db push
 //Modelo de tarjeta de las provincias
 model Provinces {
   id                String      @id @default(cuid())
@@ -54,6 +54,7 @@ model User {
 
   provinces         Provinces[]
   ilikes            Ilike[]     @relation("UsersToIlikes")
+  itinerarios       Itinerario[]
 }
 
 
@@ -79,4 +80,20 @@ model Ilike {
   // Relación muchos a muchos
   users         User[]       @relation("UsersToIlikes")
   provinces     Provinces[]  @relation("ProvincesToIlikes")
+}
+
+//Modelo para Itinerario 
+model Itinerario {
+  id            String       @id @default(cuid())
+  userId        String
+  destino       String
+  comida        String
+  ocio          String
+  viaje         String
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
 }
