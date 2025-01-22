@@ -95,7 +95,7 @@ export default function Provincia() {
             <p>{province.description}</p> {}
             <Form method="post" className="pt-8">
               <DeleteButton className="w-full" name="deleteProvince">
-                Delete Province
+                Eliminar itinerarios
               </DeleteButton>
             </Form>
           </li>
