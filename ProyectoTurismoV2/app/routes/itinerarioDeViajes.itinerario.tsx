@@ -19,6 +19,7 @@ type Province = {
   name: string;
   description: String;
 };
+
 type loaderData = {
   provincialstables: Awaited<ReturnType<typeof getAllProvincies>>;
 };
@@ -72,7 +73,7 @@ export default function Provincia() {
         >
           <PlusIcon />
           <span className="pl-2">
-            {isCreatingProvince ? "creating Province" : "crete Province"}
+            {isCreatingProvince ? "creating Province" : "crear itinerario"}
           </span>
         </PrimaryButton>
       </Form>
