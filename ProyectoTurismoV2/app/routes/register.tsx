@@ -104,3 +104,4 @@ export default function register(){
         </div>
     );
 }
+//En esta ruta sirve para que el usuario se registre.

@@ -16,7 +16,3 @@ export default function ProfileBox({image,username,handleClickProfileBox}:Profil
     );
 }
 //Componente que muestra la foto de perfil y el nombre del usuario.
-
-
-//Por ahora no vamos a mostrar el Login.
-//El tema de poner usuarios se hará más adelante.

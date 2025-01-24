@@ -4,7 +4,6 @@ import Menu from "./Menu";
 import { Form } from "@remix-run/react";
 import { ErrorMessage } from "./forms";
 import { SearchIcon } from "./icons";
-import classNames from "classnames";
 
 type HeaderProps={
   username:string | undefined;

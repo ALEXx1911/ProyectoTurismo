@@ -24,3 +24,4 @@ export default function Province(){
     );
 
 }
+//Aquí se va a ver la información adicional de la provincia.

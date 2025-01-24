@@ -38,9 +38,8 @@ export default function Menu({ active, isUserLogged }: MenuProps) {
     );
   }
 }
-//Este componente devuelve un menú de opciones siempre y cuando "active" sea "true".
-//Se añadirá una opción que cuando la sesión esté iniciada, cambie el botón de "iniciar sesión" a
-//"cerrar sesión".
+//Este componente devuelve un menú de opciones siempre y cuando "active" sea "true". Las 
+//opciones del menú cambiarán según haya o no un usuario con la sesión iniciada.
 
 type MenuOptionProps = {
   to: string;

@@ -1,19 +1,17 @@
-import { json, LoaderFunctionArgs } from "@remix-run/node";
-import { Outlet, useLoaderData } from "@remix-run/react";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";;
 import { getProvincies } from "~/models/provinces.server";
 
-export const loader = async ({params}:LoaderFunctionArgs) => {
-  if(typeof params?.id=="string"){
-    return null;
-  }
+export const loader = async () => {
   const province = await getProvincies();
   return json(province);
 };
+//Sacamos las provincias junto a todos los datos de las mismas en el "loader".
 
 export default function provincias() {
   const data = useLoaderData<typeof loader>();
-  return data?(
+  return (
     <div className="">
       <div>
         <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">
@@ -38,10 +36,9 @@ export default function provincias() {
         </div>
       </div>
     </div>
-  ):<Outlet/>;
+  );
 }
-//Esta función muestra todas las provincias si la URL no tiene ningún parámetro de búsqueda. Si hay
-//alguno, muestra "Outlet", o sea, las rutas hijas, que en este caso va a ser "provincias.$id.tsx".
+//Esta función muestra todas las provincias si la URL no tiene ningún parámetro de búsqueda.
 
 function provincia() {}
 type ProvinceCardProps = {

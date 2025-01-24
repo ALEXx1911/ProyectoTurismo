@@ -18,5 +18,4 @@ export default function Index() {
   );
 
 }
-//*Nota: Vamos a utilizar "NavLinks" para que la página no se recargue.
-//Esta es la página principal.
+//Esta ruta es la página principal.
