@@ -2,6 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import { getAllProvincies, createProvinces } from "~/models/provinces.server";
+import {getAllItinerario, createItinerario} from "~/models/itinerario.server";
 import { SearchIcon, PlusIcon } from "~/components/icons";
 import {
   ActionFunction,
@@ -11,36 +12,29 @@ import {
   useNavigation,
   useSearchParams,
 } from "react-router-dom";
-import { Navigation } from "swiper/modules";
 import { PrimaryButton, DeleteButton } from "~/components/forms";
-// Define el tipo de Provincia
-type Province = {
-  id: number;
-  name: string;
-  description: String;
-};
 
 type loaderData = {
-  provincialstables: Awaited<ReturnType<typeof getAllProvincies>>;
+  itinerarioTablas: Awaited<ReturnType<typeof getAllItinerario>>;
 };
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
-  const provincialstables = await getAllProvincies(q);
-  return json({ provincialstables });
+  const itinerarioTablas = await getAllItinerario(q);
+  return json({ itinerarioTablas });
 };
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  return createProvinces();
+  return createItinerario();
 };
 
-export default function Provincia() {
+export default function Itinerario() {
   const data = useLoaderData() as loaderData;
   const [searchParams] = useSearchParams();
   const navigation = useNavigation();
   const isSearching = navigation.formData?.has("q");
-  const isCreatingProvince = navigation.formData?.has("CreateProvince");
+  const isCreatingItineraio = navigation.formData?.has("createItinerario");
   return (
     <div>
       <Form
@@ -68,12 +62,12 @@ export default function Provincia() {
           value="createProvince"
           className={classNames(
             "mt-4 w-full md:w-fit",
-            isCreatingProvince ? "bg-red-400" : ""
+            isCreatingItineraio ? "bg-red-400" : ""
           )}
         >
           <PlusIcon />
           <span className="pl-2">
-            {isCreatingProvince ? "creating Province" : "crear itinerario"}
+            {isCreatingItineraio ? "creating Province" : "crear itinerario"}
           </span>
         </PrimaryButton>
       </Form>
@@ -81,10 +75,10 @@ export default function Provincia() {
         className={classNames(
           "flex gap-8 overflow-x-auto mt-4 pb-4",
           "snap-x snap-mandatory",
-          isCreatingProvince ? "bg-red-500" : ""
+          isCreatingItineraio ? "bg-red-500" : ""
         )}
       >
-        {data.provincialstables.map((province) => (
+        {data.itinerarioTablas.map((province) => (
           <li
             key={province.id}
             className={classNames(

@@ -6,7 +6,6 @@ import db from "~/db.server";
 export function createItinerario() {
   return db.itinerario.create({
     data: {
-      userId: "1",
       destino: "Itinerario",
       comida: "Comida",
       ocio: "Ocio",
