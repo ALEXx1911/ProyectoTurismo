@@ -249,6 +249,12 @@
   padding: 0.7rem 2rem;
   outline: 0;
 }
+@media only screen and (max-width: 1100px) {
+  .header__search-bar-container__form__search-bar {
+    width: 85%;
+    font-size: 90%;
+  }
+}
 .header__search-bar-container__form__search-bar::placeholder {
   text-transform: uppercase;
 }
@@ -288,6 +294,12 @@
 .header__profile-box__username {
   font-size: 1.08rem;
   font-weight: 300;
+}
+@media only screen and (max-width: 1100px) {
+  .header__profile-box__username {
+    margin-top: 0.2rem;
+    font-size: 1.02rem;
+  }
 }
 
 /* Desplegable */
@@ -373,6 +385,12 @@
   padding: 1.5rem;
   margin: 2rem;
   border-radius: 4px;
+}
+@media only screen and (max-width: 1100px) {
+  .form-container__form {
+    width: 90%;
+    font-size: 90%;
+  }
 }
 .form-container__form__title {
   animation: letters-animation 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
@@ -495,6 +513,12 @@
   width: 40%;
   transition: all 0.3s ease;
   outline: 0;
+}
+@media only screen and (max-width: 1100px) {
+  .form-container__form input {
+    width: 60%;
+    font-size: 90%;
+  }
 }
 .form-container__form input:focus {
   outline: 3px rgb(20, 173, 20) solid;
@@ -1064,7 +1088,7 @@
 
 html {
   background-color: whitesmoke;
-  font-family: "Roboto", sans-serif, "Courier New", Courier, monospace;
+  font-family: "Roboto", sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */

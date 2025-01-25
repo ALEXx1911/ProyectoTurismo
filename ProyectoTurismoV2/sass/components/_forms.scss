@@ -12,7 +12,10 @@
     padding: 1.5rem;
     margin:2rem;
     border-radius: 4px;
-
+    @media only screen and (max-width: $max-width) {
+      width:90%;
+      font-size: 90%;
+    }
     &__title {
       animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
       text-transform: uppercase;
@@ -155,6 +158,10 @@
       width: 40%;
       transition: all 0.3s ease;
       outline: 0;
+      @media only screen and (max-width: $max-width) {
+        width:60%;
+        font-size: 90%;
+      }
 
       &:focus {
         outline: 3px $color-green-dark solid;
@@ -171,7 +178,6 @@
 
   &__form-error {
     animation: shake-animation 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    
    align-self: flex-start;
    margin-left: 5vw;
   }
