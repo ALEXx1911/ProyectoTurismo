@@ -7,9 +7,16 @@ import { setSearchParamsString } from "~/utils/misc";
 
 export const loader = async ({request}: LoaderFunctionArgs) => {
   const url = new URL(request.url);
-  const page = Number(url.searchParams.get("page")) || 1;
+  let page = Number(url.searchParams.get("page")) || 1;
   const totalPages= await getTotalPages()/8;
+  if (page <=0) {
+    page = 1;
+  }
+  if (page>totalPages) {
+    page=Math.round(totalPages);
+  }
   const province = await getAllProvincies(page);
+  
   return json({
     province,
     page,
@@ -143,7 +150,7 @@ function ProvincePagination({currentPage,totalPages}:ProvincePaginationProps,{se
           }}>
               <LeftArrow/>
           </Link> : ""}
-          <p className="text-xl font-bold">Page {currentPage} of {totalPages}</p>
+          <p className="text-xl font-bold">Página {currentPage } de {totalPages}</p>
           {!islastPage ? <Link to={{
               search: setSearchParamsString(searchParams,{page:currentPage+1}),
           }}>
