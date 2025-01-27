@@ -11,9 +11,10 @@ export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  isLoading?: boolean;
 }
 
-export function ButtonSubmit({ children,...props }: ButtonProps) {
+export function ButtonSubmit({ children, ...props }: ButtonProps) {
   return (
     <button {...props} className="form-container__form__button-submit">
       {children}
@@ -42,25 +43,27 @@ export function Button({ children, className, ...props }: ButtonProps) {
   );
 }
 
-export function PrimaryButton({ className, ...props }: ButtonProps) {
+export function PrimaryButton({ className, isLoading, ...props }: ButtonProps) {
   return (
     <Button
       {...props}
       className={classNames(
         "text-white bg-red-400 hover:bg-red-400 ",
+        isLoading ? "bg-red-100" : "",
         className
       )}
     />
   );
 }
 
-export function DeleteButton({ className, ...props }: ButtonProps) {
+export function DeleteButton({ className, isLoading, ...props }: ButtonProps) {
   return (
     <Button
       {...props}
       className={classNames(
         "border-2 border-yellow-200 text-red-500",
         "hover:bg-yellow-200 hover:text-white",
+        isLoading ? "border-yellow-500 text-red-600 " : "",
         className
       )}
     />

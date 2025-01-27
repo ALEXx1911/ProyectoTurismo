@@ -87,10 +87,8 @@ export default function Itinerario() {
         <PrimaryButton
           name="_action"
           value="createItinerario"
-          className={classNames(
-            "mt-4 w-full md:w-fit",
-            isCreatingItineraio ? "bg-red-400" : ""
-          )}
+          className="mt-4 w-full md:w-fit"
+          isLoading={isCreatingItineraio}
         >
           <PlusIcon />
           <span className="pl-2">
@@ -102,33 +100,41 @@ export default function Itinerario() {
         className={classNames(
           "flex gap-8 overflow-x-auto mt-4 pb-4",
           "snap-x snap-mandatory",
-          isCreatingItineraio ? "bg-red-500" : ""
+          isCreatingItineraio ? "bg-red-100" : ""
         )}
       >
-        {data.itinerarioTablas.map((itinerario) => (
-          <li
-            key={itinerario.id}
-            className={classNames(
-              "border-2 border-red-500 rounded-md p4",
-              "w-[calc(100vw-2rem)] flex-none snap-center"
-            )}
-          >
-            <h1 className="text-2xl font-extrabold md-2">
-              {itinerario.destino}
-            </h1>
-            <p>{itinerario.comida}</p> {}
-            <Form method="post" className="pt-8">
-              <input type="hidden" name="itinerariId" value={itinerario.id} />
-              <DeleteButton
-                className="w-full"
-                name="_action"
-                value="deleteItinerario"
-              >
-                Eliminar itinerarios
-              </DeleteButton>
-            </Form>
-          </li>
-        ))}
+        {data.itinerarioTablas.map((itinerario) => {
+          const isDeletingItinerario =
+            navigation.formData?.get("_action") === "deleteItinerario" &&
+            navigation.formData?.get("itinerariId") === itinerario.id;
+          return (
+            <li
+              key={itinerario.id}
+              className={classNames(
+                "border-2 border-red-500 rounded-md p4",
+                "w-[calc(100vw-2rem)] flex-none snap-center"
+              )}
+            >
+              <h1 className="text-2xl font-extrabold md-2">
+                {itinerario.destino}
+              </h1>
+              <p>{itinerario.comida}</p> {}
+              <Form method="post" className="pt-8">
+                <input type="hidden" name="itinerariId" value={itinerario.id} />
+                <DeleteButton
+                  className="w-full"
+                  name="_action"
+                  value="deleteItinerario"
+                  isLoading={isDeletingItinerario}
+                >
+                  {isDeletingItinerario
+                    ? "Eliminando itinerarios"
+                    : "Eliminar itinerarios"}
+                </DeleteButton>
+              </Form>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
