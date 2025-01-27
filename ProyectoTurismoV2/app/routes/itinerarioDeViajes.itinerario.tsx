@@ -52,14 +52,14 @@ export default function Itinerario() {
           type="text"
           name="q"
           autoComplete="off"
-          placeholder="Search"
+          placeholder="Buscar"
           className="w-full py-3 px-2 outline-none"
         />
       </Form>
       <Form method="post">
         <PrimaryButton
           name="_action"
-          value="createProvince"
+          value="createItinerario"
           className={classNames(
             "mt-4 w-full md:w-fit",
             isCreatingItineraio ? "bg-red-400" : ""
@@ -67,7 +67,7 @@ export default function Itinerario() {
         >
           <PlusIcon />
           <span className="pl-2">
-            {isCreatingItineraio ? "creating Province" : "crear itinerario"}
+            {isCreatingItineraio ? "creating itinerario" : "crear itinerario"}
           </span>
         </PrimaryButton>
       </Form>
@@ -78,18 +78,18 @@ export default function Itinerario() {
           isCreatingItineraio ? "bg-red-500" : ""
         )}
       >
-        {data.itinerarioTablas.map((province) => (
+        {data.itinerarioTablas.map((itinerario) => (
           <li
-            key={province.id}
+            key={itinerario.id}
             className={classNames(
               "border-2 border-red-500 rounded-md p4",
               "w-[calc(100vw-2rem)] flex-none snap-center"
             )}
           >
-            <h1 className="text-2xl font-extrabold md-2">{province.name}</h1>
-            <p>{province.description}</p> {}
+            <h1 className="text-2xl font-extrabold md-2">{itinerario.destino}</h1>
+            <p>{itinerario.comida}</p> {}
             <Form method="post" className="pt-8">
-              <DeleteButton className="w-full" name="deleteProvince">
+              <DeleteButton className="w-full" name="deleteItinerario">
                 Eliminar itinerarios
               </DeleteButton>
             </Form>
