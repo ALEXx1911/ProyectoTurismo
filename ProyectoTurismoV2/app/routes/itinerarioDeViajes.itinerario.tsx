@@ -13,6 +13,11 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { PrimaryButton, DeleteButton } from "~/components/forms";
+type itinerario = {
+  id: number;
+  destino: string;
+  comida: string;
+}
 
 type loaderData = {
   itinerarioTablas: Awaited<ReturnType<typeof getAllItinerario>>;
