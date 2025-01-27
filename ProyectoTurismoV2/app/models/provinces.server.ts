@@ -70,17 +70,18 @@ export async function deleteProvinceFromFavorites(
 //Función que elimina una provincia a las favoritas de un usuario.
 //Función para obtener las provicias y verlas en el apartado de todas las provincias.
 
-export function getProvinciestwo() {
+export function getAllProvincies(nskip:number){
+  const pageskip= nskip<0 ? 1 : nskip;
   return db.provinces.findMany({
-    take: 8,
-    orderBy: {
-      name: "asc",
-    },
+      skip: (pageskip-1)*8,
+      take:8,
+      orderBy:{
+          name:"asc"
+      }
   });
 }
-
 //funcion de pruebas
-export function getAllProvincies(query: string | null) {
+export function getAllProvincies2(query: string | null) {
   return db.provinces.findMany({
     where: {
       name: {
@@ -92,6 +93,10 @@ export function getAllProvincies(query: string | null) {
       createdAt: "desc",
     },
   });
+}
+
+export function getTotalPages(){
+  return db.provinces.count();
 }
 
 export function createProvinces() {

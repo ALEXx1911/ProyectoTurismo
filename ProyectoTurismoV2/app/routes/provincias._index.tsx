@@ -1,18 +1,25 @@
-import { json } from "@remix-run/node";
+import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import classNames from "classnames";import { LeftArrow, RightArrow } from "~/components/icons";
 ;
-import { getProvincies } from "~/models/provinces.server";
+import { getAllProvincies, getProvincies, getTotalPages } from "~/models/provinces.server";
 import { setSearchParamsString } from "~/utils/misc";
 
-export const loader = async () => {
-  const province = await getProvincies();
-  return json(province);
+export const loader = async ({request}: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  const page = Number(url.searchParams.get("page")) || 1;
+  const totalPages= await getTotalPages()/8;
+  const province = await getAllProvincies(page);
+  return json({
+    province,
+    page,
+    totalPages,
+  });
 };
 //Sacamos las provincias junto a todos los datos de las mismas en el "loader".
 
 export default function provincias() {
-  const data = useLoaderData<typeof loader>();
+  const {province,page,totalPages} = useLoaderData<typeof loader>();
   return (
     <div>
       <div className="flex flex-col items-center">
@@ -20,7 +27,7 @@ export default function provincias() {
           Provincias de España
         </h1>
         <div className="my-6 mx-16 grid auto-cols-[minmax(_1fr,_2fr)] gap-2 md:grid-cols-2">
-          {data.map((provincia) => {
+          {province.map((provincia) => {
             return (
               <ProvincieCard
                 key={provincia.id}
@@ -36,7 +43,7 @@ export default function provincias() {
             );
           })}
         </div>
-        <ProvincePagination currentPage={1} totalPages={Math.round(1)}/>
+        <ProvincePagination currentPage={page} totalPages={Math.round(totalPages)}/>
       </div>
     </div>
   );
