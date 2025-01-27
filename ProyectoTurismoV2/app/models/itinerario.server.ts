@@ -17,16 +17,24 @@ export function createItinerario() {
 /*
 Funcion para obtener todos los itinerarios de forma desc, todavia esta que solo muestre 8
 */
-export function getAllItinerario(query: string | null){
+export function getAllItinerario(query: string | null) {
   return db.itinerario.findMany({
-    where:{
-      destino:{
-        contains: query  ?? "",
+    where: {
+      destino: {
+        contains: query ?? "",
       },
     },
     take: 8,
     orderBy: {
       createdAt: "desc",
-    }
-  })
+    },
+  });
+}
+
+export function deleteItinerario(itinerariId: string) {
+  return db.itinerario.delete({
+    where: {
+      id: itinerariId,
+    },
+  });
 }

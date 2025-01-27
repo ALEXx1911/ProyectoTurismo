@@ -2,7 +2,11 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import { getAllProvincies, createProvinces } from "~/models/provinces.server";
-import {getAllItinerario, createItinerario} from "~/models/itinerario.server";
+import {
+  getAllItinerario,
+  createItinerario,
+  deleteItinerario,
+} from "~/models/itinerario.server";
 import { SearchIcon, PlusIcon } from "~/components/icons";
 import {
   ActionFunction,
@@ -17,7 +21,7 @@ type itinerario = {
   id: number;
   destino: string;
   comida: string;
-}
+};
 
 type loaderData = {
   itinerarioTablas: Awaited<ReturnType<typeof getAllItinerario>>;
@@ -31,15 +35,33 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  return createItinerario();
+  switch (formData.get("_action")) {
+    case "createItinerario": {
+      return createItinerario();
+    }
+    case "deleteItinerario": {
+      const itinerariId = formData.get("itinerariId");
+      if (typeof itinerariId !== "string") {
+        return json({
+          errors: { itinerariId: "itinerario ID debe ser un string" },
+        });
+      }
+      return deleteItinerario(itinerariId);
+    }
+    default: {
+      return null;
+    }
+  }
 };
 
 export default function Itinerario() {
   const data = useLoaderData() as loaderData;
   const [searchParams] = useSearchParams();
   const navigation = useNavigation();
+
   const isSearching = navigation.formData?.has("q");
-  const isCreatingItineraio = navigation.formData?.has("createItinerario");
+  const isCreatingItineraio =
+    navigation.formData?.get("_action") === "createItinerario";
   return (
     <div>
       <Form
@@ -91,10 +113,17 @@ export default function Itinerario() {
               "w-[calc(100vw-2rem)] flex-none snap-center"
             )}
           >
-            <h1 className="text-2xl font-extrabold md-2">{itinerario.destino}</h1>
+            <h1 className="text-2xl font-extrabold md-2">
+              {itinerario.destino}
+            </h1>
             <p>{itinerario.comida}</p> {}
             <Form method="post" className="pt-8">
-              <DeleteButton className="w-full" name="deleteItinerario">
+              <input type="hidden" name="itinerariId" value={itinerario.id} />
+              <DeleteButton
+                className="w-full"
+                name="_action"
+                value="deleteItinerario"
+              >
                 Eliminar itinerarios
               </DeleteButton>
             </Form>

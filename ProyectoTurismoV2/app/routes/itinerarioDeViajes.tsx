@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { NavLink, Outlet } from "react-router-dom";
+import { Navigation } from "swiper/modules";
 
 export default function iterinarioDeViajes() {
   return (
