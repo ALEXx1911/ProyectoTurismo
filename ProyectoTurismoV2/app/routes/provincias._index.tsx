@@ -1,7 +1,9 @@
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import classNames from "classnames";;
+import { Link, useLoaderData } from "@remix-run/react";
+import classNames from "classnames";import { LeftArrow, RightArrow } from "~/components/icons";
+;
 import { getProvincies } from "~/models/provinces.server";
+import { setSearchParamsString } from "~/utils/misc";
 
 export const loader = async () => {
   const province = await getProvincies();
@@ -12,8 +14,8 @@ export const loader = async () => {
 export default function provincias() {
   const data = useLoaderData<typeof loader>();
   return (
-    <div className="">
-      <div>
+    <div>
+      <div className="flex flex-col items-center">
         <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">
           Provincias de España
         </h1>
@@ -34,13 +36,13 @@ export default function provincias() {
             );
           })}
         </div>
+        <ProvincePagination currentPage={1} totalPages={Math.round(1)}/>
       </div>
     </div>
   );
 }
 //Esta función muestra todas las provincias si la URL no tiene ningún parámetro de búsqueda.
 
-function provincia() {}
 type ProvinceCardProps = {
   imageUrl: string;
   name: string;
@@ -118,5 +120,29 @@ function ProvincieCard({
         </button>
       </div>
     </div>
+  );
+}
+type ProvincePaginationProps = {
+  currentPage: number
+  totalPages: number
+}
+function ProvincePagination({currentPage,totalPages}:ProvincePaginationProps,{searchParams}:{searchParams : URLSearchParams}){
+  const islastPage = currentPage === totalPages;
+  const isFirstPage = currentPage === 1;
+  return(
+      <div className="flex gap-4 items-center my-4">
+          {!isFirstPage ? <Link to={{
+              search: setSearchParamsString(searchParams,{page:currentPage-1}),
+          }}>
+              <LeftArrow/>
+          </Link> : ""}
+          <p className="text-xl font-bold">Page {currentPage} of {totalPages}</p>
+          {!islastPage ? <Link to={{
+              search: setSearchParamsString(searchParams,{page:currentPage+1}),
+          }}>
+              <RightArrow/>
+          </Link> : ""}
+          
+      </div>
   );
 }
