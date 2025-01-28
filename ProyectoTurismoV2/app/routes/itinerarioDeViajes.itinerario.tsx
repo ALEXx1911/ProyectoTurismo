@@ -1,7 +1,6 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
-import { getAllProvincies, createProvinces } from "~/models/provinces.server";
 import {
   getAllItinerario,
   createItinerario,
@@ -12,7 +11,6 @@ import {
   ActionFunction,
   Form,
   LoaderFunction,
-  LoaderFunctionArgs,
   useNavigation,
   useSearchParams,
 } from "react-router-dom";

@@ -2,7 +2,7 @@ import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import classNames from "classnames";import { LeftArrow, RightArrow } from "~/components/icons";
 ;
-import { getAllProvincies, getProvincies, getTotalPages } from "~/models/provinces.server";
+import { getAllProvincies, getTotalPages } from "~/models/provinces.server";
 import { setSearchParamsString } from "~/utils/misc";
 
 export const loader = async ({request}: LoaderFunctionArgs) => {

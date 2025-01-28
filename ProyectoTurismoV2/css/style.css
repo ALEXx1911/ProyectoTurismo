@@ -490,6 +490,12 @@
   border-radius: 50%;
   border: 6px solid white;
 }
+@media only screen and (max-width: 1100px) {
+  .form-container__form__image-container img {
+    height: 20vh;
+    width: 20vh;
+  }
+}
 .form-container__form__image-container__label {
   color: black;
   background-color: white;

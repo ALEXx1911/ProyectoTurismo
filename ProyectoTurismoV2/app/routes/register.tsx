@@ -12,6 +12,7 @@ export const loader=async({request}:LoaderFunctionArgs)=>{
     await userNotLoggedRequired(request);
     return null;
 }
+//Nos aseguramos de que no haya ningún usuario con la sesión iniciada.s
 const registerSchema=z.object({
     email:z.string().email("Se ha introducido un email inválido."),
     username:z.string().min(5,"El nombre de usuario requiere al menos de 5 caracteres."),

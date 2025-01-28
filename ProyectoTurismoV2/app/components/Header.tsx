@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProfileBox from "./ProfileBox";
 import Menu from "./Menu";
-import { Form } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { ErrorMessage } from "./forms";
 import { SearchIcon } from "./icons";
 
@@ -23,7 +23,7 @@ export default function Header({username,profileImage,isUserLogged,errorMessage}
     <>
       <div className="header">
         <div className="header__logo-container">
-          <img className="header__logo" src="../../img/logo.jpeg" alt="Logo de la compañía" />
+          <Link to="/"><img className="header__logo" src="/img/logo.jpeg" alt="Logo de la compañía" /></Link>
           <h4 className="header__name">turismoEspaña</h4>
         </div>
 
