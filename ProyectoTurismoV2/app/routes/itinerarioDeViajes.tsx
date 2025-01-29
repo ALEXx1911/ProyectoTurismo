@@ -1,39 +1,42 @@
-import { json } from "@remix-run/node";
+import { json, ActionFunction, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import {
   getAllItinerario,
   createItinerario,
   deleteItinerario,
+  saveItinerarioName,
 } from "~/models/itinerario.server";
-import { SearchIcon, PlusIcon } from "~/components/icons";
+import { SearchIcon, PlusIcon, SaveIcon } from "~/components/icons";
 import {
-  ActionFunction,
   Form,
-  LoaderFunction,
   useFetcher,
   useNavigation,
   useSearchParams,
-} from "react-router-dom";
+} from "@remix-run/react";
 import { PrimaryButton, DeleteButton } from "~/components/forms";
 import React from "react";
-type itinerario = {
+
+type ItinerarioType = {
   id: string;
   destino: string;
   comida: string;
-  ocio: String;
+  ocio: string;
   viaje: string;
 };
 
-type loaderData = {
+type LoaderData = {
   itinerarioTablas: Awaited<ReturnType<typeof getAllItinerario>>;
 };
+
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
-  const q = url.searchParams.get("q");
+  const q = url.searchParams.get("q") || "";
   const itinerarioTablas = await getAllItinerario(q);
-  return json({ itinerarioTablas });
+  return json<LoaderData>({ itinerarioTablas });
 };
+
+type FieldErrors = { [key: string]: string };
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -44,39 +47,66 @@ export const action: ActionFunction = async ({ request }) => {
     case "deleteItinerario": {
       const itinerariId = formData.get("itinerariId");
       if (typeof itinerariId !== "string") {
-        return json({
-          errors: { itinerariId: "itinerario ID debe ser un string" },
-        });
+        return json(
+          { errors: { itinerariId: "ID debe ser un string" } },
+          { status: 400 }
+        );
       }
       return deleteItinerario(itinerariId);
     }
+    case "saveItinerarioName": {
+      const itinerariId = formData.get("itinerariId");
+      const itinerarioName = formData.get("itinerarioName");
+      const errors: FieldErrors = {};
+
+      if (!itinerarioName) {
+        errors.itinerarioName = "Nombre requerido";
+      }
+      if (typeof itinerarioName !== "string") {
+        errors.itinerarioName = "Nombre inválido";
+      }
+      if (typeof itinerariId !== "string") {
+        errors.itinerariId = "ID inválido";
+      }
+
+      if (Object.keys(errors).length > 0) {
+        return json({ errors }, { status: 400 });
+      }
+
+      return saveItinerarioName(
+        itinerariId as string,
+        itinerarioName as string
+      );
+    }
     default: {
-      return null;
+      return json({ error: "Acción no válida" }, { status: 400 });
     }
   }
 };
 
-export default function itinerarioDeViajes() {
-  const data = useLoaderData<typeof loader>();
+export default function ItinerarioDeViajes() {
+  const data = useLoaderData<LoaderData>();
   const [searchParams] = useSearchParams();
   const createItinerarioFetcher = useFetcher();
   const navigation = useNavigation();
   const containerRef = React.useRef<HTMLUListElement>(null);
 
   const isSearching = navigation.formData?.has("q");
-  const isCreatingItineraio =
+  const isCreatingItinerario =
     createItinerarioFetcher.formData?.get("_action") === "createItinerario";
+
   React.useEffect(() => {
-    if (!isCreatingItineraio && containerRef.current) {
+    if (!isCreatingItinerario && containerRef.current) {
       containerRef.current.scrollLeft = 0;
     }
-  }, [isCreatingItineraio]);
+  }, [isCreatingItinerario]);
 
   return (
     <div>
       <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">
         ITINERARIO DE VIAJES
       </h1>
+
       <Form
         className={classNames(
           "flex border-2 border-gray-300 rounded-md",
@@ -96,24 +126,29 @@ export default function itinerarioDeViajes() {
           className="w-full py-3 px-2 outline-none"
         />
       </Form>
+
       <createItinerarioFetcher.Form method="post">
         <PrimaryButton
           name="_action"
           value="createItinerario"
           className="mt-4 w-full md:w-fit"
-          isLoading={isCreatingItineraio}
+          isLoading={isCreatingItinerario}
         >
           <PlusIcon />
           <span className="pl-2">
-            {isCreatingItineraio ? "creating itinerario" : "crear itinerario"}
+            {isCreatingItinerario
+              ? "Creando itinerario..."
+              : "Crear itinerario"}
           </span>
         </PrimaryButton>
       </createItinerarioFetcher.Form>
+
       <ul
+        ref={containerRef}
         className={classNames(
           "flex-col gap-8 overflow-x-auto mt-4 pb-4",
           "snap-x snap-mandatory",
-          isCreatingItineraio ? "bg-red-100" : ""
+          isCreatingItinerario ? "bg-red-100" : ""
         )}
       >
         {data.itinerarioTablas.map((itinerario) => (
@@ -123,34 +158,52 @@ export default function itinerarioDeViajes() {
     </div>
   );
 }
-type ItineraioProps = {
-  itinerario: {
-    id: String;
-    destino: string;
-    comida: string;
-    ocio: String;
-    viaje: string;
-  };
+
+type ItinerarioProps = {
+  itinerario: ItinerarioType;
 };
 
-function Itinerario({ itinerario }: ItineraioProps) {
-  const deleteItinerarioFecher = useFetcher();
+function Itinerario({ itinerario }: ItinerarioProps) {
+  const deleteItinerarioFetcher = useFetcher();
+  const saveItinerarioNameFetcher = useFetcher();
 
   const isDeletingItinerario =
-    deleteItinerarioFecher.formData?.get("_action") === "deleteItinerario" &&
-    deleteItinerarioFecher.formData?.get("itinerariId") === itinerario.id;
+    deleteItinerarioFetcher.formData?.get("_action") === "deleteItinerario" &&
+    deleteItinerarioFetcher.formData?.get("itinerariId") === itinerario.id;
 
   return (
     <li
-      key={itinerario.id}
       className={classNames(
-        "border-2 border-red-500 rounded-md p4",
-        "my-6 mx-16 grid "
+        "border-2 border-red-500 rounded-md p-4",
+        "my-6 mx-16 grid"
       )}
     >
-      <h1 className="text-2xl font-extrabold md-2">{itinerario.destino}</h1>
-      <p>{itinerario.comida}</p> {}
-      <deleteItinerarioFecher.Form method="post" className="pt-8">
+      <saveItinerarioNameFetcher.Form method="post">
+        <div className="flex items-center">
+          <input
+            type="text"
+            name="itinerarioName"
+            defaultValue={itinerario.destino}
+            placeholder="Destino"
+            autoComplete="off"
+            className={classNames(
+              "text-2xl font-extrabold mb-2 w-full outline-none",
+              "border-b-2 border-b-gray-200 focus:border-b-red-500"
+            )}
+          />
+          <button
+            name="_action"
+            value="saveItinerarioName"
+            className="ml-4"
+            type="submit"
+          >
+            <SaveIcon />
+          </button>
+          <input type="hidden" name="itinerariId" value={itinerario.id} />
+        </div>
+      </saveItinerarioNameFetcher.Form>
+
+      <deleteItinerarioFetcher.Form method="post" className="pt-4">
         <input type="hidden" name="itinerariId" value={itinerario.id} />
         <DeleteButton
           className="w-full"
@@ -158,11 +211,17 @@ function Itinerario({ itinerario }: ItineraioProps) {
           value="deleteItinerario"
           isLoading={isDeletingItinerario}
         >
-          {isDeletingItinerario
-            ? "Eliminando itinerarios"
-            : "Eliminar itinerarios"}
+          {isDeletingItinerario ? "Eliminando..." : "Eliminar itinerario"}
         </DeleteButton>
-      </deleteItinerarioFecher.Form>
+      </deleteItinerarioFetcher.Form>
     </li>
+  );
+}
+
+export function ErrorBoundary() {
+  return (
+    <div className="text-red-500 p-4 text-center">
+      ¡Algo salió mal! Por favor intenta nuevamente.
+    </div>
   );
 }

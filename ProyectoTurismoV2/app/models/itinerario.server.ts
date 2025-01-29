@@ -39,3 +39,13 @@ export function deleteItinerario(itinerariId: string) {
     },
   });
 }
+export function saveItinerarioName(itinerario: string, itinerarioName: string) {
+  return db.itinerario.update({
+    where: {
+      id: itinerario,
+    },
+    data: {
+      destino: itinerarioName,
+    },
+  });
+}
