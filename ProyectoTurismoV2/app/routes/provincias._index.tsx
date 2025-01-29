@@ -1,6 +1,6 @@
 import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import classNames from "classnames";import { LeftArrow, RightArrow } from "~/components/icons";
+import classNames from "classnames";import { DoubleLeftArrow, DoubleRightArrow, LeftArrow, RightArrow } from "~/components/icons";
 ;
 import { getAllProvincies, getTotalPages } from "~/models/provinces.server";
 import { setSearchParamsString } from "~/utils/misc";
@@ -144,19 +144,32 @@ function ProvincePagination({currentPage,totalPages}:ProvincePaginationProps,{se
   const islastPage = currentPage === totalPages;
   const isFirstPage = currentPage === 1;
   return(
-      <div className="flex gap-4 items-center my-4">
-          {!isFirstPage ? <Link to={{
-              search: setSearchParamsString(searchParams,{page:currentPage-1}),
-          }}>
-              <LeftArrow/>
-          </Link> : ""}
-          <p className="text-xl font-bold">Página {currentPage } de {totalPages}</p>
-          {!islastPage ? <Link to={{
-              search: setSearchParamsString(searchParams,{page:currentPage+1}),
-          }}>
-              <RightArrow/>
-          </Link> : ""}
-          
-      </div>
+    <div className="flex gap-4 items-center my-4">
+    {!isFirstPage ? <div className="flex gap-1">
+      <Link to={{search: setSearchParamsString(searchParams,{page:1})}}>
+        <div className="bg-white p-1 rounded-xl transition-all ease-in-out  duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
+          <DoubleLeftArrow/>
+        </div>
+    </Link>
+    <Link to={{search: setSearchParamsString(searchParams,{page:currentPage-1})}}>
+        <div className="bg-white p-1 rounded-xl transition-all ease-in-out  duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
+          <LeftArrow/>
+        </div>
+    </Link>
+      </div> : ""}
+    <p className="text-xl font-bold">Página {currentPage } de {totalPages}</p>
+    {!islastPage ? <div className="flex gap-1">
+      <Link to={{search: setSearchParamsString(searchParams,{page:currentPage+1})}}>
+        <div className="bg-white p-1 rounded-xl transition-all ease-in-out duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
+          <RightArrow/>
+        </div>
+      </Link>
+      <Link to={{search: setSearchParamsString(searchParams,{page:totalPages})}}>
+        <div className="bg-white p-1 rounded-xl transition-all ease-in-out  duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
+          <DoubleRightArrow/>
+        </div>
+    </Link>
+      </div> : ""}   
+</div>
   );
 }
