@@ -88,6 +88,7 @@ export default function itinerarioDeViajes() {
     navigation.formData?.get("_action") === "createItinerario";
   return (
     <div>
+      <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">ITINERARIO DE VIAJES</h1>
       <Form
         className={classNames(
           "flex border-2 border-gray-300 rounded-md",
@@ -122,7 +123,7 @@ export default function itinerarioDeViajes() {
       </Form>
       <ul
         className={classNames(
-          "flex gap-8 overflow-x-auto mt-4 pb-4",
+          "flex-col gap-8 overflow-x-auto mt-4 pb-4",
           "snap-x snap-mandatory",
           isCreatingItineraio ? "bg-red-100" : ""
         )}
@@ -136,7 +137,7 @@ export default function itinerarioDeViajes() {
               key={itinerario.id}
               className={classNames(
                 "border-2 border-red-500 rounded-md p4",
-                "w-[calc(100vw-2rem)] flex-none snap-center"
+                "my-6 mx-16 grid "
               )}
             >
               <h1 className="text-2xl font-extrabold md-2">
