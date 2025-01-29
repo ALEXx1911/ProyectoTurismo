@@ -1,29 +1,3 @@
-// import classNames from "classnames";
-// import { NavLink, Outlet } from "react-router-dom";
-
-// export default function iterinarioDeViajes() {
-//   return (
-//     <div>
-//       <h1 className="provincias__titulo">Irinerario</h1>
-//       <nav className="provincias__border">
-//         <NavLink
-//           to="itinerario"
-//           className={({ isActive }) =>
-//             classNames(
-//               "provincias__button",
-//               isActive ? "provincias__border" : ""
-//             )
-//           }
-//         >
-//           Itirerarios
-//         </NavLink>
-//       </nav>
-//       <div className="py-4 overflow-y-auto">
-//         <Outlet />
-//       </div>
-//     </div>
-//   );
-// }
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
@@ -37,14 +11,18 @@ import {
   ActionFunction,
   Form,
   LoaderFunction,
+  useFetcher,
   useNavigation,
   useSearchParams,
 } from "react-router-dom";
 import { PrimaryButton, DeleteButton } from "~/components/forms";
+import React from "react";
 type itinerario = {
-  id: number;
+  id: string;
   destino: string;
   comida: string;
+  ocio: String;
+  viaje: string;
 };
 
 type loaderData = {
@@ -79,16 +57,26 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function itinerarioDeViajes() {
-  const data = useLoaderData() as loaderData;
+  const data = useLoaderData<typeof loader>();
   const [searchParams] = useSearchParams();
+  const createItinerarioFetcher = useFetcher();
   const navigation = useNavigation();
+  const containerRef = React.useRef<HTMLUListElement>(null);
 
   const isSearching = navigation.formData?.has("q");
   const isCreatingItineraio =
-    navigation.formData?.get("_action") === "createItinerario";
+    createItinerarioFetcher.formData?.get("_action") === "createItinerario";
+  React.useEffect(() => {
+    if (!isCreatingItineraio && containerRef.current) {
+      containerRef.current.scrollLeft = 0;
+    }
+  }, [isCreatingItineraio]);
+
   return (
     <div>
-      <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">ITINERARIO DE VIAJES</h1>
+      <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">
+        ITINERARIO DE VIAJES
+      </h1>
       <Form
         className={classNames(
           "flex border-2 border-gray-300 rounded-md",
@@ -108,7 +96,7 @@ export default function itinerarioDeViajes() {
           className="w-full py-3 px-2 outline-none"
         />
       </Form>
-      <Form method="post">
+      <createItinerarioFetcher.Form method="post">
         <PrimaryButton
           name="_action"
           value="createItinerario"
@@ -120,7 +108,7 @@ export default function itinerarioDeViajes() {
             {isCreatingItineraio ? "creating itinerario" : "crear itinerario"}
           </span>
         </PrimaryButton>
-      </Form>
+      </createItinerarioFetcher.Form>
       <ul
         className={classNames(
           "flex-col gap-8 overflow-x-auto mt-4 pb-4",
@@ -128,39 +116,53 @@ export default function itinerarioDeViajes() {
           isCreatingItineraio ? "bg-red-100" : ""
         )}
       >
-        {data.itinerarioTablas.map((itinerario) => {
-          const isDeletingItinerario =
-            navigation.formData?.get("_action") === "deleteItinerario" &&
-            navigation.formData?.get("itinerariId") === itinerario.id;
-          return (
-            <li
-              key={itinerario.id}
-              className={classNames(
-                "border-2 border-red-500 rounded-md p4",
-                "my-6 mx-16 grid "
-              )}
-            >
-              <h1 className="text-2xl font-extrabold md-2">
-                {itinerario.destino}
-              </h1>
-              <p>{itinerario.comida}</p> {}
-              <Form method="post" className="pt-8">
-                <input type="hidden" name="itinerariId" value={itinerario.id} />
-                <DeleteButton
-                  className="w-full"
-                  name="_action"
-                  value="deleteItinerario"
-                  isLoading={isDeletingItinerario}
-                >
-                  {isDeletingItinerario
-                    ? "Eliminando itinerarios"
-                    : "Eliminar itinerarios"}
-                </DeleteButton>
-              </Form>
-            </li>
-          );
-        })}
+        {data.itinerarioTablas.map((itinerario) => (
+          <Itinerario key={itinerario.id} itinerario={itinerario} />
+        ))}
       </ul>
     </div>
+  );
+}
+type ItineraioProps = {
+  itinerario: {
+    id: String;
+    destino: string;
+    comida: string;
+    ocio: String;
+    viaje: string;
+  };
+};
+
+function Itinerario({ itinerario }: ItineraioProps) {
+  const deleteItinerarioFecher = useFetcher();
+
+  const isDeletingItinerario =
+    deleteItinerarioFecher.formData?.get("_action") === "deleteItinerario" &&
+    deleteItinerarioFecher.formData?.get("itinerariId") === itinerario.id;
+
+  return (
+    <li
+      key={itinerario.id}
+      className={classNames(
+        "border-2 border-red-500 rounded-md p4",
+        "my-6 mx-16 grid "
+      )}
+    >
+      <h1 className="text-2xl font-extrabold md-2">{itinerario.destino}</h1>
+      <p>{itinerario.comida}</p> {}
+      <deleteItinerarioFecher.Form method="post" className="pt-8">
+        <input type="hidden" name="itinerariId" value={itinerario.id} />
+        <DeleteButton
+          className="w-full"
+          name="_action"
+          value="deleteItinerario"
+          isLoading={isDeletingItinerario}
+        >
+          {isDeletingItinerario
+            ? "Eliminando itinerarios"
+            : "Eliminar itinerarios"}
+        </DeleteButton>
+      </deleteItinerarioFecher.Form>
+    </li>
   );
 }

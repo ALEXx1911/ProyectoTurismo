@@ -1,3 +1,4 @@
+import { Prisma, PrismaClient } from "@prisma/client/extension";
 import { Container } from "postcss";
 import db from "~/db.server";
 
