@@ -22,6 +22,8 @@ import Footer from "./components/Footer";
 import { LoaderFunction } from "react-router-dom";
 import { getCurrentUser } from "./utils/auth.server";
 import { getProvinceByName } from "./models/provinces.server";
+import { z } from "zod";
+import { validateForm } from "./utils/validation";
 
 export const meta: MetaFunction = () => {
   return [
@@ -80,27 +82,38 @@ export const loader:LoaderFunction=async({request})=>{
 //el usuario tenga o no la sesión iniciada. Si el usuario está logueado, se devuelve también su 
 //nombre de usuario y la URL de su imagen de perfil.
 
+const searchProvinceSchema=z.object({
+ province:z.string().min(1,"No se ha introducido ninguna provincia.")
+});
+
 export const action:ActionFunction=async({request})=>{
   const formData=await request.formData();
-  const proviceName=formData.get("province");
-  if(typeof proviceName=="string"){
-    const province=await getProvinceByName(proviceName);
-    if(province!==null){
-      const url=new URL(request.url);
-      url.pathname=`/provincias/${province?.id}`;
-      //Construimos el nuevo "pathname".
-      return redirect(url.toString());
+ return validateForm(formData,searchProvinceSchema,
+  async (data)=>{
+    if(typeof data.province=="string"){
+      const province=await getProvinceByName(data.province);
+      if(province!==null){
+        const url=new URL(request.url);
+        url.pathname=`/provincias/${province?.id}`;
+        //Construimos el nuevo "pathname".
+        return redirect(url.toString());
+        //Si la provincia existe, reedirigimos al usuario a la página de la provincia especificada.
+      }
     }
-  }
-  return json({
-    errors:{
-      province:"Se ha introducido una provincia que no existe."
-    }
-  });
+    return json({
+      errors:{
+        province:"Se ha introducido una provincia que no existe."
+      }
+    });
+    //Si se introduce una provincia pero no existe, devolvemos este otro mensaje de error.
+  },
+  (errors)=>(json({errors}))
+ );
   //Devolvemos un json con un mensaje de error si la provincia introducida en el la barra de 
   //búsqueda del "header" no está en la base de datos.
 }
 //Este "action" es para el "Form" del "header".
+
 export default function App() {
   const navigation=useNavigation();
   const isLoading=navigation.state=="loading";
