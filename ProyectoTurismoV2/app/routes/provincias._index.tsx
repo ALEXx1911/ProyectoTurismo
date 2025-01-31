@@ -1,7 +1,6 @@
 import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import classNames from "classnames";import { DoubleLeftArrow, DoubleRightArrow, LeftArrow, RightArrow } from "~/components/icons";
-;
 import { getAllProvincies, getTotalPages } from "~/models/provinces.server";
 import { setSearchParamsString } from "~/utils/misc";
 

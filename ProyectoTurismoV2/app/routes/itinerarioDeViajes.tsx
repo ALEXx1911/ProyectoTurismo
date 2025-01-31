@@ -16,6 +16,7 @@ import {
 } from "@remix-run/react";
 import { PrimaryButton, DeleteButton } from "~/components/forms";
 import React from "react";
+import { userLoggedRequired } from "~/utils/auth.server";
 
 type ItinerarioType = {
   id: string;
@@ -30,6 +31,8 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
+  await userLoggedRequired(request);
+  //Nos aseguramos de que hay un usuario con la sesión iniciada para acceder a esta parte de la aplicación.
   const url = new URL(request.url);
   const q = url.searchParams.get("q") || "";
   const itinerarioTablas = await getAllItinerario(q);
@@ -39,6 +42,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 type FieldErrors = { [key: string]: string };
 
 export const action: ActionFunction = async ({ request }) => {
+  await userLoggedRequired(request);
   const formData = await request.formData();
   switch (formData.get("_action")) {
     case "createItinerario": {
