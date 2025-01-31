@@ -90,15 +90,13 @@ export const action:ActionFunction=async({request})=>{
   const formData=await request.formData();
  return validateForm(formData,searchProvinceSchema,
   async (data)=>{
-    if(typeof data.province=="string"){
-      const province=await getProvinceByName(data.province);
-      if(province!==null){
-        const url=new URL(request.url);
-        url.pathname=`/provincias/${province?.id}`;
-        //Construimos el nuevo "pathname".
-        return redirect(url.toString());
-        //Si la provincia existe, reedirigimos al usuario a la página de la provincia especificada.
-      }
+    const province=await getProvinceByName(data.province);
+    if(province!==null){
+      const url=new URL(request.url);
+      url.pathname=`/provincias/${province?.id}`;
+      //Construimos el nuevo "pathname".
+      return redirect(url.toString());
+      //Si la provincia existe, reedirigimos al usuario a la página de la provincia especificada.
     }
     return json({
       errors:{
