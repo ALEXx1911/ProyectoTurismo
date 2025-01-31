@@ -17,6 +17,8 @@ import {
 import { PrimaryButton, DeleteButton } from "~/components/forms";
 import React from "react";
 import { userLoggedRequired } from "~/utils/auth.server";
+import { z } from "zod";
+import { validateForm } from "~/utils/validation";
 
 type ItinerarioType = {
   id: string;
@@ -39,7 +41,14 @@ export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({ itinerarioTablas });
 };
 
-type FieldErrors = { [key: string]: string };
+const deleteItinerarioSchema = z.object({
+  itinerarioID: z.string(),
+});
+
+const saveItinerarioNameSchema = z.object({
+  itinerarioID: z.string(),
+  itinerarioName: z.string().min(1),
+});
 
 export const action: ActionFunction = async ({ request }) => {
   await userLoggedRequired(request);
@@ -49,37 +58,19 @@ export const action: ActionFunction = async ({ request }) => {
       return createItinerario();
     }
     case "deleteItinerario": {
-      const itinerariId = formData.get("itinerariId");
-      if (typeof itinerariId !== "string") {
-        return json(
-          { errors: { itinerariId: "ID debe ser un string" } },
-          { status: 400 }
-        );
-      }
-      return deleteItinerario(itinerariId);
+      return validateForm(
+        formData,
+        deleteItinerarioSchema,
+        (data) => deleteItinerario(data.itinerarioID),
+        (errors) => json({ errors })
+      );
     }
     case "saveItinerarioName": {
-      const itinerariId = formData.get("itinerariId");
-      const itinerarioName = formData.get("itinerarioName");
-      const errors: FieldErrors = {};
-
-      if (!itinerarioName) {
-        errors.itinerarioName = "Nombre requerido";
-      }
-      if (typeof itinerarioName !== "string") {
-        errors.itinerarioName = "Nombre inválido";
-      }
-      if (typeof itinerariId !== "string") {
-        errors.itinerariId = "ID inválido";
-      }
-
-      if (Object.keys(errors).length > 0) {
-        return json({ errors }, { status: 400 });
-      }
-
-      return saveItinerarioName(
-        itinerariId as string,
-        itinerarioName as string
+      return validateForm(
+        formData,
+        saveItinerarioNameSchema,
+        (data) => saveItinerarioName(data.itinerarioID, data.itinerarioName),
+        (errors) => json({ errors })
       );
     }
     default: {
@@ -173,7 +164,7 @@ function Itinerario({ itinerario }: ItinerarioProps) {
 
   const isDeletingItinerario =
     deleteItinerarioFetcher.formData?.get("_action") === "deleteItinerario" &&
-    deleteItinerarioFetcher.formData?.get("itinerariId") === itinerario.id;
+    deleteItinerarioFetcher.formData?.get("itinerarioID") === itinerario.id;
 
   return (
     <li
@@ -203,12 +194,12 @@ function Itinerario({ itinerario }: ItinerarioProps) {
           >
             <SaveIcon />
           </button>
-          <input type="hidden" name="itinerariId" value={itinerario.id} />
+          <input type="hidden" name="itinerarioID" value={itinerario.id} />
         </div>
       </saveItinerarioNameFetcher.Form>
 
       <deleteItinerarioFetcher.Form method="post" className="pt-4">
-        <input type="hidden" name="itinerariId" value={itinerario.id} />
+        <input type="hidden" name="itinerarioID" value={itinerario.id} />
         <DeleteButton
           className="w-full"
           name="_action"
