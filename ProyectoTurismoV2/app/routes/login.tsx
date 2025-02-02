@@ -1,10 +1,9 @@
 import { ActionFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { Form,Link, redirect, useActionData } from "@remix-run/react";
+import { Form,Link, Outlet, redirect, useActionData } from "@remix-run/react";
 import { json } from "@remix-run/react";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
 import { getUser } from "~/models/user.server";
-import { commitSession, getSession } from "~/sessions";
 import { userNotLoggedRequired } from "~/utils/auth.server";
 import { comparePasswords } from "~/utils/passwordUtils";
 import { validateForm } from "~/utils/validation";
@@ -35,20 +34,7 @@ export const action:ActionFunction=async({request})=>{
             //Comprobamos que la contraseña introducida por el usuario es correcta.
 
             if(passwordIsCorrect){
-                const cookieHeader=request.headers.get("cookie");
-                const session=await getSession(cookieHeader);
-                session.set("userId",undefined);
-                session.set("username",undefined);
-                //Dejamos en "undefined" los parámetros que estuvieran anteriormente.
-                session.set("userId",user.id);
-                session.set("username",user.name);
-                //Insertamos el nombre de usuario a la sesión. 
-                return redirect("/",{
-                    headers:{
-                        "Set-Cookie":await commitSession(session)
-                    }
-                });
-                {/*Guardamos la sesión en los headers y redirigimos a la página principal.*/}
+               return redirect(`/login/validateUser?userId=${user.id}`)
             }
             //Si la contraseña es correcta, entonces iniciamos la sesión.
             return json({errors:{email: "El usuario o la contraseña no son correctos."}});
@@ -64,6 +50,8 @@ export const action:ActionFunction=async({request})=>{
 export default function login(){
     const actionData=useActionData<typeof action>();
     return (
+        <>
+        <Outlet />
         <div className="form-container">
             <Form className="form-container__form" method="POST">
                 <Link to="/"><button className="form-container__form__button-exit">Atrás</button></Link>
@@ -78,5 +66,6 @@ export default function login(){
                 ¿Aún no tiene cuenta? Regístrese ahora
             </Link>
         </div>
+        </>
     );
 }

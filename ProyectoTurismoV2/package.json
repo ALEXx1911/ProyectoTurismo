@@ -11,7 +11,8 @@
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
     "sass": "sass --watch sass/main.scss css/style.css",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prod":"NODE_ENV=production npm run dev"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
@@ -20,9 +21,12 @@
     "@remix-run/serve": "^2.15.0",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.5.1",
+    "form-data": "^4.0.0",
     "isbot": "^4.1.0",
+    "mailgun.js": "^10.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.28.0",
     "sharp": "^0.33.5",
     "swiper": "^11.1.15",
@@ -33,6 +37,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/react-modal": "^3.16.3",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
