@@ -14,7 +14,7 @@ import {
   useNavigation,
   useSearchParams,
 } from "@remix-run/react";
-import { PrimaryButton, DeleteButton } from "~/components/forms";
+import { PrimaryButton, DeleteButton, ErrorMessage } from "~/components/forms";
 import React from "react";
 import { userLoggedRequired } from "~/utils/auth.server";
 import { z } from "zod";
@@ -47,7 +47,7 @@ const deleteItinerarioSchema = z.object({
 
 const saveItinerarioNameSchema = z.object({
   itinerarioID: z.string(),
-  itinerarioName: z.string().min(1),
+  itinerarioName: z.string().min(1, "El nombre del itinerario esta en blanco"),
 });
 
 export const action: ActionFunction = async ({ request }) => {
@@ -80,7 +80,7 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function ItinerarioDeViajes() {
-  const data = useLoaderData<LoaderData>();
+  const data = useLoaderData<LoaderData>() as LoaderData;
   const [searchParams] = useSearchParams();
   const createItinerarioFetcher = useFetcher();
   const navigation = useNavigation();
@@ -166,15 +166,18 @@ function Itinerario({ itinerario }: ItinerarioProps) {
     deleteItinerarioFetcher.formData?.get("_action") === "deleteItinerario" &&
     deleteItinerarioFetcher.formData?.get("itinerarioID") === itinerario.id;
 
-  return (
+  return isDeletingItinerario ? null : (
     <li
       className={classNames(
         "border-2 border-red-500 rounded-md p-4",
         "my-6 mx-16 grid"
       )}
     >
-      <saveItinerarioNameFetcher.Form method="post">
-        <div className="flex items-center">
+      <saveItinerarioNameFetcher.Form
+        method="post"
+        className="flex items-center "
+      >
+        <div className=" w-full mb-2">
           <input
             type="text"
             name="itinerarioName"
@@ -182,31 +185,42 @@ function Itinerario({ itinerario }: ItinerarioProps) {
             placeholder="Destino"
             autoComplete="off"
             className={classNames(
-              "text-2xl font-extrabold mb-2 w-full outline-none",
-              "border-b-2 border-b-gray-200 focus:border-b-red-500"
+              "text-2xl font-extrabold w-full outline-none",
+              "border-b-2 border-b-background focus:border-b-red-500",
+              saveItinerarioNameFetcher.data?.errors?.itinerarioName
+                ? "border-b-red-950"
+                : ""
             )}
           />
-          <button
-            name="_action"
-            value="saveItinerarioName"
-            className="ml-4"
-            type="submit"
-          >
-            <SaveIcon />
-          </button>
-          <input type="hidden" name="itinerarioID" value={itinerario.id} />
+          <ErrorMessage>
+            {saveItinerarioNameFetcher.data?.errors?.itinerarioName}
+          </ErrorMessage>
         </div>
+        <button
+          name="_action"
+          value="saveItinerarioName"
+          className="ml-4"
+          type="submit"
+        >
+          <SaveIcon />
+        </button>
+        <input type="hidden" name="itinerarioID" value={itinerario.id} />
+        <ErrorMessage className="pl-2">
+          {saveItinerarioNameFetcher.data?.errors?.itinerarioID}
+        </ErrorMessage>
       </saveItinerarioNameFetcher.Form>
 
       <deleteItinerarioFetcher.Form method="post" className="pt-4">
         <input type="hidden" name="itinerarioID" value={itinerario.id} />
+        <ErrorMessage className="pb-2">
+          {deleteItinerarioFetcher.data?.errors?.itinerarioID}
+        </ErrorMessage>
         <DeleteButton
           className="w-full"
           name="_action"
           value="deleteItinerario"
-          isLoading={isDeletingItinerario}
         >
-          {isDeletingItinerario ? "Eliminando..." : "Eliminar itinerario"}
+          Eliminar itinerario
         </DeleteButton>
       </deleteItinerarioFetcher.Form>
     </li>
