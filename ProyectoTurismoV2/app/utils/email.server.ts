@@ -1,27 +1,24 @@
-import formData from "form-data";
-import Mailgun from "mailgun.js";
-
-if (!process.env.MAILGUN_API_KEY) {
-  throw new Error("MAILGUN_API_KEY is required");
-}
-
-const mailgun = new Mailgun(formData);
-const client = mailgun.client({
-  username: "api",
-  key: process.env.MAILGUN_API_KEY,
-});
-
+import nodemailer from 'nodemailer';
 export type Message = {
   from: string;
   to: string;
   subject: string;
   html: string;
 };
-export function sendEmail(message: Message) {
-  if (typeof process.env.MAILGUN_DOMAIN !== "string") {
-    throw new Error("MAILGUN_DOMAIN is required");
+
+export async function sendEmail(message: Message): Promise<void> {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  try {
+    const info = await transporter.sendMail(message);
+    console.log('Correo enviado exitosamente:', info.response);
+  } catch (error) {
+    console.error('Error al enviar el correo:', error);
   }
-
-  return client.messages.create(process.env.MAILGUN_DOMAIN, message);
 }
-

@@ -18,28 +18,29 @@ export function generateLoginValidateCode(){
 }
 //Función para generar el código de validación.
 
-export async function sendCodeEmail(userId:string,code:number){
-    const user=await getUserById(userId);
-    if(!user){
-        return;
+export async function sendCodeEmail(userId: string, code: number): Promise<void> {
+    const user = await getUserById(userId);
+    if (!user) {
+      return;
     }
-    const message:Message={
-        from:`TurismoEspaña <${process.env.MAILGUN_FROM}>`,
-        to: user.email,
-        subject: "Código de verificación para iniciar sesión", 
-        html: `
-            <h1>Hola, ${user.name}!</h1>
-            <p>Tu código de verificación para iniciar sesión es:</p>
-            <h2 style="text-align: center; font-size: 24px; color: #007BFF;">${code}</h2>
-            <p>Este código es válido por un tiempo limitado. No lo compartas con nadie.</p>
-            <br>
-            <p>Si no solicitaste este código, puedes ignorar este mensaje.</p>
-            <br>
-            <p>Saludos, <br> El equipo de soporte de TurismoEspaña</p>
-        `
+    const message: Message = {
+      from: `TurismoEspaña <${process.env.EMAIL_FROM}>`,
+      to: user.email,
+      subject: 'Código de verificación para iniciar sesión',
+      html: `
+        <h1>Hola, ${user.name}!</h1>
+        <p>Tu código de verificación para iniciar sesión es:</p>
+        <h2 style="text-align: center; font-size: 24px; color: #007BFF;">${code}</h2>
+        <p>Este código es válido por un tiempo limitado. No lo compartas con nadie.</p>
+        <br>
+        <p>Si no solicitaste este código, puedes ignorar este mensaje.</p>
+        <br>
+        <p>Saludos, <br> El equipo de soporte de TurismoEspaña</p>
+      `,
     };
-    return sendEmail(message);
- }
+    return await sendEmail(message);
+  }
+  
  
 export async function validateLoginCode(request:Request,codeConfirmation:ValidateCodeProps){
     const cookieHeader = request.headers.get("cookie");
