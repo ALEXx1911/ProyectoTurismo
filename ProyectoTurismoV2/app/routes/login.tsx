@@ -1,5 +1,5 @@
 import { ActionFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { Form,Link, Outlet, redirect, useActionData } from "@remix-run/react";
+import { Form,Link, Outlet, redirect, useActionData, useSubmit } from "@remix-run/react";
 import { json } from "@remix-run/react";
 import { z } from "zod";
 import { ButtonSubmit, ErrorMessage } from "~/components/forms";
@@ -49,11 +49,23 @@ export const action:ActionFunction=async({request})=>{
 
 export default function login(){
     const actionData=useActionData<typeof action>();
+    const submit = useSubmit();
     return (
         <>
         <Outlet />
         <div className="form-container">
-            <Form className="form-container__form" method="POST">
+            <Form className="form-container__form" method="POST"
+             onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  const form = e.currentTarget as HTMLFormElement;
+                  const formData = new FormData(form);
+                  //Objeto "FormData" que contiene los datos del formulario.
+                  submit(formData, { method: "post", replace: true }); 
+                }
+                 //Si la tecla es "Enter", el formulario se enviará. Lo hemos tenido que hacer 
+                 //manualmente porque no dejaba hacerlo. Con "useSubmit()" no se recarga la página.
+              }}>
                 <Link to="/"><button className="form-container__form__button-exit">Atrás</button></Link>
                 <h1 className="form-container__form__title">Iniciar sesión</h1>
                 <input type="email" name="email" placeholder="Email" defaultValue={actionData?.email}/><br/><br/>

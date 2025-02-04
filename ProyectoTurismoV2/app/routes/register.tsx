@@ -1,5 +1,5 @@
 import { ActionFunction, json, LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { Form, Link, useActionData } from "@remix-run/react";
+import { Form, Link, useActionData, useSubmit } from "@remix-run/react";
 import { useState } from "react";
 import sharp from "sharp";
 import { z } from "zod";
@@ -59,9 +59,18 @@ export default function register(){
     //Es la imagen que se va a mostrar por defecto cuando no haya ninguna foto de perfil introducida.
     const [imageSrc, setImageSrc] = useState(defaultFile);
     //Esta variable contiene la URL de la imagen que se va a mostrar en "img".
+    const submit=useSubmit();
     return (
         <div className="form-container">
-            <Form className="form-container__form" method="POST" encType="multipart/form-data">
+            <Form className="form-container__form" method="POST" encType="multipart/form-data"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  const form = e.currentTarget as HTMLFormElement;
+                  const formData = new FormData(form);
+                  submit(formData, { method: "post", replace: true }); 
+                }
+              }}>
                 <Link to="/"><button className="form-container__form__button-exit">Atrás</button></Link>
                 <h1 className="form-container__form__title">Registro</h1>
                 <div className="form-container__form__image-container">
