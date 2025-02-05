@@ -76,7 +76,7 @@ export function getAllProvincies(nskip:number){
       skip: (pageskip-1)*8,
       take:8,
       orderBy:{
-          name:"asc"
+          nameNoAccent:"asc"
       }
   });
 }

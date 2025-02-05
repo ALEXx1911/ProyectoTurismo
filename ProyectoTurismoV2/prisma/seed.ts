@@ -13,6 +13,7 @@ async function crearUser() {
       email: "ejemplo@gmail.com",
       name: "Ejemplo",
       password: passwordConHash,
+      imageUrl:"",
     },
   });
 }
@@ -42,6 +43,9 @@ function createCategory() {
 }
 
 async function seed() {
+  await eliminarUser();
+  await db.provinces.deleteMany();
+  await db.category.deleteMany();
   const user = await crearUser();
   const category = await createCategory();
   const provinces = await createProvinces();

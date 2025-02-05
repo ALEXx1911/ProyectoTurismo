@@ -128,9 +128,6 @@ function ProvincieCard({
           <span className="font-bold">Festividades: </span>
           {festivities}
         </p>
-        <button className="buttonCard mb-1 mt-1 hover:border-red-600 self-center">
-          Añadir
-        </button>
       </div>
     </div>
   );

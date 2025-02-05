@@ -24,6 +24,7 @@ model Provinces {
   id                String      @id @default(cuid())
   userId            String?
   name              String      @unique
+  nameNoAccent      String
   description       String
   imageUrl          String
   climate           String
