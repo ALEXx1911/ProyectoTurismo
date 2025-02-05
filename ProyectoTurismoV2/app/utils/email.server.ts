@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+
 export type Message = {
   from: string;
   to: string;
@@ -22,3 +23,4 @@ export async function sendEmail(message: Message): Promise<void> {
     console.error('Error al enviar el correo:', error);
   }
 }
+//Función para enviar un email con un mensaje especificado utilizando "nodemailer".

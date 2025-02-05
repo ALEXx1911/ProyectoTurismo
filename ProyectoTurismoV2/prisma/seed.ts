@@ -13,7 +13,7 @@ async function crearUser() {
       email: "ejemplo@gmail.com",
       name: "Ejemplo",
       password: passwordConHash,
-      imageUrl:"",
+      imageUrl:"/img//imagen-perfil-default.jpg",
     },
   });
 }
