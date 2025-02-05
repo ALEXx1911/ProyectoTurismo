@@ -1,5 +1,10 @@
 import classNames from "classnames";
-import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+} from "react";
 interface ErrorMessageProps extends HTMLAttributes<HTMLParagraphElement> {}
 
 export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
@@ -66,6 +71,22 @@ export function DeleteButton({ className, isLoading, ...props }: ButtonProps) {
         isLoading ? "border-yellow-500 text-red-600 " : "",
         className
       )}
+    />
+  );
+}
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  error?: boolean;
+}
+export function Input({ error, className, ...props }: InputProps) {
+  return (
+    <input
+      className={classNames(
+        "w-full outline-none",
+        "border-b-2 border-b-background focus:border-b-red-500",
+        error ? "border-b-red-950" : "",
+        className
+      )}
+      {...props}
     />
   );
 }
