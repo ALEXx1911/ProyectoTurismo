@@ -14,7 +14,12 @@ import {
   useNavigation,
   useSearchParams,
 } from "@remix-run/react";
-import { PrimaryButton, DeleteButton, ErrorMessage } from "~/components/forms";
+import {
+  PrimaryButton,
+  DeleteButton,
+  ErrorMessage,
+  Input,
+} from "~/components/forms";
 import React from "react";
 import { userLoggedRequired } from "~/utils/auth.server";
 import { z } from "zod";
@@ -48,6 +53,11 @@ const deleteItinerarioSchema = z.object({
 const saveItinerarioNameSchema = z.object({
   itinerarioID: z.string(),
   itinerarioName: z.string().min(1, "El nombre del itinerario esta en blanco"),
+  itinerarioComida: z
+    .string()
+    .min(1, "El nombre del itinerario esta en blanco"),
+  itinerarioOcio: z.string().min(1, "El nombre del itinerario esta en blanco"),
+  itinerarioViaje: z.string().min(1, "El nombre del itinerario esta en blanco"),
 });
 
 export const action: ActionFunction = async ({ request }) => {
@@ -69,7 +79,14 @@ export const action: ActionFunction = async ({ request }) => {
       return validateForm(
         formData,
         saveItinerarioNameSchema,
-        (data) => saveItinerarioName(data.itinerarioID, data.itinerarioName),
+        (data) =>
+          saveItinerarioName(
+            data.itinerarioID,
+            data.itinerarioName,
+            data.itinerarioComida,
+            data.itinerarioOcio,
+            data.itinerarioViaje
+          ),
         (errors) => json({ errors })
       );
     }
@@ -175,35 +192,80 @@ function Itinerario({ itinerario }: ItinerarioProps) {
     >
       <saveItinerarioNameFetcher.Form
         method="post"
-        className="flex items-center "
+        className="grid grid-cols-[1fr_auto] gap-4 items-center"
       >
-        <div className=" w-full mb-2">
-          <input
+        {/* Destino */}
+        <div>
+          <Input
             type="text"
             name="itinerarioName"
             defaultValue={itinerario.destino}
             placeholder="Destino"
             autoComplete="off"
-            className={classNames(
-              "text-2xl font-extrabold w-full outline-none",
-              "border-b-2 border-b-background focus:border-b-red-500",
-              saveItinerarioNameFetcher.data?.errors?.itinerarioName
-                ? "border-b-red-950"
-                : ""
-            )}
+            className="text-2xl font-extrabold"
           />
           <ErrorMessage>
             {saveItinerarioNameFetcher.data?.errors?.itinerarioName}
           </ErrorMessage>
         </div>
-        <button
-          name="_action"
-          value="saveItinerarioName"
-          className="ml-4"
-          type="submit"
-        >
+        <button name="_action" value="saveItinerarioName" type="submit">
           <SaveIcon />
         </button>
+
+        {/* Comida */}
+        <div>
+          <Input
+            type="text"
+            name="itinerarioComida"
+            defaultValue={itinerario.comida}
+            placeholder="Comida"
+            autoComplete="off"
+            className="text-2xl font-extrabold"
+          />
+          <ErrorMessage>
+            {saveItinerarioNameFetcher.data?.errors?.itinerarioComida}
+          </ErrorMessage>
+        </div>
+        <button name="_action" value="itinerarioComida" type="submit">
+          <SaveIcon />
+        </button>
+
+        {/* Ocio */}
+        <div>
+          <Input
+            type="text"
+            name="itinerarioOcio"
+            defaultValue={itinerario.ocio}
+            placeholder="Ocio"
+            autoComplete="off"
+            className="text-2xl font-extrabold"
+          />
+          <ErrorMessage>
+            {saveItinerarioNameFetcher.data?.errors?.itinerarioOcio}
+          </ErrorMessage>
+        </div>
+        <button name="_action" value="itinerarioOcio" type="submit">
+          <SaveIcon />
+        </button>
+
+        {/* Viaje */}
+        <div>
+          <Input
+            type="text"
+            name="itinerarioViaje"
+            defaultValue={itinerario.viaje}
+            placeholder="Viaje"
+            autoComplete="off"
+            className="text-2xl font-extrabold"
+          />
+          <ErrorMessage>
+            {saveItinerarioNameFetcher.data?.errors?.itinerarioViaje}
+          </ErrorMessage>
+        </div>
+        <button name="_action" value="itinerarioViaje" type="submit">
+          <SaveIcon />
+        </button>
+
         <input type="hidden" name="itinerarioID" value={itinerario.id} />
         <ErrorMessage className="pl-2">
           {saveItinerarioNameFetcher.data?.errors?.itinerarioID}
