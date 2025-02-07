@@ -1,74 +1,64 @@
+import { json } from "@remix-run/node";
+import { getUserById } from "./user.server";
 import db from "~/db.server";
 
-export async function provincesToFavorites(userId: string, provinceId: string) {
-  const user = await db.user.findUnique({
-    where: {
-      id: userId,
-    },
-  });
-  const province = await db.provinces.findUnique({
-    where: {
-      id: provinceId,
-    },
-  });
-
-  if (user !== null && province !== null) {
-    return await db.ilike.create({
-      data: {
-        users: {
-          connect: {
-            id: user.id,
-          },
-        },
-        provinces: {
-          connect: {
-            id: province.id,
-          },
-        },
-      },
-    });
+export async function provinceToFavorites(userId:string,provinceId:string){
+  const user=await getUserById(userId);
+  if(user==null){
+    return json({errors:{user:"El usuario no existe"}});
   }
 
-  return null;
+  return await db.user.update({
+    where:{
+      id:userId
+    },
+    data:{
+      provinces:{
+        connect:{
+          id:provinceId
+        }
+      }
+    }
+  });
 }
-//Función que añade una provincia a las favoritas de un usuario.
+//Función para añadir provincias a favoritos.
 
-export async function deleteProvinceFromFavorites(
-  userId: string,
-  provinceId: string
-) {
-  const user = await db.user.findUnique({
-    where: {
-      id: userId,
-    },
-  });
-  const province = await db.provinces.findUnique({
-    where: {
-      id: provinceId,
-    },
-  });
 
-  if (user !== null && province !== null) {
-    return await db.ilike.deleteMany({
-      where: {
-        users: {
-          some: {
-            id: user.id,
-          },
-        },
-        provinces: {
-          some: {
-            id: province.id,
-          },
-        },
-      },
-    });
+export async function deleteProvinceFromFavorites(userId:string,provinceId:string){
+  const user=await getUserById(userId);
+  if(user==null){
+    return json({errors:{user:"El usuario no existe"}});
   }
 
-  return null;
+  return await db.user.update({
+    where:{
+      id:userId
+    },
+    data:{
+      provinces:{
+        disconnect:{
+          id:provinceId
+        }
+      }
+    }
+  });
 }
-//Función que elimina una provincia a las favoritas de un usuario.
-//Función para obtener las provicias y verlas en el apartado de todas las provincias.
+//Función que sirve para eliminar una provincia de "favoritos" de un usuario.
+
+export async function getUserFavoriteProvinces(userId:string){
+  const user=await getUserById(userId);
+  if(user==null){
+    return json({errors:{user:"El usuario no existe"}});
+  }
+ return db.provinces.findMany({
+  where:{
+    users:{
+        some:{id:userId}
+    }
+  }
+ })
+}
+//Obtiene las provincias favoritas del usuario.
 
 export function getAllProvincies(nskip:number){
   const pageskip= nskip<0 ? 1 : nskip;
