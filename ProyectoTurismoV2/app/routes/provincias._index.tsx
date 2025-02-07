@@ -32,7 +32,7 @@ export default function provincias() {
           Provincias de España
         </h1>
         <div className="my-6 mx-16 grid auto-cols-[minmax(_1fr,_2fr)] gap-2 md:grid-cols-2">
-          {province.map((provincia) => {
+          {province.map((provincia:any) => {
             return (
               <ProvincieCard
                 key={provincia.id}

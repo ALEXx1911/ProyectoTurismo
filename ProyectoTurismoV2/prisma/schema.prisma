@@ -20,6 +20,7 @@ datasource db {
 
 //Cuando se crea un modelo se debe ejecutar el siguiente comando npx prisma db push
 //Modelo de tarjeta de las provincias
+
 model Provinces {
   id                String      @id @default(cuid())
   name              String      @unique

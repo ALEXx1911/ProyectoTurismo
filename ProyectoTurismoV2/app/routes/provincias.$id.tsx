@@ -13,6 +13,7 @@ export const loader=async({params}:LoaderFunctionArgs)=>{
     return redirect("/");
     //Si la provincia buscada por ID no existe, reedirigimos al usuario a "/".
 }
+
 export default function Province(){
     const data=useLoaderData<typeof loader>();
 
