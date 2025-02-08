@@ -36,7 +36,7 @@ model Provinces {
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 
-  users    User[]    @relation("UserProvinces", onDelete: Cascade)
+  users    User[]    @relation("UserProvinces")
   categories        Category[]  @relation("ProvincesToCategories")
 }
 
@@ -52,7 +52,7 @@ model User {
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 
-  provinces Provinces[] @relation("UserProvinces", onDelete: Cascade)
+  provinces Provinces[] @relation("UserProvinces")
   itinerarios       Itinerario[]
 }
 

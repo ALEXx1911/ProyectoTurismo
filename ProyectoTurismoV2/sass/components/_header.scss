@@ -65,6 +65,8 @@
   }
 
   &__search-bar-container{
+    animation: moveToBottom 1.3s ease both;
+    animation-delay: 1.5s;
     width:35%;
     align-self: center;
     @media only screen and (max-width: $max-width) {
@@ -72,15 +74,24 @@
     }
    
     &__form{
-      display: flex;
-      justify-content: center;
-      animation: moveToBottom 1.3s ease both;
-      animation-delay: 1.5s;
-      background-color: $color-white;
+      display:grid;
+      grid-auto-flow: row;
+      grid-template-columns: 1fr 0.1fr;
+      width:100%;
+      place-items: center;
       border-radius: 0.5rem;
-
+      background-color:$color-white;
+      @media only screen and (min-width:900px){
+        display:grid;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr 0.1fr;
+        width:100%;
+        place-items: center;
+     
+      }
       &__search-bar {
         width: 90%; 
+        border-radius: 0.5rem;
         padding: 0.7rem 2rem;
         outline:0;
         @media only screen and (max-width: $max-width) {

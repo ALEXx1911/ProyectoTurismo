@@ -227,6 +227,8 @@
   }
 }
 .header__search-bar-container {
+  animation: moveToBottom 1.3s ease both;
+  animation-delay: 1.5s;
   width: 35%;
   align-self: center;
 }
@@ -236,15 +238,26 @@
   }
 }
 .header__search-bar-container__form {
-  display: flex;
-  justify-content: center;
-  animation: moveToBottom 1.3s ease both;
-  animation-delay: 1.5s;
-  background-color: white;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 0.1fr;
+  width: 100%;
+  place-items: center;
   border-radius: 0.5rem;
+  background-color: white;
+}
+@media only screen and (min-width: 900px) {
+  .header__search-bar-container__form {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 0.1fr;
+    width: 100%;
+    place-items: center;
+  }
 }
 .header__search-bar-container__form__search-bar {
   width: 90%;
+  border-radius: 0.5rem;
   padding: 0.7rem 2rem;
   outline: 0;
 }
