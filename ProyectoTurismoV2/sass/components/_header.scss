@@ -81,29 +81,21 @@
       place-items: center;
       border-radius: 0.5rem;
       background-color:$color-white;
-      @media only screen and (min-width:900px){
-        display:grid;
-        grid-auto-flow: row;
-        grid-template-columns: 1fr 0.1fr;
-        width:100%;
-        place-items: center;
-     
-      }
       &__search-bar {
         width: 90%; 
         border-radius: 0.5rem;
         padding: 0.7rem 2rem;
         outline:0;
         @media only screen and (max-width: $max-width) {
-          
           width:85%;
-          font-size:90%;
+          font-size:89%;
         }
         &::placeholder{
          text-transform: uppercase;
         }
       }
       &__search-button{
+        margin-right:0.6rem;
         transition: all 0.1s ease;
         &:hover{
           transform: translateY(-0.1rem);
@@ -150,7 +142,6 @@
 
   }
 }
-
 
 /* Desplegable */
 .dropdown {
