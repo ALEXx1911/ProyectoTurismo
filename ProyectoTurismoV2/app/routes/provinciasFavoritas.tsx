@@ -1,15 +1,13 @@
 import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { ProvincieCard } from "~/components/provinces";
-import { getUserFavoriteProvinces } from "~/models/provinces.server";
+import { deleteProvinceFromFavorites, getUserFavoriteProvinces, provinceToFavorites } from "~/models/provinces.server";
 import { userLoggedRequired } from "~/utils/auth.server";
 
 export const loader=async({request}:LoaderFunctionArgs)=>{
     const user=await userLoggedRequired(request);
     //Es necesario que haya una sesión iniciada.
-
     const provincesFavorites= await getUserFavoriteProvinces(user.id);
- 
     return json({
         provinces:provincesFavorites
     })

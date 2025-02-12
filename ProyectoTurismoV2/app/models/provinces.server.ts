@@ -5,7 +5,7 @@ import db from "~/db.server";
 export async function provinceToFavorites(userId:string,provinceId:string){
   const user=await getUserById(userId);
   if(user==null){
-    return json({errors:{user:"El usuario no existe"}});
+    return json({errors:{user:"El usuario no existe."}});
   }
 
   return await db.user.update({
@@ -23,11 +23,10 @@ export async function provinceToFavorites(userId:string,provinceId:string){
 }
 //Función para añadir provincias a favoritos.
 
-
 export async function deleteProvinceFromFavorites(userId:string,provinceId:string){
   const user=await getUserById(userId);
   if(user==null){
-    return json({errors:{user:"El usuario no existe"}});
+    return json({errors:{user:"El usuario no existe."}});
   }
 
   return await db.user.update({
