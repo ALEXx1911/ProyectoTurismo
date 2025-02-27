@@ -5,7 +5,7 @@ export default function Footer() {
         { name: 'YouTube', url: 'https://youtube.com', imgSrc: '../../img/yt.png' },
         { name: 'Instagram', url: 'https://instagram.com', imgSrc: '../../img/ig.png' },
     ];
-
+    const currentYear = new Date().getFullYear();
     return (
         <footer className="footer">
             <div className="footer__social-icons">
@@ -40,7 +40,7 @@ export default function Footer() {
                     alt="Logo de España"
                     className="footer__logo"
                 />
-                <p className="footer__rights">©TurismoEspaña Todos los derechos reservados</p>
+                <p className="footer__rights">©{currentYear} TurismoEspaña Todos los derechos reservados</p>
             </div>
             <div className="footer__links">
                 <a href="" className="footer__link">Contacto</a>

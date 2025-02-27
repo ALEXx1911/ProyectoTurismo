@@ -23,19 +23,74 @@ export async function sendCodeEmail(userId: string, code: number): Promise<void>
     if (!user) {
       return;
     }
+    const currentYear = new Date().getFullYear();
     const message: Message = {
       from: `TurismoEspaña <${process.env.EMAIL_FROM}>`,
       to: user.email,
       subject: 'Código de verificación para iniciar sesión',
       html: `
-        <h1>Hola, ${user.name}!</h1>
-        <p>Tu código de verificación para iniciar sesión es:</p>
-        <h2 style="text-align: center; font-size: 24px; color: #007BFF;">${code}</h2>
-        <p>Este código es válido por un tiempo limitado. No lo compartas con nadie.</p>
-        <br>
-        <p>Si no solicitaste este código, puedes ignorar este mensaje.</p>
-        <br>
-        <p>Saludos, <br> El equipo de soporte de TurismoEspaña</p>
+        <!DOCTYPE html>
+        <html lang="es">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Correo de verificación TurismoEspaña</title>
+          </head>
+          <body
+            style="font-family: Arial, sans-serif; background-color: #f4f7fa; margin: 0; padding: 0.05rem; color: #333;"
+          >
+            <div
+              style="max-width: 600px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);"
+            >
+              <h1
+                style="text-align: center; font-size: 28px; color: #333; font-weight: bold; margin-bottom: 20px;"
+              >
+                ¡Hola, ${user.name}!
+              </h1>
+    
+              <p
+                style="font-size: 16px; color: #555; line-height: 1.5; margin-bottom: 20px;"
+              >
+                Este es tu correo de verificación para acceder a tu cuenta de
+                <strong>TurismoEspaña</strong>. Tu código de verificación para iniciar
+                sesión es el siguiente:
+              </p>
+    
+              <h2
+                style="text-align: center; font-size: 30px; color: #007bff; background-color: #e7f3ff; padding: 15px; border-radius: 5px; margin: 0;"
+              >
+                ${code}
+              </h2>
+    
+              <p
+                style="font-size: 14px; color: #777; line-height: 1.5; margin-top: 20px;"
+              >
+                Este código es válido por un tiempo limitado. No lo compartas con
+                nadie.
+              </p>
+    
+              <p
+                style="font-size: 14px; color: #777; line-height: 1.5;"
+              >
+                Si no solicitaste este código, puedes ignorar este mensaje sin
+                ningún problema.
+              </p>
+    
+              <p
+                style="font-size: 16px; color: #555; text-align: left; margin-top: 20px;"
+              >
+                Saludos,<br />
+                El equipo de soporte de <strong>TurismoEspaña</strong>.
+              </p>
+    
+              <p
+                style="text-align: center; font-size: 14px; color: rgba(0, 0, 0, 0.54); margin-top: 20px;"
+              >
+                © ${currentYear} TurismoEspaña. Todos los derechos reservados.
+              </p>
+            </div>
+          </body>
+        </html>
       `,
     };
     return await sendEmail(message);
