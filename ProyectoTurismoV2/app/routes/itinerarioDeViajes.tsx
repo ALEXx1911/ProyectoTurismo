@@ -175,9 +175,19 @@ type ItinerarioProps = {
   itinerario: ItinerarioType;
 };
 
+type FetcherData = {
+  errors?: {
+    itinerarioName?: string;
+    itinerarioComida?: string;
+    itinerarioOcio?: string;
+    itinerarioViaje?: string;
+    itinerarioID?: string;
+  };
+};
+
 function Itinerario({ itinerario }: ItinerarioProps) {
-  const deleteItinerarioFetcher = useFetcher();
-  const saveItinerarioNameFetcher = useFetcher();
+  const deleteItinerarioFetcher = useFetcher<FetcherData>();
+  const saveItinerarioNameFetcher = useFetcher<FetcherData>();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
