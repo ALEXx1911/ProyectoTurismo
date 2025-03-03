@@ -179,6 +179,23 @@ function Itinerario({ itinerario }: ItinerarioProps) {
   const deleteItinerarioFetcher = useFetcher();
   const saveItinerarioNameFetcher = useFetcher();
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.currentTarget.form;
+      if (!form) return;
+
+      const inputs = Array.from(
+        form.querySelectorAll("input")
+      ) as HTMLInputElement[];
+      const index = inputs.indexOf(e.currentTarget);
+
+      if (index >= 0 && index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+    }
+  };
+
   const isDeletingItinerario =
     deleteItinerarioFetcher.formData?.get("_action") === "deleteItinerario" &&
     deleteItinerarioFetcher.formData?.get("itinerarioID") === itinerario.id;
@@ -194,7 +211,6 @@ function Itinerario({ itinerario }: ItinerarioProps) {
         method="post"
         className="grid grid-cols-[1fr_auto] gap-4 items-center"
       >
-        {/* Destino */}
         <div>
           <Input
             type="text"
@@ -203,6 +219,8 @@ function Itinerario({ itinerario }: ItinerarioProps) {
             placeholder="Destino"
             autoComplete="off"
             className="text-2xl font-extrabold"
+            onKeyDown={handleKeyDown}
+            tabIndex={1}
           />
           <ErrorMessage>
             {saveItinerarioNameFetcher.data?.errors?.itinerarioName}
@@ -212,7 +230,6 @@ function Itinerario({ itinerario }: ItinerarioProps) {
           <SaveIcon />
         </button>
 
-        {/* Comida */}
         <div>
           <Input
             type="text"
@@ -221,6 +238,8 @@ function Itinerario({ itinerario }: ItinerarioProps) {
             placeholder="Comida"
             autoComplete="off"
             className="text-2xl font-extrabold"
+            onKeyDown={handleKeyDown}
+            tabIndex={2}
           />
           <ErrorMessage>
             {saveItinerarioNameFetcher.data?.errors?.itinerarioComida}
@@ -230,7 +249,6 @@ function Itinerario({ itinerario }: ItinerarioProps) {
           <SaveIcon />
         </button>
 
-        {/* Ocio */}
         <div>
           <Input
             type="text"
@@ -239,6 +257,8 @@ function Itinerario({ itinerario }: ItinerarioProps) {
             placeholder="Ocio"
             autoComplete="off"
             className="text-2xl font-extrabold"
+            onKeyDown={handleKeyDown}
+            tabIndex={3}
           />
           <ErrorMessage>
             {saveItinerarioNameFetcher.data?.errors?.itinerarioOcio}
@@ -248,7 +268,6 @@ function Itinerario({ itinerario }: ItinerarioProps) {
           <SaveIcon />
         </button>
 
-        {/* Viaje */}
         <div>
           <Input
             type="text"
@@ -257,6 +276,8 @@ function Itinerario({ itinerario }: ItinerarioProps) {
             placeholder="Viaje"
             autoComplete="off"
             className="text-2xl font-extrabold"
+            onKeyDown={handleKeyDown}
+            tabIndex={4}
           />
           <ErrorMessage>
             {saveItinerarioNameFetcher.data?.errors?.itinerarioViaje}
