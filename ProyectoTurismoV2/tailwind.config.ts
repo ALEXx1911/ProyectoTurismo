@@ -19,6 +19,9 @@ export default {
       colors: {
         background: "white",
       },
+      screens:{
+        "image" : "1358px"
+      }
     },
   },
   plugins: [],

@@ -28,7 +28,7 @@ export type ProvinceCardProps = {
     return (
       <div
         className={classNames(
-          "border-2 border-red-400 rounded-md",
+          "border-2 border-red-400 rounded-md shadow-2xl",
           "grid grid-cols-3 grid-rows-3 object-cover overflow-hidden",
           "card"
         )}
@@ -37,9 +37,9 @@ export type ProvinceCardProps = {
           src={imageUrl}
           alt="xd"
           className={classNames(
-            "w-full object-cover h-full col-start-1 col-end-4 row-start-1 row-end-3",
-            "md:col-start-1 md:col-end-4 md:p-3 md:object-cover",
-            "imagenxd"
+            "object-cover h-full col-start-1 col-end-4 row-start-1 row-end-3 w-full py-3 px-20 rounded-3xl",
+            "image:px-3",
+            
           )}
         />
         <div

@@ -31,7 +31,7 @@ export default function provincias() {
         <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">
           Provincias de España
         </h1>
-        <div className="my-6 mx-16 grid auto-cols-[minmax(_1fr,_2fr)] gap-2 md:grid-cols-2">
+        <div className="my-6 mx-16 grid grid-cols-[repeat(auto-fit,minmax(600px,1fr))] gap-2 w-[90%]">
           {province.map((provincia:any) => {
             return (
               <ProvincieCard
