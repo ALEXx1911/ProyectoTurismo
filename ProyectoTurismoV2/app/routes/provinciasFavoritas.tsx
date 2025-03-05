@@ -18,6 +18,8 @@ export default function provincesFavoritas(){
     const data=useLoaderData<typeof loader>();
 return (
     <div>
+        {data.provinces.length==0?<h2 className="text-red-600 text-lg text-center p-36 uppercase">No se ha añadido ninguna provincia a favoritos</h2>:null}
+        
             {data.provinces.map((province:any)=>
             <ProvincieCard
                 key={province.id}
