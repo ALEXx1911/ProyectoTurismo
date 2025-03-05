@@ -114,39 +114,41 @@ export default function ItinerarioDeViajes() {
   }, [isCreatingItinerario]);
 
   return (
-    <div>
-      <h1 className="text-4xl text-red-600 font-semibold uppercase mt-6 text-center">
-        ITINERARIO DE VIAJES
-      </h1>
+    <div className=" flex flex-col items-center">
+      <div className="bg-yellow-50 w-full md:w-[70%] m-7 rounded-lg">
+        <h1 className="text-4xl text-blue-300 font-semibold uppercase mt-6 text-center ">
+          ITINERARIO DE VIAJES
+        </h1>
 
-      <createItinerarioFetcher.Form method="post">
-        <PrimaryButton
-          name="_action"
-          value="createItinerario"
-          className="mt-4 w-full md:w-fit"
-          isLoading={isCreatingItinerario}
+        <createItinerarioFetcher.Form method="post">
+          <PrimaryButton
+            name="_action"
+            value="createItinerario"
+            className=" w-full md:w-fit md:mx-16"
+            isLoading={isCreatingItinerario}
+          >
+            <PlusIcon />
+            <span className="pl-2">
+              {isCreatingItinerario
+                ? "Creando itinerario..."
+                : "Crear itinerario"}
+            </span>
+          </PrimaryButton>
+        </createItinerarioFetcher.Form>
+
+        <ul
+          ref={containerRef}
+          className={classNames(
+            "flex-col gap-8 overflow-x-auto mt-4 pb-4",
+            "snap-x snap-mandatory",
+            isCreatingItinerario ? "bg-red-100" : ""
+          )}
         >
-          <PlusIcon />
-          <span className="pl-2">
-            {isCreatingItinerario
-              ? "Creando itinerario..."
-              : "Crear itinerario"}
-          </span>
-        </PrimaryButton>
-      </createItinerarioFetcher.Form>
-
-      <ul
-        ref={containerRef}
-        className={classNames(
-          "flex-col gap-8 overflow-x-auto mt-4 pb-4",
-          "snap-x snap-mandatory",
-          isCreatingItinerario ? "bg-red-100" : ""
-        )}
-      >
-        {data.itinerarioTablas.map((itinerario) => (
-          <Itinerario key={itinerario.id} itinerario={itinerario} />
-        ))}
-      </ul>
+          {data.itinerarioTablas.map((itinerario) => (
+            <Itinerario key={itinerario.id} itinerario={itinerario} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -193,7 +195,7 @@ function Itinerario({ itinerario }: ItinerarioProps) {
   return isDeletingItinerario ? null : (
     <li
       className={classNames(
-        "border-2 border-red-500 rounded-md p-4",
+        "border-2 border-red-300 rounded-md p-4",
         "my-6 mx-16 grid"
       )}
     >
@@ -208,7 +210,7 @@ function Itinerario({ itinerario }: ItinerarioProps) {
             defaultValue={itinerario.destino}
             placeholder="Destino"
             autoComplete="off"
-            className="text-2xl font-extrabold"
+            className="text-2xl font-extrabold "
             onKeyDown={handleKeyDown}
             tabIndex={1}
           />

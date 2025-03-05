@@ -53,7 +53,7 @@ export function PrimaryButton({ className, isLoading, ...props }: ButtonProps) {
     <Button
       {...props}
       className={classNames(
-        "text-white bg-red-400 hover:bg-red-400 ",
+        "text-white bg-blue-300 hover:bg-blue-800 ",
         isLoading ? "bg-red-100" : "",
         className
       )}
@@ -66,7 +66,7 @@ export function DeleteButton({ className, isLoading, ...props }: ButtonProps) {
     <Button
       {...props}
       className={classNames(
-        "border-2 border-yellow-200 text-red-500",
+        "border-2 border-yellow-200 text-red-300",
         "hover:bg-yellow-200 hover:text-white",
         isLoading ? "border-yellow-500 text-red-600 " : "",
         className
@@ -82,7 +82,7 @@ export function Input({ error, className, ...props }: InputProps) {
     <input
       className={classNames(
         "w-full outline-none",
-        "border-b-2 border-b-background focus:border-b-red-500",
+        " bg-inherit focus:border-b-red-300",
         error ? "border-b-red-950" : "",
         className
       )}

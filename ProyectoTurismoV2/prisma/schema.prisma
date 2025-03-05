@@ -52,7 +52,7 @@ model User {
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 
-  provinces Provinces[] 
+  provinces         Provinces[] 
   itinerarios       Itinerario[]
 }
 
@@ -78,7 +78,7 @@ model Itinerario {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 
-  userId    String?   // Cambiado a opcional
+  userId        String?   // Cambiado a opcional
   user          User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
 }
