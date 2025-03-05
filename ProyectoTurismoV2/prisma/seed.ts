@@ -43,10 +43,10 @@ function createCategory() {
 }
 
 async function seed() {
-  await eliminarUser();
+  //await eliminarUser();
   await db.provinces.deleteMany();
   await db.category.deleteMany();
-  const user = await crearUser();
+  //const user = await crearUser();
   const category = await createCategory();
   const provinces = await createProvinces();
   await connectCategoriesWithProvinces();

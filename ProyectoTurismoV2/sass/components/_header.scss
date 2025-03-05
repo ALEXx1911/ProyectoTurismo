@@ -6,7 +6,8 @@
   align-items: center;
   height: 18vh;
   border-radius: 0.25rem;
-  position: relative; 
+  position: relative;  
+  z-index: 10;  
 
   @media only screen and (max-width: $max-width) {
     height: 45vh;
@@ -15,158 +16,172 @@
     align-items: center;
   }
 
-  &>*{
-    @media only screen and (max-width: $max-width){
-      margin-top:1rem;
-    }
-  }
-
-  &__logo-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-auto-flow: row;
-    align-items: center;
-    position: relative;
-    gap:0.5vw;
-    transform: scale(1.2);
+  & > * {
     @media only screen and (max-width: $max-width) {
-      display: flex;
-      align-items: center;
-      gap:0.2vw;
-    }
-  }
-
-  &__logo {
-    animation: rollToRight 1s ease-out both;
-    animation-delay: 1.5s;
-    width: 10vh;
-    height: 10vh;
-    border-radius: 100px;
-    margin-left: 2rem;
-
-    @media only screen and (max-width: $max-width) {
-      width: 5rem;
-      height: 5rem;
-      margin-top: 0;
-      margin-left: 0;
-      margin-right: 3rem;
-    }
-  }
-
-  &__name {
-    animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-    animation-delay: 1.5s;
-    text-transform: uppercase;
-    @media only screen and (max-width: $max-width) {
-      margin-left: 0;
       margin-top: 1rem;
-      font-size: 0.9rem;
     }
   }
+}
 
-  &__search-bar-container{
-    animation: moveToBottom 1.3s ease both;
-    animation-delay: 1.5s;
-    width:35%;
-    align-self: center;
-    @media only screen and (max-width: $max-width) {
-      width:70%;
-    }
-   
-    &__form{
-      display:grid;
-      grid-auto-flow: row;
-      grid-template-columns: 1fr 0.1fr;
-      width:100%;
-      place-items: center;
-      border-radius: 0.5rem;
-      background-color:$color-white;
-      &__search-bar {
-        width: 90%; 
-        border-radius: 0.5rem;
-        padding: 0.7rem 2rem;
-        outline:0;
-        @media only screen and (max-width: $max-width) {
-          width:85%;
-          font-size:89%;
-        }
-        &::placeholder{
-         text-transform: uppercase;
-        }
-      }
-      &__search-button{
-        margin-right:0.6rem;
-        transition: all 0.1s ease;
-        &:hover{
-          transform: translateY(-0.1rem);
-        }
-      }
-      &__error-message{
-        text-align: center;
-      }
-    }
-  }
-
-  &__profile-box {
-    animation: rotate-animation 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation-delay: 1.5s;
-    height:16vh;
+.header__logo-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-flow: row;
+  align-items: center;
+  position: relative;
+  gap: 0.5vw;
+  transform: scale(1.2);
+  
+  @media only screen and (max-width: $max-width) {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    translate: all 0.3s ease;
-    cursor:pointer;
-
-    @media only screen and (max-width: $max-width) {
-      margin-left: 1rem;
-      margin-right: 1.2rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-    }
-
-    &__image {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 0.3rem;
-    }
-
-    &__username {
-      font-size:1.08rem;
-      font-weight: 300;
-      @media only screen and (max-width: $max-width) {
-        margin-top:0.2rem;
-        font-size:1.02rem;
-      }
-    }
-
+    gap: 0.2vw;
   }
 }
 
-/* Desplegable */
-.dropdown {
-  position: absolute; 
-  top: 100%;        
-  left: 0;
-  width: 100%;         
-  background-color: white;
-  max-height: 300px;  
-  overflow-y: auto;    /* Agrega scroll si el contenido es mayor */
-  z-index: 9999;       /* Asegura que el desplegable esté por encima de todo */
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0;
+.header__logo {
+  animation: rollToRight 1s ease-out both;
+  animation-delay: 1.5s;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 100px;
+  margin-left: 2rem;
+
+  @media only screen and (max-width: $max-width) {
+    width: 5rem;
+    height: 5rem;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 3rem;
+  }
 }
 
-/* Estilo para los elementos del desplegable */
-.dropdown-item {
-  padding: 0.8rem 1rem;
+.header__name {
+  animation: letters-animation 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 1.5s;
+  text-transform: uppercase;
+  
+  @media only screen and (max-width: $max-width) {
+    margin-left: 0;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.header__search-bar-container {
+  animation: moveToBottom 1.3s ease both;
+  animation-delay: 1.5s;
+  width: 35%;
+  align-self: center;
+  position: relative;  
+  
+  @media only screen and (max-width: $max-width) {
+    width: 70%;
+  }
+
+  &__form {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 0.1fr;
+    width: 100%;
+    place-items: center;
+    border-radius: 0.5rem;
+    background-color: $color-white;
+
+    &__search-bar {
+      width: 90%;
+      border-radius: 0.5rem;
+      padding: 0.7rem 2rem;
+      outline: 0;
+
+      @media only screen and (max-width: $max-width) {
+        width: 85%;
+        font-size: 89%;
+      }
+
+      &::placeholder {
+        text-transform: uppercase;
+      }
+    }
+
+    &__search-button {
+      margin-right: 0.6rem;
+      transition: all 0.1s ease;
+
+      &:hover {
+        transform: translateY(-0.1rem);
+      }
+    }
+
+    &__error-message {
+      text-align: center;
+    }
+  }
+}
+
+.header__profile-box {
+  animation: rotate-animation 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-delay: 1.5s;
+  height: 16vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  translate: all 0.3s ease;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: #333;
-  transition: background-color 0.3s ease;
+
+  @media only screen and (max-width: $max-width) {
+    margin-left: 1rem;
+    margin-right: 1.2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  &__image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.3rem;
+  }
+
+  &__username {
+    font-size: 1.08rem;
+    font-weight: 300;
+    
+    @media only screen and (max-width: $max-width) {
+      margin-top: 0.2rem;
+      font-size: 1.02rem;
+    }
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;  
+  left: 0;
+  right: 0;
+  max-height: 200px;  
+  overflow-y: auto;   
+  background-color: $color-white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 9999; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;  
+}
+
+.dropdown__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown__list-item {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: #f5f5f5;
+    background-color: #f0f0f0;  
   }
 }

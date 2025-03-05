@@ -26,12 +26,23 @@ model Provinces {
   name              String      @unique
   nameNoAccent      String
   description       String
+  detaildes         String
+  desparrafo        String
   imageUrl          String
   climate           String
   beaches           String?
   recommendedPlaces String
+  detailsite        String
+  siteparrafo       String
+  siteUrl           String
   typicalFood       String
+  detailfood        String
+  foodUrl           String
+  foodparrafo       String
   festivities       String
+  detailfest        String
+  festUrl           String
+  festparrafo       String
   ccaaName          String
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
