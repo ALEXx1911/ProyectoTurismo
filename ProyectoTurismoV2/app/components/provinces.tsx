@@ -1,9 +1,10 @@
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import classNames from "classnames";
 import { setSearchParamsString } from "~/utils/misc";
-import { DoubleLeftArrow, DoubleRightArrow, LeftArrow, RightArrow } from "./icons";
+import { DoubleLeftArrow, DoubleRightArrow, Heart, HeartEmpty, LeftArrow, RightArrow } from "./icons";
 
 export type ProvinceCardProps = {
+    id:string;
     imageUrl: string;
     name: string;
     info: string;
@@ -12,9 +13,13 @@ export type ProvinceCardProps = {
     places: string;
     food: string;
     festivities: string;
+    logged:boolean;
+    inFav?:boolean;
+    successFunction: (data:string) => void
   };
   
   export function ProvincieCard({
+    id,
     imageUrl,
     name,
     info,
@@ -23,6 +28,9 @@ export type ProvinceCardProps = {
     places,
     food,
     festivities,
+    successFunction,
+    logged,
+    inFav,
   }: ProvinceCardProps) {
     const playa = false;
     return (
@@ -46,7 +54,7 @@ export type ProvinceCardProps = {
           className={classNames(
             "row-start-3 row-end-4 col-start-1 col-end-4",
             "md:col-start-1 md:col-end-4 md:row-start-3 md:row-end-4 md:mx-2 md:mb-1",
-            "text-start"
+            "text-start relative px-10 image:px-3"
           )}
         >
           <h4 className="font-bold text-xl text-center mb-1 titulo">{name}</h4>
@@ -74,7 +82,13 @@ export type ProvinceCardProps = {
           <p>
             <span className="font-bold">Festividades: </span>
             {festivities}
-          </p>
+          </p>  
+            { logged ? (
+                    <div className="absolute top-[1rem] right-2">
+                        { inFav ? <button onClick={() => successFunction(id)}><Heart/></button> : <button onClick={() => successFunction(id)}><HeartEmpty/></button>}
+                    </div>
+                ) : ""
+            }
         </div>
       </div>
     );
@@ -88,31 +102,36 @@ export type ProvinceCardProps = {
     const isFirstPage = currentPage === 1;
     return(
       <div className="flex gap-4 items-center my-4">
-      {!isFirstPage ? <div className="flex gap-1">
-        <Link to={{search: setSearchParamsString(searchParams,{page:1})}}>
-          <div className="bg-white p-1 rounded-xl transition-all ease-in-out  duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
-            <DoubleLeftArrow/>
-          </div>
-      </Link>
-      <Link to={{search: setSearchParamsString(searchParams,{page:currentPage-1})}}>
-          <div className="bg-white p-1 rounded-xl transition-all ease-in-out  duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
-            <LeftArrow/>
-          </div>
-      </Link>
-        </div> : ""}
-      <p className="text-xl font-bold">Página {currentPage } de {totalPages}</p>
-      {!islastPage ? <div className="flex gap-1">
-        <Link to={{search: setSearchParamsString(searchParams,{page:currentPage+1})}}>
-          <div className="bg-white p-1 rounded-xl transition-all ease-in-out duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
-            <RightArrow/>
-          </div>
-        </Link>
-        <Link to={{search: setSearchParamsString(searchParams,{page:totalPages})}}>
-          <div className="bg-white p-1 rounded-xl transition-all ease-in-out  duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
-            <DoubleRightArrow/>
-          </div>
-      </Link>
-        </div> : ""}   
-  </div>
+            {!isFirstPage ? <div className="flex gap-1">
+                <PaginationItem to={{search: setSearchParamsString(searchParams,{page:1})}}>
+                    <DoubleLeftArrow/>
+                </PaginationItem>
+                <PaginationItem to={{search: setSearchParamsString(searchParams,{page:currentPage-1})}}>
+                    <LeftArrow/>
+                </PaginationItem>
+            </div> : ""}
+            <p className="text-xl font-bold">Página {currentPage } de {totalPages}</p>
+            {!islastPage ? <div className="flex gap-1">
+                <PaginationItem to={{search: setSearchParamsString(searchParams,{page:currentPage+1})}}>
+                    <RightArrow/>
+                </PaginationItem>
+                <PaginationItem to={{search: setSearchParamsString(searchParams,{page:totalPages})}}>
+                    <DoubleRightArrow/>
+                </PaginationItem>
+            </div> : ""}   
+        </div>
     );
+  }
+  export type PaginationItemProps = {
+    to: {search:string}
+    children:React.ReactNode
+  }
+  export function PaginationItem({to,children}:PaginationItemProps){
+    return(
+        <Link to={to}>
+            <div className="bg-white p-1 rounded-xl transition-all ease-in-out  duration-250 hover:scale-110 hover:bg-[#252122] hover:text-white">
+                {children}
+            </div>
+        </Link>
+    )
   }

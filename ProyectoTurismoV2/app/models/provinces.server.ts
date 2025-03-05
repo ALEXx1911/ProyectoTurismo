@@ -46,9 +46,7 @@ export async function deleteProvinceFromFavorites(userId:string,provinceId:strin
 
 export async function getUserFavoriteProvinces(userId:string){
   const user=await getUserById(userId);
-  if(user==null){
-    return json({errors:{user:"El usuario no existe"}});
-  }
+  
  return db.provinces.findMany({
   where:{
     users:{
@@ -86,22 +84,6 @@ export function getAllProvincies2(query: string | null) {
 
 export function getTotalPages(){
   return db.provinces.count();
-}
-
-export function createProvinces() {
-  return db.provinces.create({
-    data: {
-      name: "New provinces",
-      description: "",
-      imageUrl: "",
-      climate: "",
-      beaches: "",
-      recommendedPlaces: "",
-      typicalFood: "",
-      festivities: "",
-      ccaaName: "",
-    },
-  });
 }
 
 export function getProvincies() {
