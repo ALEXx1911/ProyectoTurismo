@@ -5,7 +5,7 @@ import db from "~/db.server";
 export function createItinerario() {
   return db.itinerario.create({
     data: {
-      destino: "Itinerario",
+      destino: "Destino",
       comida: "Comida",
       ocio: "Ocio",
       viaje: "Viaje",
