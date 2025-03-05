@@ -327,21 +327,20 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
-
 .dropdown__list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-.dropdown__list-item {
+.dropdown-item {
   padding: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
-.dropdown__list-item:hover {
+.dropdown-item:hover {
   background-color: #f0f0f0;
+  opacity: 0.8;
 }
 
 .menu__list {
@@ -456,7 +455,6 @@
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   position: relative;
-  z-index: 1;
 }
 .form-container__form__button-submit:hover {
   color: black;
