@@ -6,7 +6,7 @@ export const loader=async({request}:LoaderFunctionArgs)=>{
     await userLoggedRequired(request);
     const cookie=request.headers.get("cookie");
     const session=await getSession(cookie);
-    return json("",{
+    return redirect("/",{
         headers:{
             "Set-Cookie": await destroySession(session)
         }
@@ -15,6 +15,5 @@ export const loader=async({request}:LoaderFunctionArgs)=>{
 //Destruimos la sesión en el "loader".
 
 export default function Logout(){
-    return redirect("/");
+    return null;
 }
-//Reedirigimos a la página principal.
