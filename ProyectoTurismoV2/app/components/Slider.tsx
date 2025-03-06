@@ -4,6 +4,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { Link } from "@remix-run/react";
 
 export default function Slider(){
     const urlImg='../../img/';
@@ -15,21 +16,9 @@ export default function Slider(){
         setSelectedIndex(nextIndex);
     }
 
-    /*function moveToLeft(){
-        const nextIndex= selectedIndex <= 0 ? imagenes.length-1 : selectedIndex-1;
-        setSelectedIndex(nextIndex);
-    }*/
-   //Comento la función porque no se está usando. No se borra el código por si fuera útil después.
-
     function handleClick(indice:number){
         setSelectedIndex(indice);
     }
-
-    /*useEffect(()=>{
-        const intervalo = setInterval(moveToRight,5000);
-        return () => clearInterval(intervalo);
-    });*/
-    //Se ha quitado el "[]" para que las fotos cambien cada 5 segundos permanentemente.
 
     return(
         <Swiper className={classNames(
@@ -83,12 +72,12 @@ function SliderItem({imgUrl,titulo,subtitulo}:SliderItemProps){
             )}>
                 <span className="text-base">{subtitulo}</span>
                 <span className="mainTitle">{titulo}</span>
-                <button className={classNames(
+                <Link to={"/provincias"} className={classNames(
                     "text-xl w-32 h-12 mt-4 translate-y-0 bg-[rgba(0,0,0,0.35)]",
                     "hvr-sweep-to-top"
                 )}>
-                    Navegar
-                </button>
+                Navegar
+                </Link>
             </div>
                 
         </div>

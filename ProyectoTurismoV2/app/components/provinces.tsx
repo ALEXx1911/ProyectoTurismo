@@ -1,4 +1,4 @@
-import { Form, Link } from "@remix-run/react";
+import { Form, Link, useNavigation } from "@remix-run/react";
 import classNames from "classnames";
 import { setSearchParamsString } from "~/utils/misc";
 import { DoubleLeftArrow, DoubleRightArrow, Heart, HeartEmpty, LeftArrow, RightArrow } from "./icons";
@@ -13,9 +13,9 @@ export type ProvinceCardProps = {
     places: string;
     food: string;
     festivities: string;
-    logged:boolean;
+    logged?:boolean;
     inFav?:boolean;
-    successFunction: (data:string) => void
+    successFunction: (data:string,dato:boolean) => void
   };
   
   export function ProvincieCard({
@@ -33,10 +33,11 @@ export type ProvinceCardProps = {
     inFav,
   }: ProvinceCardProps) {
     const playa = false;
+    const navigation = useNavigation();
     return (
       <div
         className={classNames(
-          "border-2 border-red-400 rounded-md shadow-2xl",
+          "border-2 border-red-400 rounded-md shadow-2xl mb-4",
           "grid grid-cols-3 grid-rows-3 object-cover overflow-hidden",
           "card"
         )}
@@ -46,7 +47,7 @@ export type ProvinceCardProps = {
           alt="xd"
           className={classNames(
             "object-cover h-full col-start-1 col-end-4 row-start-1 row-end-3 w-full py-3 px-20 rounded-3xl",
-            "image:px-3",
+            "image:px-5",
             
           )}
         />
@@ -85,7 +86,14 @@ export type ProvinceCardProps = {
           </p>  
             { logged ? (
                     <div className="absolute top-[1rem] right-2">
-                        { inFav ? <button onClick={() => successFunction(id)}><Heart/></button> : <button onClick={() => successFunction(id)}><HeartEmpty/></button>}
+                      {
+                        navigation.state === "submitting" ? <span>Actualizando</span>:
+                        <label>
+                          <input className="hidden" type="checkbox" checked={inFav} onChange={(e) => successFunction(id,e.target.checked)}>
+                          </input>
+                          {inFav ? <Heart/> : <HeartEmpty/>}
+                        </label>
+                      }
                     </div>
                 ) : ""
             }
@@ -135,92 +143,3 @@ export type ProvinceCardProps = {
         </Link>
     )
   }
-
-
-  export function ProvincieDetail({
-    name,
-    imageUrl,
-    detaildes,
-    desparrafo,
-    detailfest,
-    festparrafo,
-    festUrl,
-    detailfood,
-    foodparrafo,
-    foodUrl,
-    detailsite,
-    siteparrafo,
-    siteUrl
-}: {
-    name: string;
-    imageUrl: string;
-    detaildes: string;
-    desparrafo: string;
-    detailfest: string;
-    festparrafo: string;
-    festUrl: string;
-    detailfood: string;
-    foodparrafo: string;
-    foodUrl: string;
-    detailsite: string;
-    siteparrafo: string;
-    siteUrl: string;
-}) {
-    return (
-        <div className="max-w-6xl mx-auto p-8">
-            {/* Título principal */}
-            <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-6">{name}</h1>
-
-            {/* Imagen principal con efecto hover */}
-            <img 
-                src={imageUrl} 
-                alt={name} 
-                className="w-full h-96 object-cover rounded-xl shadow-lg mb-8 transition-transform duration-300 hover:scale-105 hover:brightness-110"
-            />
-
-            {/* Descripción general */}
-            <div className="mb-8">
-                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Descripción</h2>
-                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detaildes}</p>
-                <p className="text-lg text-gray-800 leading-relaxed">{desparrafo}</p>
-            </div>
-
-            {/* Festividades */}
-            <div className="mb-8">
-                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Festividades</h2>
-                <img 
-                    src={festUrl} 
-                    alt="Festividades" 
-                    className="w-full h-80 object-cover rounded-xl shadow-lg mt-6 transition-transform duration-300 hover:scale-105 hover:brightness-110"
-                />
-                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detailfest}</p>
-                <p className="text-lg text-gray-800 leading-relaxed">{festparrafo}</p> 
-            </div>
-
-            {/* Comida típica */}
-            <div className="mb-8">
-                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Comida Típica</h2>
-                <img 
-                    src={foodUrl} 
-                    alt="Comida típica" 
-                    className="w-full h-80 object-cover rounded-xl shadow-lg mt-6 transition-transform duration-300 hover:scale-105 hover:brightness-110"
-                />
-                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detailfood}</p>
-                <p className="text-lg text-gray-800 leading-relaxed">{foodparrafo}</p>
-            </div>
-
-            {/* Lugares de interés */}
-            <div className="mb-8">
-                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Lugares de Interés</h2>
-                <img 
-                    src={siteUrl} 
-                    alt="Lugares de interés" 
-                    className="w-full h-80 object-cover rounded-xl shadow-lg mt-6 transition-transform duration-300 hover:scale-105 hover:brightness-110"
-                />
-                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detailsite}</p>
-                <p className="text-lg text-gray-800 leading-relaxed">{siteparrafo}</p>
-            </div>
-        </div>
-    );
-}
-
