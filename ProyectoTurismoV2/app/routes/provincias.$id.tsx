@@ -8,7 +8,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     
     if (typeof provinceId === "string") {
         const province = await getProvinceById(provinceId);
-
+        console.log("a");
         if (!province) {
             return redirect("/"); // Si no existe la provincia, redirige a la página principal
         }

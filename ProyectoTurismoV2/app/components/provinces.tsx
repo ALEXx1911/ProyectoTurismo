@@ -143,3 +143,90 @@ export type ProvinceCardProps = {
         </Link>
     )
   }
+
+  export function ProvincieDetail({
+    name,
+    imageUrl,
+    detaildes,
+    desparrafo,
+    detailfest,
+    festparrafo,
+    festUrl,
+    detailfood,
+    foodparrafo,
+    foodUrl,
+    detailsite,
+    siteparrafo,
+    siteUrl
+}: {
+    name: string;
+    imageUrl: string;
+    detaildes: string;
+    desparrafo: string;
+    detailfest: string;
+    festparrafo: string;
+    festUrl: string;
+    detailfood: string;
+    foodparrafo: string;
+    foodUrl: string;
+    detailsite: string;
+    siteparrafo: string;
+    siteUrl: string;
+}) {
+    return (
+        <div className="max-w-6xl mx-auto p-8">
+            {/* Título principal */}
+            <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-6">{name}</h1>
+
+            {/* Imagen principal con efecto hover */}
+            <img 
+                src={imageUrl} 
+                alt={name} 
+                className="w-full h-96 object-cover rounded-xl shadow-lg mb-8 transition-transform duration-300 hover:scale-105 hover:brightness-110"
+            />
+
+            {/* Descripción general */}
+            <div className="mb-8">
+                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Descripción</h2>
+                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detaildes}</p>
+                <p className="text-lg text-gray-800 leading-relaxed">{desparrafo}</p>
+            </div>
+
+            {/* Festividades */}
+            <div className="mb-8">
+                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Festividades</h2>
+                <img 
+                    src={festUrl} 
+                    alt="Festividades" 
+                    className="w-full h-80 object-cover rounded-xl shadow-lg mt-6 transition-transform duration-300 hover:scale-105 hover:brightness-110"
+                />
+                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detailfest}</p>
+                <p className="text-lg text-gray-800 leading-relaxed">{festparrafo}</p> 
+            </div>
+
+            {/* Comida típica */}
+            <div className="mb-8">
+                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Comida Típica</h2>
+                <img 
+                    src={foodUrl} 
+                    alt="Comida típica" 
+                    className="w-full h-80 object-cover rounded-xl shadow-lg mt-6 transition-transform duration-300 hover:scale-105 hover:brightness-110"
+                />
+                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detailfood}</p>
+                <p className="text-lg text-gray-800 leading-relaxed">{foodparrafo}</p>
+            </div>
+
+            {/* Lugares de interés */}
+            <div className="mb-8">
+                <h2 className="text-3xl font-semibold text-gray-900 border-b-2 pb-2">Lugares de Interés</h2>
+                <img 
+                    src={siteUrl} 
+                    alt="Lugares de interés" 
+                    className="w-full h-80 object-cover rounded-xl shadow-lg mt-6 transition-transform duration-300 hover:scale-105 hover:brightness-110"
+                />
+                <p className="text-lg text-gray-800 leading-relaxed mt-4">{detailsite}</p>
+                <p className="text-lg text-gray-800 leading-relaxed">{siteparrafo}</p>
+            </div>
+        </div>
+    );
+}
