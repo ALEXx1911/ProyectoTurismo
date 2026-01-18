@@ -72,12 +72,15 @@ function SliderItem({imgUrl,titulo,subtitulo}:SliderItemProps){
             )}>
                 <span className="text-base">{subtitulo}</span>
                 <span className="mainTitle">{titulo}</span>
-                <Link to={"/provincias"} className={classNames(
-                    "text-xl w-32 h-12 mt-4 translate-y-0 bg-[rgba(0,0,0,0.35)]",
+                <div className={classNames("flex flex-col w-32 h-12 mt-2 items-center content-center justify-center bg-[rgba(0,0,0,0.35)] box-border",
                     "hvr-sweep-to-top"
                 )}>
-                Navegar
-                </Link>
+                    <Link to={"/provincias"} className={classNames(
+                        "text-xl"
+                    )}>
+                        Navegar
+                    </Link>
+                </div>
             </div>
                 
         </div>

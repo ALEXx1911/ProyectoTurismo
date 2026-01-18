@@ -2,6 +2,26 @@
 
 - 📖 [Remix docs](https://remix.run/docs)
 
+## Configuration
+
+Before running the project, you need to set up your environment variables:
+
+1. Copy `.env.sample` to `.env`:
+```bash
+cp .env.sample .env
+```
+
+2. Generate secure secrets for:
+   - `AUTH_COOKIE_SECRET`: Used to encrypt session cookies
+   - `MAGIC_LINK_SECRET`: Used for magic link authentication
+
+Generate a secure random string using:
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+3. Fill in the `.env` file with your actual values (this file is ignored by Git)
+
 ## Development
 
 Run the dev server:

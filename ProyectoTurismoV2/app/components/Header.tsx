@@ -64,11 +64,12 @@ export default function Header({ username, profileImage, isUserLogged, errorMess
   return (
     <>
       <div className="header">
-        <div className="header__logo-container">
-          <Link to="/"><img className="header__logo" src="/img/logo.jpeg" alt="Logo de la compañía" /></Link>
-          <h4 className="header__name">turismoEspaña</h4>
-        </div>
-
+        <Link to="/">
+          <div className="header__logo-container">
+            <img className="header__logo" src="/img/logo.jpeg" alt="Logo de la compañía" />
+            <h4 className="header__name">turismoEspaña</h4>
+          </div>
+        </Link>
         <div className="header__search-bar-container">
           <Form className="header__search-bar-container__form" method="POST">
             <input

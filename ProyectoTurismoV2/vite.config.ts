@@ -22,6 +22,9 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   server:{
-    port:3000
+    port:3000,
+    watch:{
+      ignored:["**/node_modules/**","**/.git/**"]
+    }
   }
 });
